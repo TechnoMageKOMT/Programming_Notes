@@ -146,7 +146,8 @@ The origin is simply a distributed place to host code or data. In addition to Gi
 ### Branching
 
 ```bash
-git checkout -b new-branch
+git checkout -b new-branch or
+git branch <new branch>
 ```
 
 Creates a new branch and switches to the new branch.
@@ -214,7 +215,7 @@ Create a file called .gitignore and add files to ignore line by line in this fil
 
 ### Correcting bad commit messages
 
-```Git
+```bash
 ~$ git commit --amend
 ```
 
@@ -290,6 +291,27 @@ This is not good practice because there is a loss of traceability or history.
 
 ### Merge and Rebase conflicts
 
-Two changes in the same file in the same place.
+Two changes in the same file in the same place. Refer to section in Kalob Taulien's course when needed.
 
 ### How to stash code
+
+Use case: Work done, not ready for commit, but needs to be saved "behind the scenes". This is a neat little temporary storage capability.
+
+```bash
+git stash   (To stash work)
+git stash list  (To list all stashes on a branch)
+git stash apply (When ready to resume)
+git stash drop  (When ready to go through stage/commit/push cycle)
+```
+
+### Tags
+
+This is mostly used for version control in software development.
+
+```bash
+git tag v0.1                        (To add tag)
+git tag                             (To list all tags)
+git push origin --tags              (To push the tag to GitHub)
+git tag -d <tag name>               (To delete a tag)
+git push origin --delete <tag name> (To delete tag from GitHub)
+```
