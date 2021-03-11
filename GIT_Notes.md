@@ -27,7 +27,7 @@ To view key: cat followed by the path and filename of the *.pub file that is gen
 
 ### How to clone a repository  
 
-All that this mean is that one has a repository on GitHub and one wants to copy the files to one's local computer.  
+All that this mean is that one has a repository on GitHub and one wants to copy the files to one's local computer  
 
 Copy: SSH address from GitHub repo (clone or download button)  
 
