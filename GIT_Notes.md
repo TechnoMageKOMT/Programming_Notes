@@ -1,45 +1,45 @@
-# Git Essentials  
+# Git Essentials
 
 CLI = Command Line Interface
-GUI = Graphical User Interface  
+GUI = Graphical User Interface
 
-When code needs to be deployed to a server there is no graphical user interface at all. For this fundamental reason it is better to learn git using the CLI.  
+When code needs to be deployed to a server there is no graphical user interface at all. For this fundamental reason it is better to learn git using the CLI.
 
-## Configuring GIT  
+## Configuring GIT
 
 This is only done once unless the details changes.
 
 ```bash
-git config -- global user.name "TechnoMageKOMT"  
-git config -- global user.email "technomagekomt@gmail.com" (Email should ideally match up with GitHub email)  
-cat ~/.gitconfig to verify that it worked.  
+git config -- global user.name "TechnoMageKOMT"
+git config -- global user.email "technomagekomt@gmail.com" (Email should ideally match up with GitHub email)
+cat ~/.gitconfig to verify that it worked.
 ```
 
-### SSH Key  
+### SSH Key
 
-To generate SSH key:
+To generate SSH key
 
 ```bash
 ssh-keygen -o
 ```
 
-To view key: cat followed by the path and filename of the *.pub file that is generated during this process. Copy/paste key. Go to profile setting on GitHub SSH and GPG keys. Click on new SSH key and paste the key in the block. Also give the key a title. The key is also stored /home/technomage/.ssh/id_rsa.pub for future reference.
+To view key: cat followed by the path and filename of the \*.pub file that is generated during this process. Copy/paste key. Go to profile setting on GitHub SSH and GPG keys. Click on new SSH key and paste the key in the block. Also give the key a title. The key is also stored /home/technomage/.ssh/id_rsa.pub for future reference.
 
-### How to clone a repository  
+### How to clone a repository
 
-All that this mean is that one has a repository on GitHub and one wants to copy the files to one's local computer  
+All that this mean is that one has a repository on GitHub and one wants to copy the files to one's local computer
 
-Copy: SSH address from GitHub repo (clone or download button)  
+Copy: SSH address from GitHub repo (clone or download button)
 
-`git clone <ssh address>`  
+`git clone <ssh address>`
 
-*Make sure you are in the directory where the files should be downloaded to when performing this action.*  
+_Make sure you are in the directory where the files should be downloaded to when performing this action._
 
-To read for instance the `README.md` file:  `cat README.md`  
+To read for instance the `README.md` file: `cat README.md`
 
-`git log` Will produce a list of commits with some details and the comments by the person who made the commit.  
+`git log` Will produce a list of commits with some details and the comments by the person who made the commit.
 
-### Creating and Setting up a new repository (repo)  
+### Creating and Setting up a new repository (repo)
 
 Create a new repo on GitHub and give it a name in the required field
 Create a directory for a git project:
@@ -53,12 +53,12 @@ Create a directory for a git project:
 6 ~$ git commit -m "First commit"
 7 ~$ git remote add origin git@github.com:TechnoMageKOMT/<repo name see above>.git
 8 ~$ git push -u origin main
-If (8) produces an src error 
+If (8) produces an src error
   ~$ git branch -M main
   ~$ git push -u origin main
 ```
 
-### Push requests  
+### Push requests
 
 This is effectively getting a file or changes from local machine to GitHub.
 Four steps:
@@ -83,9 +83,9 @@ This will list a message:
   nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-`git add first-push.txt` To stage the new file.       Staging
-`git commit -m "First is the first official commit"`  Commit
-`git push origin main                                 push  
+`git add first-push.txt` To stage the new file. Staging
+`git commit -m "First is the first official commit"` Commit
+`git push origin main push
 
 ### Git status command - Modifications - stage, commit, push cyclerm
 
@@ -105,7 +105,7 @@ Modified files
 ```
 
 So, the staging, commiting and pushing cycle repeats for the modifications.
-If numerous files were modified then `~$ git add .` can be used. (I.e., git add all in current directory)  
+If numerous files were modified then `~$ git add .` can be used. (I.e., git add all in current directory)
 
 ### Unstaging and Undeleting files
 
@@ -115,7 +115,7 @@ If file deleted accidentally and the change is staged then use:
 ~$ git restore --staged <filename>
 ```
 
-**Aside:** This actually appears on the git status output so there is no need to remember this command  
+**Aside:** This actually appears on the git status output so there is no need to remember this command
 
 To undelete a file when it has not been staged yet.
 
@@ -156,7 +156,7 @@ Creates a new branch and switches to the new branch.
 git branch
 ```
 
-List branches and also an * next to current branch.
+List branches and also an \* next to current branch.
 
 ```bash
    main
@@ -167,7 +167,7 @@ List branches and also an * next to current branch.
 git checkout main
 ```
 
-Switches back to the main branch.  
+Switches back to the main branch.
 
 The idea is to create "small" and then merging them with the main branch if and when suitable. **NOT** to create extensive very large branches which defeats the purpose of version control.
 
@@ -177,7 +177,7 @@ Simply change to new branch with the `git checkout <new-branch>` command, add a 
 
 ### Merging a branch into main
 
-Merging is the act of taking one branch and applying it to another branch.  
+Merging is the act of taking one branch and applying it to another branch.
 
 ```bash
 ~$ git checkout main    (To change to main branch )
@@ -211,7 +211,7 @@ This will list the differences applied to a file before staging it. It only work
 
 ### Ignoring files
 
-Create a file called .gitignore and add files to ignore line by line in this file. Wildcards like * can be used to ignore any files with a certain extension etc.
+Create a file called .gitignore and add files to ignore line by line in this file. Wildcards like \* can be used to ignore any files with a certain extension etc.
 
 ### Correcting bad commit messages
 
@@ -225,7 +225,7 @@ This will open up nano and the message can be changed, **but** it must take plac
 
 When there is a need to copy entire repos:
 
-1. Download as *.zip
+1. Download as \*.zip
 2. Clone (but then still attached to GitHub)
 3. Fork into one's own GitHub profile
 
@@ -247,10 +247,10 @@ If a branch is deleted during the pull request handling on GitHub, it has to be 
 ~$ git branch -d <branch name>
 ```
 
-### Undoing a commit  
+### Undoing a commit
 
 To get a quick overview of commit messages:
-`~$ git log --oneline`  
+`~$ git log --oneline`
 
 Two ways to undo local commits:
 

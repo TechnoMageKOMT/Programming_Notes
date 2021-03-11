@@ -204,7 +204,7 @@ function respondToClick(){
 
 Higher order functions = Functions that can takes as input another function. This is very common to the way that JS manipulates the DOM.
 
-### Constructor Function
+### Constructor Functions
 
 These function are used to create objects:
 
