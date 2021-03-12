@@ -138,6 +138,14 @@ origin  git@github.com:TechnoMageKOMT/git-essentials.git (fetch)
 origin  git@github.com:TechnoMageKOMT/git-essentials.git (push)
 ```
 
+If these are https:// urls use the follwing command to change the particular repo to SSH:
+
+```bash
+git remote set-url origin <URL> (The URL here is the one listed with the green button on git)
+```
+
+For more info on git remotes see (https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+
 The origin is simply a distributed place to host code or data. In addition to GitHub, there is also GitLab and BitBucket etc.
 
 - Diminishes risk of losing data.
