@@ -238,3 +238,15 @@ crash.play();
 ```
 
 This is clearly a new object that is being created by the Audio constructor function that has a function called play within it which is invoked in the second line.
+
+### Higher Order Functions
+
+```JavaScript
+document.addEventListtener("keydown", respondToKey(event));
+
+function respondToKey(event){
+  console.log("Key pressed.")
+}
+```
+
+I.e., A function that takes another function as input. The function that gets passed as input is called a **callback function**
