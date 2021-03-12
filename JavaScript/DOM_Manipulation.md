@@ -211,12 +211,30 @@ These function are used to create objects:
 ```JavaScript
 function SomeName(var1, var2, var3, var4){
   this.var1 = var1;
-  this var2 = var2;
-  this var3 = var3;
-  this var4 = var4;
+  this.var2 = var2;
+  this.var3 = var3;
+  this.var4 = var4;
+  this.someFunction = function(){
+    //statement / expression
+  }
 }
 
 const objectName = new SomeName(value1, value2, value3, value4);
 ```
 
 Take note of the `new` keyword that must precede the name of the constructor when invoked. Another difference is that the function name starts with a capital, unlike normal functions.
+
+To call the method in this object:
+
+```JavaScript
+SomeName.someFunction();
+```
+
+Constructor functions are what is behind JS's methods. Refer to drumkit project:
+
+```JavaScript
+let crash = new Audio("sounds/crash.mp3");
+crash.play();
+```
+
+This is clearly a new object that is being created by the Audio constructor function that has a function called play within it which is invoked in the second line.
