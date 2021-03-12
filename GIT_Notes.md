@@ -125,7 +125,7 @@ To undelete a file when it has not been staged yet.
 
 ### Git origins and remotes
 
-An origin is where the remote code is being sent to or saved or hosted.
+An origin is where the remote code is being hosted and could be different places depending on the collaborators if any.
 
 ```bash
   ~$ git remote -v
@@ -138,7 +138,7 @@ origin  git@github.com:TechnoMageKOMT/git-essentials.git (fetch)
 origin  git@github.com:TechnoMageKOMT/git-essentials.git (push)
 ```
 
-If these are https:// urls use the follwing command to change the particular repo to SSH:
+If these are https:// urls and SSH i spreferred, use the follwing command to change the particular repo to SSH:
 
 ```bash
 git remote set-url origin <URL> (The URL here is the one listed with the green button on git)
