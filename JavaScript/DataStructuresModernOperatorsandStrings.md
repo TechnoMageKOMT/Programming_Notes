@@ -4,7 +4,7 @@
 
 Code for examples:
 
-```
+```JavaScript
 const restaurant = {
   name: 'Classico Italiano',
   physicalAddress: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -31,7 +31,7 @@ const restaurant = {
 Destructuring is a ES6 feauture which is a way of unpacking values from an array or object into seperate variables.
 I.e., A way of breaking a complex data structure down into smaller data structures such as variables (? primitives).
 
-```
+```JavaScript
 Historical way:
 const arr = [2, 3, 4];
   const a = arr[0];
@@ -41,7 +41,7 @@ const arr = [2, 3, 4];
 
 With destructuring this can be done simultateously:
 
-```
+```JavaScript
   const [x, y, z] = arr;     This is called a destructuring assignment
 ```
 
@@ -49,7 +49,7 @@ The original array is not affected by this process and remains intact.
 
 The restaurant `object` above have several arrays within it.
 
-```
+```JavaScript
   const[first, second] = restaurant.categories;
 ```
 
@@ -59,7 +59,7 @@ Produces variables `first` and `second` with values corresponding to the first t
 
 It is not necessary to select all elements of the array. Elements can even be skipped over by leaving a space in the specification of the destructuring assignment.
 
-```
+```JavaScript
   const[first, ,third] = restaurant.categories;
 ```
 
@@ -67,7 +67,7 @@ It is not necessary to select all elements of the array. Elements can even be sk
 
 This method has one very powerful consequency and that is the swapping around of values without having to resort to temporary values.
 
-```
+```JavaScript
   [x, y] = [y, x];
 ```
 
@@ -82,7 +82,7 @@ Another very powerful consequence of the method is that a function can return an
 
 By way of example, a function will be added to the above code to order food. Since this is an object, the function will be called a method of the object. The method will accept two parameters. An index for the starter menu and another for the main menu. An order will then hypothetically be given as an index number of what the client wants from both menus. The method will then simply return the content of the specified array based on the index number. To do this the `this` keyword will be used and information will be returned as an array. When this method is being called the returned array will immediately be destructured into two seperate variables as can be seen at the end of the code below:
 
-```
+```JavaScript
 const restaurant = {
   name: 'Classico Italiano',
   physicalAddress: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -116,7 +116,7 @@ const [starter, mainCourse] = restaurant.order(2, 0);
 
 Nested arrays are simply handled like:
 
-```
+```JavaScript
   const nested = [2 ,4, [5, 6]];
   const [i, ,j] = nested
     This results in a variable and an array.
@@ -124,7 +124,7 @@ Nested arrays are simply handled like:
 
 Destructuring inside destructuring:
 
-```
+```JavaScript
 const [i, ,[j, k]] = nested;
     This will result in 3 seperate variables.
 ```
@@ -134,7 +134,7 @@ const [i, ,[j, k]] = nested;
 Default values can also be assigned to the extraction variables. This is very useful when the length of the array is unknown which is often the case in real world applications. If the array is shorter than we expect, then we might attempt to unpack the array in postions that don't even exist.
 Suppose we have an array [8, 9] and attempt to destructure this array for three elements
 
-```
+```JavaScript
   const [p, q, r] = [8 , 9];    r would be undefined, so
   const [p=1, q=1, r=1] = [8, 9];  r would be 1
 ```
@@ -151,13 +151,13 @@ The general process is very similar to array destructuring except that
 
 The generic syntax would be:
 
-```
+```JavaScript
   const {property1, property2, property3} = objectName;
 ```
 
 Using the restaurant example above again. An example of the general syntax is:
 
-```
+```JavaScript
   const {name, openingHours, categories} = restaurant;
 ```
 
@@ -167,13 +167,13 @@ This destructures the object into one variable (name), an object (openingHours) 
 
 New names can be allocated to the destructured variables in the following generic manner:
 
-```
+```JavaScript
   const {property1: newName1, property2: newName2, property3: newName3} = objectName;
 ```
 
 To use our example:
 
-```
+```JavaScript
   const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
 ```
 
@@ -183,14 +183,14 @@ The ability to rename varialbles in this way is very useful when dealing with th
 
 Similar to arrays, default values can be set for the same reasons as above. I.e., To deal with properties that do not exist in the object that is being destructured. An example would be:
 
-```
+```JavaScript
   const {menu, openingHours, categories} = restaurant;
   menu = undefined because it does not exist in the object restaurant.
 ```
 
 So, default values can be assigned and it can even be combined in the renaming of variables:
 
-```
+```JavaScript
   const {menu = [], starterMenu: starters = []} = restaurant;
 ```
 
@@ -200,7 +200,7 @@ All of this is important when dealing with APIs and third party software.
 
 Variables can also be mutated, but not in the same way as arrays:
 
-```
+```JavaScript
   let a = x;
   let b = y;
   const obj =  {a:23, b:7, c:14};
@@ -213,7 +213,7 @@ Variables can also be mutated, but not in the same way as arrays:
 
 Using the restaurant example again. `openingHours` have already been extracted as an object, so
 
-```
+```JavaScript
   const {fri} = openingHours;
   yields the object fri that lies withing the object openingHours which is a property of the object restaurant.
 
@@ -228,7 +228,7 @@ All other functions such as assigning new names to the variables and setting def
 
 It happens often in JavaScript that a function requires numerous parameters. It is then very difficult to remember the order of the parameters for someone who is using the function. The way around this is to, instead of defining the parameters manually, simply pass an object into the function as an argument and the function will then immediately destructure that object.
 
-```
+```JavaScript
 const restaurant = {
   name: 'Classico Italiano',
   physicalAddress: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -275,47 +275,61 @@ Note that the order of the properties in the destructuring statement does not ma
 Expand an array into all of its elements. Unpacking all the elements at once.
 
 Let a starting array be declared as `const arr = [x, y, z]` and the numbers v and w need to be added to the beginning of the array:
-```
+
+```JavaScript
   const arr = [x, y, z];
   const newArr = [v, w, ...arr];
     By using the `...` operator a new array then forms as [v, w, x, y, z]
 ```
+
 This is useful when dealing with array literals and also when passing arguments into functions. A simple example using the above:
-```
+
+```JavaScript
   console.log(newArr) gives an arrays [v, w, x, y, z] as output, but
   console.log(...newArr) gives the variables v w x y z as output.
 ```
+
 Suppose the mainMenu array in the restaurant object above needs to be updated. The spread operator enables the following easy way of doing so:
-```
+
+```JavaScript
 const newMenu =[...restaurant.mainMenu, 'Gnocci']
 ```
+
 **NB** This creates a completely new Array. It is not a manipulation of the original Array.
 
 **Diffenerence between spread operator and destructuring**
 The spread operator takes out all elements from the array, but does not create new variables. Because of this, it can only be used in places where we would otherwise write values seperated by commas as when passing arguments into a function or when building a new array.
 
 Two use cases of the spread operator:
-1) Create shallow copies of arrays
-2) Merge two array
+
+1. Create shallow copies of arrays
+2. Merge two array
 
 **Copying an array**
-```
+
+```JavaScript
 const mainMenuCopy = [...restaurant.mainMenu];
 ```
-***Mergeing of arrays***
-```
+
+**_Mergeing of arrays_**
+
+```JavaScript
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 ```
+
 ### Iterables
 
-The spread operator works on all iterables and there are several of these in JavaScript. Examples of iterables inlude arrays, strings, maps or sets, but *not* objects. Most built in data structures in JS are iterables with the exception of objects. An example:
-```
+The spread operator works on all iterables and there are several of these in JavaScript. Examples of iterables inlude arrays, strings, maps or sets, but _not_ objects. Most built in data structures in JS are iterables with the exception of objects. An example:
+
+```JavaScript
   const str = `Jonas`;
   const letters = [...str, ' ', 'S.'];
   console.log(letters) => Array(7) [ "J", "o", "n", "a", "s", " ", "S." ]
 ```
+
 Using the restaurant example again, an orderPasta methods has been added to illustrate the above:
-```
+
+```JavaScript
 const restaurant = {
   name: 'Classico Italiano',
   physicalAddress: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -355,12 +369,160 @@ restaurant.orderPasta(...ingredients);
 ### ... and Objects
 
 Since ES6 in 2018 the spread operator also works for objects even though they are not iterable. Using the restaurant example again:
-```
+
+```JavaScript
 const newRestaurant = {foundedIn: 1998,...restaurant, founder: 'Guiseppe'}
 ```
 
 Shallow copies of objects can also be made by using the ... operator.
-```
+
+```JavaScript
 const restaurantCopy = {...restaurant};
 ```
-The nice thing with these shallow copies is that a value changed on one of the objects will not affect the other. I.e., They are seperate objects unlike the situation where a object is copied by merely assigning it to another variable name. 
+
+The nice thing with these shallow copies is that a value changed on one of the objects will not affect the other. I.e., They are seperate objects unlike the situation where a object is copied by merely assigning it to another variable name.
+
+## Rest Pattern and Parameters
+
+### Destructuring
+
+#### Arrays
+
+It shares the same syntax as the spread operator, but does the opposite. I.e., Collects multiple elements and condenses them into an array. Another way to put this; to pack elements into an array.
+
+If `...` is on the RHS of the assignment operator then it functions as the spread operator. If on the LHS it acts as the rest operator:
+
+```JavaScript
+//Spread because on RHS of the assignment operator
+const str = [1, 2,...[3, 4]];
+console.log(str);
+Output: [1, 2, 3, 4]
+//Rest because on LHS of the assignment operator
+const [a, b,...others] = [1, 2, 3, 4, 5];  //Destrtucturing and rest in one
+console.log(a, b, others);
+Output: 1 2 [3, 4, 5]
+```
+
+The rest pattern collects the elements that are unused in a destructuring assignment and places / collects them in a new array.
+
+Using the restaurant example again:
+
+```JavaScript
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+Output: Pizza Risotto [ "Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad" ]
+```
+
+Special note: It is everything after Risotto. I.e., the 'rest'. The skipped element is not included. For this reason, the rest pattern must always be the last in the destructuing assignment (LHS). For the same reason, there can only ever be one rest pattern in any destructuring assignment.
+
+#### Objects
+
+The main difference is that the remaining elements will be collected into a new object instead of an array.
+
+```JavaScript
+const {sat,...weekDays} = restaurant.openingHours;
+console.log(weekDays);
+Output: Object { thu: {…}, fri: {…} }
+```
+
+### Functions
+
+The opposite of the spread pattern here would be to take any arbitrary amount of arguments and to pack them into an array to pass into a function. This is done by the use of rest parameters and the arbitrary arguments are called rest arguments.
+
+```JavaScript
+const add = function(...numbers){
+  console.log(numbers);
+}
+
+add(2, 3);
+add(5, 3, 7, 2);
+Output: 1: Array [ 2, 3 ]
+Output: 2: Array(4) [ 5, 3, 7, 2 ]
+```
+
+```JavaScript
+const add = function(...numbers){
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++){
+    sum += numbers[i];
+  }
+  console.log(sum);
+}
+
+add(2, 3);
+add(5, 3, 7, 2);
+Output: 1: 5
+Output: 2: 17
+```
+
+An array can also be submitted to this function by using the spread pattern as follow:
+
+```JavaScript
+const x = [23, 5, 7];
+add(...x)
+```
+
+This last example is an excellent example to show that the rest pattern is the reverse or opposite of the spread pattern.
+
+It is highly recommended to use the rest parameter system as far as possible because it removes a lot of restrictions on how arguments can be submitted to a function.
+
+As an example another method has been added to the restaurant function to see the rest parameters in action:
+
+```JavaScript
+const restaurant = {
+  name: 'Classico Italiano',
+  physicalAddress: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+  orderPizza: function(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  }
+};
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+Output:   mushrooms
+          Array(3) [ "onion", "olives", "spinach" ]
+
+restaurant.orderPizza('mushrooms');
+Output:   mushrooms
+          Array []
+```
+
+In summary: The spread operator is used where one would use a list of values seperated by commas and the rest operator where one would use variables seperated by commas (like parameters in a function);
