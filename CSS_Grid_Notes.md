@@ -156,7 +156,69 @@ Grid rows are controlled in the same way by the `grid-row-start`, `grid-row-end`
 
 ### Grid Minmax Function
 
+Allow the setting of minimum and maximum boundaries to rows and columns.
+
+The function can be used together with the repeat function or on its own as a value of the `grid-template-columns` or `grid-template-rows` properties. Simply use the syntax minmax(). The function takes two values. The first is the minimum size of the column and the second, is the maximum size of the column. The two values are seperated by commas.
+
+The following would specify three columns at least 200px wide and no more than 300px wide.
+
+```CSS
+grid-container {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) minmax(200px, 300px) minmax(200px, 300px);
+```
+
+The same can be done with the rows. **NB** Make sure there is no conflict between the height of the grid container if it was set to a fixed value.
+
+The minmax() function can also be used together with the repeat function by replacing the column / row size(s) with the function
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(4, minmax(100px, auto));
+  gap: 50px 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
+
+The auto value above will mean that the cell contents will deterrmine the maximum height of the rows in this case.
+
 ### Grid Name Lines
+
+The CSS Grid system allows for meaningful names to be assigned to grid lines instead of the default numbers.
+
+This is done by preceding the dimensions with [name]. Any names can be assigned as long as it is not a CSS keyword such as span.
+
+The names can then be used from that point onwards.
+
+```CSS
+.grid--item:nth-child(1) {
+  grid-column: first-grid-line / third-grid-line;
+}
+```
+
+The last statement is the same as `grid-column: 1 / 3;
+
+Multiple names can also be added to the same grid line.
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: [first-grid-line row-start] 1fr [second-grid-line] 1fr [third-grid-line] 1fr [fourth-grid-line row-end];
+  grid-template-rows: 150px 150px 150px 150px;
+  gap: 50px 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+
+.grid--item:nth-child(1) {
+  grid-column: row-start / row-end;
+}
+```
 
 ### Grid Auto-Fill
 
