@@ -222,6 +222,21 @@ Multiple names can also be added to the same grid line.
 
 ### Grid Auto-Fill
 
+Automatically takes into account the size of the grid item, the grid container and the gaps between the columns and then automatically divide the items into columns and position the items accordingly. It can also be combined with the minmax() function.
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 50px 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
+
+**NB** Excellent for responsive web design without the need for media queries **NB**
+
 ### Grid: Difference Between Auto-Fill and Auto-Fit
 
 ### Grid Auto Rows
