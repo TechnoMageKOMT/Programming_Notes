@@ -222,6 +222,8 @@ Multiple names can also be added to the same grid line.
 
 ### Grid Auto-Fill
 
+Alows the specification of grid cells of certain size and the browser then decides on the optimal amount of columns needed. The whole size of the grid container is used. 
+
 Automatically takes into account the size of the grid item, the grid container and the gaps between the columns and then automatically divide the items into columns and position the items accordingly. It can also be combined with the minmax() function.
 
 ```CSS
@@ -237,11 +239,76 @@ Automatically takes into account the size of the grid item, the grid container a
 
 **NB** Excellent for responsive web design without the need for media queries **NB**
 
+Trick: If a value of -1 is assigned to a cell, it will always shift to the end of the grid.
+
 ### Grid: Difference Between Auto-Fill and Auto-Fit
+
+Similar to autofill, but auto-fill allows the grid to span the entire container width; auto-fit the grid will only span the width of the specified grid items. If used together with minmax then the cells will span the viewport width equally spaced.
+
+The same applies to rows.
+
+**Advice** Choose one that one is comfortable with and stick to it until the subtle difference is understood.
+
+Syntacs
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fit, 150px);
+  gap: 50px 2.5rem;
+  width: 100%;
+  height: 1000px;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
 
 ### Grid Auto Rows
 
+This property allow the setting of a default size for rows. 
+
+It accepts all the same values as `grid-template-rows`.
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  /* grid-template-rows: repeat(auto-fit, 150px); */
+  grid-auto-rows: 200px;
+  gap: 50px 2.5rem;
+  width: 100%;
+  height: 1000px;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
+
+**NB** This simply provides the default size which can always be overwritten with the `grid-template-rows` property.
+
+The example below tells the browser that the default row height is 200px, but the first two rows should only be  100px high:
+
+```CSS
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(2, 100px);
+  grid-auto-rows: 200px;
+  gap: 50px 2.5rem;
+  width: 100%;
+  height: 1000px;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
+
+It is **good practice** to set a default size and then only specify the rows that need specific different heights.
+
 ### Grid Auto Columns
+
+This is the same as the `grid-auto-row` property, but applied to columns. The property name here is `grid-auto-columns`.
+
+**NB** Will also be overwritten by grid-template-columns specifications if present.
 
 ### Grid: Explicit vs Implicit
 

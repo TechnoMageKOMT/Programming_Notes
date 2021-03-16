@@ -1,39 +1,7 @@
-# Practical Projects: 50 Days, 50 Projects: Brad Travery & Florin Pop
 
-## Boilerplate
+# Expanding Cards
 
-Definition: SX = Self explanatory
-
-The following initial setup is a good place to start all projects:
-
-- Link stylesheet to index.html
-- Link Font Awesome to index.html above local stylesheet (if applicable)
-- Link JavaScript file(s) above closing body tag.
-
-Start off with the following baseline CSS (Adjust Google Font as needed):
-
-```CSS
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto, sans-serif';
-  display: flex;                    /*To allow alignment of body contents*/
-  flex-direction: column;           /*Vertical stacking of elements */
-  align-items: center;              /*Center content horizontally*/
-  justify-content: center;          /*Center content vertically*/
-  height: 100vh;
-  overflow: hidden;                 /*Do not want scroll bars by default*/
-  margin: 0;
-}
-```
-
-## Day 1 Expanding Cards
-
-### HTML code
+## HTML code
 
 Basically a parent div with 5 children div's which will form the interactive cards.
 
@@ -41,7 +9,7 @@ The first child div will have a class of `panel` and `active`. This `active` cla
 
 Each card also has Some 'h3' text with a background image. Brad used inline styling for the background images, but I do not like inline CSS and therefore added `image1-5` classes and declared them in the stylesheet.
 
-### CSS code
+## CSS code
 
 The following CSS styling was applied for the reasons listed below:
 
@@ -82,10 +50,10 @@ _transition: opacity 0.3s ease-in 0.4s_ To smooth out the transition
 The `.container` width changed to 100vw so full screen is used on small devices.  
 The last two panels were also hidden for small screens by targeting the `.panel:nth-of-type(4), .panel:nth-of-type(5)` pseudo elements and setting `display: none;`
 
-### JavaScript
+## JavaScript
 
 A normal event listener loop was added to the `.panel` class, but a second function had to be written to remove the `.active` class from all `.panel` elements when a click is registered but before the .add('active') statement.
 
-### Conclusion
+## Conclusion
 
 This is a nice "widget" or gimmic that can be used for various purposes like pricing options, or services offered etc sections of a web page.
