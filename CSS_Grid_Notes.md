@@ -312,6 +312,20 @@ This is the same as the `grid-auto-row` property, but applied to columns. The pr
 
 ### Grid: Explicit vs Implicit
 
+These are the basic two types of grids that can be created.
+
+When a grid is set up with the `grid-template-columns` and `grid-template-rows` properties, the grid is considered explicit.
+
+It is also possible to have explicit columns with implicit rows and vice versa.
+
+In Firefox explicit columns and rows are between solid purple lines. Implicit rows and columns are not, but instead are surrounded by dotted lines.
+
+An explicit grid will be surrounded by solid purple lines. 
+
+Auto values, as discussed above are also considered implicit definitions.
+
+In practice, these differences do not have much importance, but it useful to keep in mind when doing trouble shooting.
+
 ### Grid Auto Flow
 
 ### Grid Template Areas
