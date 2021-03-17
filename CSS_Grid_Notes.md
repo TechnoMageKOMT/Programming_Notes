@@ -328,6 +328,115 @@ In practice, these differences do not have much importance, but it useful to kee
 
 ### Grid Auto Flow
 
+This property allows control of auto placement in the grid. It allows the specification of auto flow placed items in the grid. The default behaviour of the grid is `grid-auto-flow: row;`. This means that any extra items flow onwards to new rows. If the property is set to column then any extra items will be confined to the columns only and won't flow over to additional rows (? problematic). These items will only be placed in clumns even if they no longer fit in the grid container.
+
+If this property is given a value of `dense`, the items will be placed in an optomised way to leave empty as few as possible cells. This is a main way that this property can be used during the design process.
+
 ### Grid Template Areas
 
+Another way of defining the grid; `grid-template-areas`. It allows to create grids in a more visual way. 
+
+The methods is far more visual and intuitive and is dependent on the `grid-template-areas` and subsequent `grid-area` definitions as can be seen on the code below:
+
+```JavaScript
+.page {
+  display: grid;
+  grid-template-columns: 250px 1fr 1fr;
+  grid-template-rows: 150px 500px 100px;
+  grid-template-areas:                      /*Grid template area definition*/
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+  gap: 20px 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  grid-area: header;                      /*Specification*/
+  background-color: green;
+}
+
+.sidebar {
+  grid-area: sidebar;                     /*Specification*/
+  background-color: crimson;
+}
+
+.content {
+  grid-area: content;                     /*Specification*/
+  background-color: darkkhaki;
+}
+
+.footer {
+  grid-area: footer;                      /*Specification*/
+  background-color: darkorchid;
+}
+```
+
+If there was, for example, a need for the header to only occupy the first two columns and not all three, then one of the words "header" can simply be replaced by a "." (i.e., a dot). 
+
+Used together with @media queries this is a very powerful responsive web design tool.
+
 ### Inline-grid and Grid Shorthand Property
+
+The grid has been used as a block level element so far, but it can also function inline.
+
+```JavaScript
+.grid-container {
+  display: inline-grid;
+  vertical-align: middle;
+  .
+  .
+}
+```
+
+The grid shorthand property allows for much of the grid properties and values to be combined into one.
+
+`grid: rows / columns;`
+
+```JavaScript
+.grid-container {
+  display: grid;
+  grid: 100px 100px / repeat(3, minmax(200px, 1fr));
+  grid-auto-rows: 150px;
+  grid-auto-flow: dense;
+  gap: 50px 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 150px auto;
+}
+```
+
+Any and all the conventions and rules applicable to `grid-template-rows` and `grid-template-columns` apply here. 
+
+The property can also be used to define areas with (Once again, the rows followed by the columns):
+
+```JavaScript
+.page {
+  display: grid;
+  grid: 
+    "header header header" 150px
+    "sidebar content content" 500px 
+    "footer footer footer" 100px
+    / 250px 1fr 1fr;
+  gap: 20px 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+```
