@@ -54,3 +54,30 @@ The rest of the elements were styled as follow:
   width: 350px;                     /*To create some more space between the steps*/
 }
 ```
+
+The progress line has to be grey in it's inactive state and transition into blue when the steps are activated. This will be done by use of the `progress` class and the `::before` pseudoclass.
+
+```CSS
+.progress-container::before {         /*styling of the horizontal grey "passive" progress line/bar*/
+  content: '';
+  background-color: #e0e0e0;
+  position: absolute;
+  top: 50%;                             
+  transform: translateY(-50%);          
+  left: 0;
+  height: 4px;
+  width: 100%;                          
+  z-index: -1;                          
+}
+
+.progress {                             /*styling of the horizontal progress line/bar*/
+  background-color: #3498db;
+  position: absolute;
+  top: 50%;                             /*To space vertically centered in container*/
+  transform: translateY(-50%);          /*To space verticallt centered in container*/
+  left: 0;
+  height: 4px;
+  width: 50%;                           /*This will change dynamically as the line moves between steps*/
+  z-index: -1;                          /*To place behind the steps elements*/
+  transition: 0.4s ease;                /*To animate line as it moves between steps*/
+}
