@@ -173,7 +173,11 @@ Note that this method has two parameters so two arguments are needed. The first 
 
 ## Drumkit Project
 
-## Adding event listeners
+### Adding event listeners
+
+The addEventListener() method has two parameters and takes in a "type" argument (eg., 'click', 'keydown' etc.) and a "listener" which is usually a JavaScript function. This function will determine what dynamic action is taken when the "type" of event is detected. When calling a function here there is no set of () unless an anonymous function is used. The reason for this is that the function is not called until the event type is detected. Until then it "lies dormant". If the () were present and there is an explicit named function, the function will be called everytime the line of code is read by the browser and the action will be carried out irrespective of the presence of the event. Without (), the function will only be called when the event is detected. This does not apply to aunonymous functions.
+
+This is a central feature of JS programming. The idea that a function is passed as an input into another function so that it can be called at a later time.  
 
 Functions within the addEventListener method does not have () because they are only called by the method if the event takes place.
 
@@ -202,9 +206,51 @@ function respondToClick(){
 }
 ```
 
-Higher order functions = Functions that can takes as input another function. This is very common to the way that JS manipulates the DOM.
+### Higher order functions
 
-### Constructor Functions
+Functions that can take as input another function. This is very common to the way that JS manipulates the DOM.
+
+```JavaScript
+element.addEventListener('click', function(){
+  console.log('I got clicked!');
+} )
+```
+
+Could also be coded as:
+
+```JavaScript
+element.addEventListener('click', respondToClick);
+
+function respondToClick(){
+  console.log('I got clicked!);
+}
+```
+
+The addEventListener() method(function) is in this second case a higher order function and representative of all higher order function. The only variation to this is the level of complication. 
+
+### `this`
+
+`this` in an object context belongs and points to the object that called it. In this case during the iteration through the buttons in the initial for loop, this points to each html button element as the loop iterates. `this` Can therefore be used interchangeably with that element in the code.
+
+```JavaScript
+for (let i = 0; i < numberOfDrumButtons; i++){
+  document.querySelectorAll('.drum')[i].addEventListener('click', function(){
+
+    console.log(this);
+
+  })
+}
+```
+
+The out put for each iteration here will be the html element. E.g.,:
+
+`<button class="s drum">`
+
+As each button is clicked `this` will point to that HTML object / element. Any of the properties of `this` object can be utilised and referenced in this way. E.g., `this.innerHTML` or `this.style.color = "white"`.
+
+
+
+### Constructor Functions and Objects
 
 These function are used to create objects:
 
@@ -218,11 +264,15 @@ function SomeName(var1, var2, var3, var4){
     //statement / expression
   }
 }
+```
 
+**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object 
+
+```JavaScript
 const objectName = new SomeName(value1, value2, value3, value4);
 ```
 
-Take note of the `new` keyword that must precede the name of the constructor when invoked. Another difference is that the function name starts with a capital, unlike normal functions.
+Take note of the `new` keyword that must precede the name of the constructor when invoked. Another difference is that the **function name starts with a capital**, unlike normal functions.
 
 To call the method in this object:
 
@@ -239,14 +289,23 @@ crash.play();
 
 This is clearly a new object that is being created by the Audio constructor function that has a function called play within it which is invoked in the second line.
 
-### Higher Order Functions
+### Methods
+
+Functions that belongs to or form part of objects are called methods. To call the method, dot notation is used as with all object properties. `object.method()`. Methods can also be incorporated into constructor functions. See in the constructor function example above.
+
+### Understanding Callbacks and How To Respond To Events
 
 ```JavaScript
-document.addEventListtener("keydown", respondToKey(event));
+document.addEventListener('keydown', respondToKey(event));
 
-function respondToKey(event){
-  console.log("Key pressed.")
-}
+function respondtoKey(event){
+  console.log('Key pressed.');
 ```
 
-I.e., A function that takes another function as input. The function that gets passed as input is called a **callback function**
+In this example the function that is passed into the addEventListener() method is referred to as a callback function, because it alows a waiting period for something else to finish happening ( a key press in this case). When the keypress event has taken place, the callback function will be called and it can in this case supply us with information only known after the event. During this process the callback function also passes through information about the event that actually triggered the callback function to be called.
+
+The callback function is called by the object that experienced the event that was needed for the function to be called.
+
+When an event occurs an object is created within the addEventListener() method and information about that event is stored in the object.
+
+
