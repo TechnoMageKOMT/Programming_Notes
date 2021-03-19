@@ -8,11 +8,11 @@ If a certain property in a chain of properties does not exist then undefined is 
 
 ```JavaScript
 const openingHours = {
-  [weekdays[3]]: {
+  thu: {
     open: 12,
     close: 22,
   },
-  [weekdays[4]]: {
+  fri: {
     open: 11,
     close: 23,
   },
