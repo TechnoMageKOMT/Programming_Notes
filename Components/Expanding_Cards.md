@@ -1,4 +1,4 @@
-
+h
 # Expanding Cards
 
 ## HTML code
@@ -9,50 +9,106 @@ The first child div will have a class of `panel` and `active`. This `active` cla
 
 Each card also has Some 'h3' text with a background image. Brad used inline styling for the background images, but I do not like inline CSS and therefore added `image1-5` classes and declared them in the stylesheet.
 
+## Global Reset and Initialisation
+
+```CSS
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --body-color: rgb(217, 237, 245);
+  --panel-color: rgb(105, 105, 105);
+  --wrapper-color: rgb(166, 166, 230);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Merienda', cursive;
+  overflow: hidden;
+}
+```
+
 ## CSS code
 
-The following CSS styling was applied for the reasons listed below:
+```CSS
+.container {
+  display: flex;
+  width: 90vw;  /*To set width slightly smaller than the viewport*/
+}
 
-`.panel`
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  flex: 0.5;    /*To make all panels equal in width*/
+  margin: 10px;   /*To seperate images from each other*/
+  position: relative; /*Needed for positioning of h3 text below*/
+  transition: flex 0.7s ease-in;  /*Smooth transitions when panels expand*/
+}
 
-_background-size: auto 100%;_ Two-value syntax: I.e., width, height (?background: cover; a better option). The auto option scales the background image in the corresponding direction such that its intrinsic proportions are maintained. The height remains constant during the expansion of the individual cards, so I presume that is why width was set as auto and height as 100% to fit parent container.
-_background-position: center;_ This sets the initial position for each background image relative to its parent. In this case the choice is self explanatory.
-_background-repeat: no-repeat;_ Self explanatory.
-_height: 80vh;_ Giving dimension to the div's. Slighly less than parent container in this case.
-_border-radius: 50px;_ Rounding the edges.
-_color: white;_ Text colour.
-_cursor: pointer;_ To change cursor appearance to indicate to user that the images are clickable.
-_flex: 0.5;_ This initial setting will allow the items to take up equal size, but it will be part of the JavaScript manipulation.
-_margin: 10px;_ To seperate images from each other.
-_position: relative;_ So that `h3` elements can be positioned which are contained in the panels.
-_transition: flex 0.7s ease-in;_ This is for smooth transitions when the cards are expanded.
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
 
-`.panel h3`
+.panel.active {
+  flex: 5;    /*To expand the active panel relative to the others*/
+}
 
-_font-size: 24px;_ SX
-_position: absolute;_ SX
-_bottom: 20px;_ Positioning relative to parent `.panel` container.
-_left: 20px;_ SX
-_margin: 0;_
-_opacity: 0;_ Set to 0 so that text is only visible when a panel is selected. I.e., Not visible by default
+.panel.active h3 {
+  opacity: 1;   /*To make text visible only on active panels*/
+}
 
-`.panel.active`
+/*This media query is to limit display on small screens to only three of the panels and to use the full width of the viewport*/
 
-_flex: 5;_ So that active panel grows relative to other panels
+@media(max-width: 480px){
+  .container {
+    width: 100vw;
+  }
 
-`panel.active h3`
-
-_opacity: 1:_ To make text visible when panel is active.
-_transition: opacity 0.3s ease-in 0.4s_ To smooth out the transition
-
-`@media(max-width: 480px)`
-
-The `.container` width changed to 100vw so full screen is used on small devices.  
-The last two panels were also hidden for small screens by targeting the `.panel:nth-of-type(4), .panel:nth-of-type(5)` pseudo elements and setting `display: none;`
+  .panel:nth-of-type(4), .panel:nth-of-type(5) {
+    display: none;
+  }
+}
+```
 
 ## JavaScript
 
 A normal event listener loop was added to the `.panel` class, but a second function had to be written to remove the `.active` class from all `.panel` elements when a click is registered but before the .add('active') statement.
+
+```JavaScript
+const panels = document.querySelectorAll('.panel');
+for (let i = 0; i < panels.length; i++) {
+  panels[i].addEventListener('click', function(){
+    removeActiveClasses();
+    panels[i].classList.add('active')
+  })
+}
+
+function removeActiveClasses(){
+  for (j = 0; j < panels.length; j++) {
+    panels[j].classList.remove('active')
+  }
+}
+```
+
 
 ## Conclusion
 

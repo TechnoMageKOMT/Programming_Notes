@@ -1,5 +1,11 @@
 # Progress Steps
 
+## Coulour Scheme
+
+background: #f6f7fb;
+Line inactive: #e0e0e0;
+Line active: #3498db;
+
 ## HTML
 
 Start again with an outer div container with class **container**.
@@ -62,8 +68,8 @@ The progress line has to be grey in it's inactive state and transition into blue
   content: '';
   background-color: #e0e0e0;
   position: absolute;
-  top: 50%;                             
-  transform: translateY(-50%);          
+  top: 50%;                          /*Leaves top in the middel of the container*/   
+  transform: translateY(-50%);       /*Moves half the width of the line upwards so that it is truly centered behind the steps */   
   left: 0;
   height: 4px;
   width: 100%;                          
