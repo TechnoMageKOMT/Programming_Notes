@@ -9,7 +9,7 @@ A set is any collection of _unique_ values. I.e., A given value appears only onc
 To create a new set:
 
 ```JavaScript
-const someNewSet = new Set(); where an interable is passed into the set construction function.
+const someNewSet = new Set(); where an interable is passed into the Set() construction function.
 ```
 
 Aside: Iterables encountered so far (strings and arrays)
@@ -38,7 +38,7 @@ Aside: This makes iterable data structures strings, arrays and sets.
 ### Size
 
 ```JavaScript
-concole.log(ordersSet.size);
+console.log(ordersSet.size);
 Output: 3
 ```
 
@@ -96,7 +96,38 @@ console.log(staffUnique);
 Output: Set(3) [ "Waiter", "Chef", "Manager" ]
 ```
 
-This now has to be converted to an array. Since the spread operator applies to all iterables it can be used here.
+This now has to be converted to an array. Since the spread operator applies to all iterables it can be used here as follows:
 
+```JavaScript
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+//Need an array of unique positions at a restaurant
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+Output: Array(3) [ "Waiter", "Chef", "Manager" ]
+```
 
+If only the number of different positions are required.
 
+```JavaScript
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+console.log(new Set(staff).size);
+
+or even without having to declare the array:
+
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size)
+
+Output:  3 
+```
+
+## Use case - counting number of different letters in a string
+
+```JavaScript
+console.log(new Set('johannjansenvanvuuren').size);
+Output: 10
+```
+
+**NB** This is the number of **different** letters in the string, not the total number of letters.
+
+## Conclusion
+
+Keep sets in mind when having to work with unique sets of values, but use arrays for the rest.  
