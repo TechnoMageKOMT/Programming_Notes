@@ -6,14 +6,14 @@ Maps are data structures that can be used to map values to keys. So data always 
 
 ## set() method
 
-Just like sets a constructor function, Maps() is used to create maps, but the easiest way to do so is to create an empty map and then fill up the map using the `set()` method. The set() method is analogous to the add method in sets.
+Just like the Set() constructor function, Maps() is used to create maps, but the easiest way to do so is to create an empty map and then fill up the map using the `set()` method. The set() method is analogous to the add method in sets.
 
 ```JavaScript
 const newMap = new Map();
 newMap.set('key name', 'value');
 ```
 
-In the following example a new restaurant is created and a map is created. The map is then filled out with the set() method. The scenario is that it is a new restaurant with two branches. Note the use of numbers as key in the second and third statements. Also note that the set() method does not only update the map that it is called on, it also returns the map everytime.
+In the following example a new restaurant is created and a map is created. The map is then filled out with the set() method. The scenario is that it is a new restaurant with two branches. Note the use of numbers as key in the second and third statements. Also note that the set() method does not only update the map that it is called on, it also returns the updated map everytime.
 
 ```JavaScript
 const rest = new Map();
@@ -70,7 +70,7 @@ Output: true
 
 ## delete() method
 
-The delete method delete based as above on the key.
+The delete method delete, based as above, on the key that is passed to the method.
 
 ```JavaScript
 rest.delete(2);
@@ -99,7 +99,7 @@ Output: Map(0)
 
 ## Using arrays and objects as map keys
 
-**NB** Arrays and objects cannot be passed as key directly. They have to be assigned to a variable first and the variable then gets passed as the key.
+**NB** Arrays and objects cannot be passed as keys directly. They have to be assigned to a variable first and the variable then gets passed as the key.
 
 ```JavaScript
 const arr = [1, 2];
