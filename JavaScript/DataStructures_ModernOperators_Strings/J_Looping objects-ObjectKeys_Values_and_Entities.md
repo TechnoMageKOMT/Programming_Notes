@@ -10,7 +10,7 @@ When looping over objects, the options are to loop over:
 
 Even though the loops apply to objects, it is still fundamentally, a process of looping through an array.
 
-## Property names of Keys
+## keyes() method
 
 The following generic syntax produces an array of an objects's keys called `newArray`:
 
@@ -36,7 +36,7 @@ for (const someKey of Object.key(objectName)){
 
 The second snippet is just a more efficient and shorter piece of code that achieves the same outcome.
 
-## Values
+## values() method
 
 This operates very much in the same way but instead using the Object.values() method.
 
@@ -44,7 +44,7 @@ This operates very much in the same way but instead using the Object.values() me
 const newValuesArray = Object.values(objectName);
 ```
 
-## Keys and Values
+## entries()
 
 The generic syntax here is:
 
@@ -52,6 +52,6 @@ The generic syntax here is:
 const newEntriesArray = Object.entries(objectName);
 ```
 
-A fundamental difference here between using the `entries()` method in arrays compared to objects, is the the object or object property of interest must be passed as an argument into `entries()` method.
+A fundamental difference here between using the `entries()` method in arrays compared to objects, is the object or object property of interest must be passed as an argument into `entries()` method.
 
 If any of these loops produce objects or further arrays, destructuring can always be done to extract the desired information of a nested object. 
