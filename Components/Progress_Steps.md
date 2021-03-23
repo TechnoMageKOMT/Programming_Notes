@@ -2,9 +2,11 @@
 
 ## Coulour Scheme
 
-background: #f6f7fb;
-Line inactive: #e0e0e0;
-Line active: #3498db;
+--back-color: #f6f7fb; (Body Background)
+--circle-back: #fff; (Circle background)
+--circle-text: #999;
+--line-inactive: #e0e0e0;
+--line-active: #3498db;
 
 ## HTML
 
@@ -12,11 +14,11 @@ Start again with an outer div container with class **container**.
 
 Within that another container with class **progress-container**. This will be the container for the "animated section of the project (I.e., the circles, progress bar/line etc).
 
-Within that a div with *class and id* of **progress** (no content this is just for styling and for creating the progress bar/line that will connect the different steps).
+Within that a div with _class and id_ of **progress** (no content this is just for styling and for creating the progress bar/line that will connect the different steps).
 
 On the same level the circle div's will follow with a class of **circle** (the first one will also have the active class). These will all have the numbers 1 through 4 as content.
 
-Outside of this but on the same level as the progress-container div, the button's will be placed. The first button will have a *class* of **btn** and *id* of **prev**. It will also have the **disabled attribute** set (this is because it should not be selectable at the very beginning of the process.). The second button will be identical but have a **next**. *id* and the disabled attribute removed. Both will also have the inner text corresponding to their ids.
+Outside of this but on the same level as the progress-container div, the button's will be placed. The first button will have a _class_ of **btn** and _id_ of **prev**. It will also have the **disabled attribute** set (this is because it should not be selectable at the very beginning of the process.). The second button will be identical but have a **next**. _id_ and the disabled attribute removed. Both will also have the inner text corresponding to their ids.
 
 ## CSS
 
@@ -38,7 +40,7 @@ body {
   height: 100vh;
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
-  
+
 }
 ```
 
@@ -68,12 +70,12 @@ The progress line has to be grey in it's inactive state and transition into blue
   content: '';
   background-color: #e0e0e0;
   position: absolute;
-  top: 50%;                          /*Leaves top in the middel of the container*/   
-  transform: translateY(-50%);       /*Moves half the width of the line upwards so that it is truly centered behind the steps */   
+  top: 50%;                          /*Leaves top in the middel of the container*/
+  transform: translateY(-50%);       /*Moves half the width of the line upwards so that it is truly centered behind the steps */
   left: 0;
   height: 4px;
-  width: 100%;                          
-  z-index: -1;                          
+  width: 100%;
+  z-index: -1;
 }
 
 .progress {                             /*styling of the horizontal progress line/bar*/
@@ -87,3 +89,17 @@ The progress line has to be grey in it's inactive state and transition into blue
   z-index: -1;                          /*To place behind the steps elements*/
   transition: 0.4s ease;                /*To animate line as it moves between steps*/
 }
+
+.circle {
+  background-color: var(--circle-back);
+  color: var(--circle-text);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;    /*To center numbers*/
+  align-items: center;  /*To center numbers*/
+  justify-content: center;  /*To center numbers*/
+  border: 3px solid var(--line-inactive);
+  transition: 400ms ease.
+}
+```
