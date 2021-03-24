@@ -102,4 +102,34 @@ The progress line has to be grey in it's inactive state and transition into blue
   border: 3px solid var(--line-inactive);
   transition: 400ms ease.
 }
+
+
+.circle.active {
+  border-color: var(--line-active);
+}
+
+.btn {
+  background-color: var(--line-active);
+  color: var(--circle-back);
+  border: 0;  /*Removes the button border*/
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {  /*Pseudoclass for click*/
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0; /*? Removes outline*/
+}
+
+.btn:disabled {
+  background-color: var(--line-inactive);
+  cursor: not-allowed;
+}
 ```
