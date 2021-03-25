@@ -167,13 +167,12 @@ prev.addEventListener('click', function(){
 function update(){
   for (let i = 0; i < circles.length; i++) {
     if (i < currentActive){
-      circles[i].classList.add('active')
+      circles[i].classList.add('active');
     } else {
-      circles[i].classList.remove('active')
+      circles[i].classList.remove('active');
     }
   }
   const actives = document.querySelectorAll('.active');
-
   progress.style.width = (actives.length - 1) / (circles.length -  1) * 100 + '%';
 
   if (currentActive === 1){
