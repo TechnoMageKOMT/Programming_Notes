@@ -1,4 +1,3 @@
-h
 # Expanding Cards
 
 ## HTML code
