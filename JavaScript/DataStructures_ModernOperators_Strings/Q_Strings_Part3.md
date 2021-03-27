@@ -70,7 +70,27 @@ const maskCreditCard = function(number){
 console.log(maskCreditCard(6546321565798798));
 Output: ************8798 
 console.log(maskCreditCard(4653287968943413));
-Out
+Output: ************3413
 ```
+
+## repeat() method
+
+Repeat the same string multiple times.
+
+```JavaScript
+const message2 = `Bad wheather...All Departures Delayed...`
+console.log(message2.repeat(5));
+Output: Bad wheather...All Departures Delayed...Bad wheather...All Departures Delayed...Bad wheather...All Departures Delayed...Bad wheather...All Departures Delayed...Bad wheather...All Departures Delayed...
+```
+
+```JavaScript
+const planesInLine = function(n){
+  console.log(`There are ${n} planes in line.`.repeat(n));
+}
+
+planesInLine(5);
+Output: There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line. 
+```
+
 
 
