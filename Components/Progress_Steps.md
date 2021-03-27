@@ -136,6 +136,16 @@ The progress line has to be grey in it's inactive state and transition into blue
 
 ## JavaScript
 
+JavaScript tasks:
+
+1. Aquire assets from the DOM
+2. Set counter
+3. Set up event listeners to increment counters and call update function
+4. Create update function to
+   i) Handle active class add and remove
+   ii) Progress line percentages
+   iii) Disable/enable of prev and next buttons
+
 ```JavaScript
 const progress = document.getElementById('progress');
 const prev = document.getElementById('prev');
