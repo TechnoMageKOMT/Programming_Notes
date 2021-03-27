@@ -48,6 +48,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 80vh;
   border-radius: 50px;
   color: white;
@@ -56,6 +57,10 @@ body {
   margin: 10px;   /*To seperate images from each other*/
   position: relative; /*Needed for positioning of h3 text below*/
   transition: flex 0.7s ease-in;  /*Smooth transitions when panels expand*/
+}
+
+.panel.image5 {
+  background-position: top center;
 }
 
 .panel h3 {
