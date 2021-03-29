@@ -1,6 +1,6 @@
 # Enhanced Object Literals
 
-ES6 Introduced three ways that makes the construction of object literals easier.
+ES6 Introduced four ways that makes the construction of object literals easier.
 
 ## Method 1
 
@@ -117,4 +117,21 @@ const openingHours = {
     close: 24,
   },
 };
+```
+
+## Method 4
+
+Within a function variables can be passed into an new object without having to specifiy both property name and value. Only the variable name is used and the value is associated with it automatically:
+
+Example:
+
+```JavaScript
+const createBooking = function(flightNum, numPassengers, price){
+
+  const booking = {
+    flightNum,
+    numPassengers,
+    price
+  }
+}
 ```
