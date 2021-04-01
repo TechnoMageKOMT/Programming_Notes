@@ -8,6 +8,39 @@ Outside the `circle-container` but still inside `container` an `<h1>`, `<small>`
 
 Finally outside the `container` div a nav with 1 ul and three li inside (Home, About, Contact) (font awesome icons fa-home, fa-user, fa-envelope)
 
+```HTML
+  <div class="container">
+    <div class="circle-container">
+      <div class="circle">
+        <button id="close">
+          <i class="fa fa-times"></i> 
+        </button>
+        <button id="open">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Amazing Article</h1>
+      <small>Florin Pop</small>
+      <p>/p>
+
+      <h3>My Dog</h3>
+      <img src="images/photo-1611498491685-abb3e359cf69.webp" alt="Golden Retriever">
+      <p></p>
+
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><i class="fa fa-home"></i>Home</li>  
+      <li><i class="fa fa-user"></i>About</li>  
+      <li><i class="fa fa-envelope"></i>Contact</li>  
+    </ul>
+  </nav>
+```
+
 ## CSS
 
 ```JavaScript
@@ -39,8 +72,8 @@ body {
   background-color: var(--main-container-back-color);
   transform-origin: top left;
   transition: transform 500ms linear;
-  width: 100vw;
-  min-height: 100vh;
+  // width: 100vw;
+  // min-height: 100vh;
   padding: 50px;
 }
 
