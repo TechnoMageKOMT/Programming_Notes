@@ -67,3 +67,37 @@ This function would return the search item by taking as input a `notes` array as
 ## Arrays are also passed by reference
 
 So any changes made in functions like the above will also be made to the original array.
+
+## Filtering Arrays
+
+### filter()
+
+The filter() method works in an analogous way to findIndex() and find() in that it loops over the array looking for the search term. It however returns a new array composed of objects in the original array that contains the search criteria.
+
+```JavaScript
+const findNotes = function(notes, query){
+
+  const filteredNotes = notes.filter(function(note, index){
+    const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase());
+    const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase());
+    return isTitleMatch || isBodyMatch;
+  })
+  return filteredNotes;
+}
+
+console.log(findNotes(notes, 'work'));
+```
+
+This code will return an array of note objects from a notes array that contain the word work.
+
+```JavaScript
+const getThingsToDo = function (todos) {
+  const filteredToDoList = todos.filter(function (todo) {
+    return !todo.completed;
+  });
+  return filteredToDoList;
+};
+console.log(getThingsToDo(todos));
+```
+
+This code takes in a to do list array that is composed of todo objects. Each todo object has a boolean property `completed`. The code returns a new array composed of all task that have `completed` values of false.
