@@ -101,3 +101,45 @@ console.log(getThingsToDo(todos));
 ```
 
 This code takes in a to do list array that is composed of todo objects. Each todo object has a boolean property `completed`. The code returns a new array composed of all task that have `completed` values of false.
+
+## sort() method 
+
+For arrays composed of simple methods the method will simply sort the array in alphabetical order.
+
+```JavaScript
+array.sort();
+```
+
+When sorting objects a callback function needs to be included in the method:
+
+```JavaScript
+const sortArray = function (array) {
+  array.sort(function(a, b){
+
+  })
+}
+```
+
+`a` and `b` Here would be individual elements of the array that will be compared. The sorting is then done via an if..else structure and conditions.
+
+```JavaScript
+//Let notes be a arrays of objects (notes)
+const sortNotes = function (notes {
+  notes.sort(function(a, b){
+    if (a.title.toLowerCse() < b.title.toLowerCase()) {
+      return -1;
+    } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    };
+  });
+});
+
+sortNotes(notes);
+console.log(notes;
+Output: Sorted list
+```
+
+**NB** Capital letters comes before lowercase letters so it is very important to convert all toLowerCase() or toUpperCase() when doing comparisons.
+
