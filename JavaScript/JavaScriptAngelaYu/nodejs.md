@@ -53,7 +53,18 @@ To trigger a comment in the console that the server is running simply add a call
 
 ```JavaScript
 app.listen(3000, function(){
-  console.log('Server started on port 3000')
-})
+  console.log('Server started on port 3000');
+});
 ```
 
+## The GET request: Handling requests and responses
+
+The get() method is a method that comes with Express to handle incoming requests and responses and it is added just above the listen() method (see above).
+
+```JavaScript
+app.get('/', function(req, res){
+  res.send('Hello World');
+});
+```
+
+The server can be connected to by typing `localhost:3000` in the browser address bar.
