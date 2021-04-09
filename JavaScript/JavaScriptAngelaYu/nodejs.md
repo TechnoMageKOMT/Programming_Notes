@@ -85,3 +85,17 @@ The nodemon utility is an npm utility that will monitor for any changes in you s
 Installation ` sudo npm install -g nodemon`
 
 After the installation use `nodemon server.js` to start server instead of `node server.js`. 
+
+## res.sendFile() method
+
+This is to send a file when a get request has been received in place of the "Hello World" and other text messages that we have used so far.
+
+Refer: 'API reference' link on the Express website. Then click on 'Response' and then 'res.sendFile()'.
+
+Takes in as argument a filepath. Use constant `__dirname` which will automatically populate the absolute file path that the server is running from. The file name is then concatenated with a +:
+
+```JavaScript
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html);
+});
+```
