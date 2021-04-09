@@ -68,3 +68,20 @@ app.get('/', function(req, res){
 ```
 
 The server can be connected to by typing `localhost:3000` in the browser address bar.
+
+The / refers to the home route. To created additional routes, additional get() methods should be applied.
+
+```JavaScript
+app.get('/contact', function(req, res){
+  res.send('Contact me at johann@gmail.com')
+})
+```
+Each new route would just be added as required.
+
+## nodemon Utility
+
+The nodemon utility is an npm utility that will monitor for any changes in you source code and automatically restart your server.
+
+Installation ` sudo npm install -g nodemon`
+
+After the installation use `nodemon server.js` to start server instead of `node server.js`. 
