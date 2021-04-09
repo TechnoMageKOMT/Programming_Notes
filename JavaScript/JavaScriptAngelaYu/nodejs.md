@@ -99,3 +99,49 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html);
 });
 ```
+
+## Processing Post Requests with Body Parser
+
+HTTP return codes cheat sheet (refer Wikipedia for full list):
+
+- 1** Hold on
+- 2** Here you go (successful request code)
+- 3** Go away (security issues)
+- 4** You fucked up (User errors)
+- 5** I fucked up
+
+Reminder: `method` attribute when defining form input fields. If this is `post` then a way should be defined on the server for the handling of these requests.
+
+```JavaScript
+app.post('/', function(){
+  res.send('Thanks for posting that');
+});
+```
+
+In order to tap into the pieces of data entered into the form fields and "posted" to the server another npm packaged is needed called 'body-parser'. Install by entering command: `sudo npm install body-parser`. This will be done for every new project.
+
+Once installed it needs to be required:
+
+```JavaScript
+const bodyParser = require('body-parser');
+```
+
+After require, our app needs to be setup to use it. body-parser Has a couple of modes. Eg *.text, *.json, *.urlencoded. The latter is used when you are trying to grab data from a form.
+
+```JavaScript
+app.use(bodyParser.urlencoded({extended: true}))
+```
+
+The `extended: true` section of the code allows the posting of nested objects. This line of code needs to be included whenever body-parser needs to be used.
+
+Body-parser allows you to go into any of your routes and tap into `req.body` which contains the form data that was "posted".
+
+The following is an example where two text input fields were submitted with the HTML "name" attributes num1 and num2:
+
+```JavaScript
+app.post('/', function(req, res){
+  const num1 = Number(req.body.num1);
+  const num2 = Number(req.body.num2);
+  const result = num1 + num2;
+  res.send(`The result of the calculation is ${result}`);
+});
