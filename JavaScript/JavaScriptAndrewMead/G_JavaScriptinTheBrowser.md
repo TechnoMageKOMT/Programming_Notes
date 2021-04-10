@@ -52,3 +52,18 @@ Ways of targeting elements
 `button.inventory` - Element that has both  
 `h1#title.application`- Element that has all three  
 
+## Text Input Fields
+
+### change Event type
+
+```JavaScript
+document.querySelector('#search-text').addEventListener('change', function(e){
+  console.log(e.target.value)
+})
+```
+
+This code will produce the text that the user entered into a text input field, but only when focus on the input field is left. I.e., when clicking outside the field.
+
+### input Event type
+
+The alternative to `change` is `input`. The syntax is the same, but the input values are received in real time, character by character as the user types in the field.
