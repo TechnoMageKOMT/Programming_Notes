@@ -6,7 +6,7 @@ To access node's REPL enter the command node in the terminal. The functionality 
 
 ## Native Node Modules
 
-There are native modules that is included with nodejs "out of the box". To access these they first have to be "required". An example would be the file system module which is needed to interact directly with the PCs file system. The code to require this module would be:
+There are native modules that are included with nodejs "out of the box". To access these they first have to be "required". An example would be the file system module which is needed to interact directly with the PCs file system. The code to require this module would be:
 
 ```JavaScript
 //jshint esversion:6
@@ -33,7 +33,11 @@ To find packages simply search for them at www.npmjs.com. There is installation 
 
 Create folder with a new file `server.js` in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
 
-Express documentation can be found at [https://expressjs.com]. Click on 'Getting Started' for instructions on the installation of express.
+Express documentation can be found at [https://expressjs.com]. 
+
+To install Express `$ npm install express --save`. This will also be done for every new project or App.
+
+Click on 'Getting Started' link on their website for instructions on the installation process of expressif needed.
 
 Once installed enter the following code in `server.js`
 
@@ -44,7 +48,7 @@ const express = require("express");
 
 const app = express();
 
-app.listen(3000)  //The listen() method tells it to listen on a specific port (3000) for any http requests that gets sent to our server
+app.listen(3000)  //The listen() method tells it to listen on a specific port (3000) for any http requests that gets sent to the server
 ```
 
 Once this code is saved, we have now built the barebones of an express server. To run the server simply run `server.js` from the command line with `node server.js`.
@@ -67,7 +71,7 @@ app.get('/', function(req, res){
 });
 ```
 
-The server can be connected to by typing `localhost:3000` in the browser address bar.
+The server can be connected to locally by typing `localhost:3000` in the browser address bar.
 
 The / refers to the home route. To created additional routes, additional get() methods should be applied.
 
@@ -88,7 +92,7 @@ After the installation use `nodemon server.js` to start server instead of `node 
 
 ## res.sendFile() method
 
-This is to send a file when a get request has been received in place of the "Hello World" and other text messages that we have used so far.
+This is to send a file when a get request is received in place of sending  the "Hello World" and other text messages that we have used so far.
 
 Refer: 'API reference' link on the Express website. Then click on 'Response' and then 'res.sendFile()'.
 
@@ -145,3 +149,4 @@ app.post('/', function(req, res){
   const result = num1 + num2;
   res.send(`The result of the calculation is ${result}`);
 });
+```
