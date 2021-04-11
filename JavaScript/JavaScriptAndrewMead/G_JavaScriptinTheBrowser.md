@@ -141,3 +141,25 @@ documnet.querySelector('#search-text').addEventListener('input', function(e){
   filters.searchText = e.target.value;
   renderNotes(notes, filters);
 });
+```
+
+## Working with forms. 
+
+The 'submit' type event listener is used for form elements. This will trigger on clicking a button or pressing enter after entering the input.
+
+Within the callback function of the event listener the method `e.preventDefault` will be invoked to prevent the browser's default handling of forms. (This is analogous to telling the browser that the request will be handled by ourselves).
+
+To access the values within the event handler function:
+
+```JavaScript
+e.target.elements.variableName.value
+```
+
+`variableName` is the name that was entered as the value of the name attribute of the input element in HTML.
+
+Once a field has been entered the value on the HTML page can be wiped away by
+
+```JavaScript
+e.target.elements.variableName.value = '';
+```
+
