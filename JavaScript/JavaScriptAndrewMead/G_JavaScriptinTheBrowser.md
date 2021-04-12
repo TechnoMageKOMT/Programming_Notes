@@ -66,14 +66,14 @@ This code will produce the text that the user entered into a text input field, b
 
 ### input Event type
 
-The alternative to `change` is `input`. The syntax is the same, but the input values are received in real time, character by character as the user types in the field.
+The alternative to `change` is `input`. The syntax is the same, but the input values are received in real time, character by character as the user types in the field. This method is preferred when filetering data on the fly.
 
 ## Rendering Filtered Data 
 
 **VERY NB For real world applications**
 **This will be used a lot in real life***
 
-This is to filtered arrays of data. The data would normally be individual objects in the array.
+This is to filter arrays of data. The data would normally be individual objects in the array.
 
 Let `notes` be the array with properties `title` and `body`. We want to filter the data based on text values entered into a input field with the id of `search-text` 
 
@@ -163,3 +163,39 @@ Once a field has been entered the value on the HTML page can be wiped away by
 e.target.elements.variableName.value = '';
 ```
 
+Exampes: `newTodo` is the value attributed to the name attribute of the input element. `todos` Is an array of todo objects each composed of a `text` and `completed` property.
+
+```JavaScript
+document.querySelector('#todo-form).addEventListener('submit', function(e){
+  e.preventDefault();
+  const newTodo = e.target.elements.newTodo.value;
+  todos.push({
+    text: newTodo,
+    completed: false
+    });
+  renderTodos(todos, filters);  //Similar to the renderNotes example above
+  e.target.elements.newTodod.value = '';
+})
+```
+
+## Checkboxes
+
+The event listerner type to use with checkboxes is `'change'`. The event will fire as soon as the checkbox is checked or unchecked.
+
+To access the **boolean** value:
+
+```JavaScript
+e.target.checked
+```
+
+## Select Dropdowns
+
+In HTML these are added with the <select></select> element and options are added within it via the <option> tag. An id is allocated to the <select> element which is targeted. **Do not** enter a name attribute, not even a blank one. This will result in a value that is an empty string. Simply enter the options between the <option></option> tags. If it is necessary to use more user friendly value when manipulating in JavaScript the `value` attribute can be set with camel case variable type name to be used in JS.
+
+The `'change'` type event listener is used just as in checkboxes.
+
+The value is accessed by 
+
+```JavaScript
+e.target.value
+```
