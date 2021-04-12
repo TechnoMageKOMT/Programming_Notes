@@ -72,7 +72,7 @@ This method has one very powerful consequency and that is the swapping around of
 _PS> This process would take place on variables from an already destructured arrray_
 _PSS> This actually works on any type of normal variable_
 
-## Functions returing arrays that are immediately destructured into variable
+## Functions returning arrays that are immediately destructured into variable
 
 ### I.e., Functions returning multiple varialble
 
