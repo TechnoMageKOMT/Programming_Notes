@@ -1,4 +1,4 @@
-# Nodejs
+# Nodejs and Express
 
 ## REPL - Read, evaluate, print loops
 
@@ -235,3 +235,30 @@ app.get('/', function(req, res){
 ```
 
 To see the structure of the abject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (NOte: Firefox version is very limited so rather use Google to find the paths to data if needed)
+
+## Using Express to Render a Website with Live API Data
+
+**NB** There can only be one res.send() method in each app.get(), but that is not the case with res.write() so multiple sends will be handled as follow
+
+```JavaScript
+app.get('/', function(req, res){
+
+  const url = "The API url used in the Postman app"
+
+  https.get(url, function(response){
+    console.log(response.statusCode)
+
+    response.on('data', function(data){
+      const weatherData = JSON.parse(data);
+      const temp = weatherData.,main.temp;
+      const weatherDescription = weatherData.weather[0].description
+      const icon = weatherData.weather[0].icon
+      const imageURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
+      res.write(`<h1>The temperature in Johannesburg is ${temp} degrees celcius.`)
+      res.write(`<p>The weather is currently ${weatherDescription}.</p>`)
+      res.write('<img src' + imageURL + '>')
+      res.send()
+    })
+  })
+})
+```
