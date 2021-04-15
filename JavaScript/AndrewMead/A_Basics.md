@@ -63,6 +63,8 @@ There is also == and !=. These operator converts variables to the same type befo
 - Booleans
 - null
 - undefined
+- Symbol
+- BigInt
 
 ## undefined versus null
 
