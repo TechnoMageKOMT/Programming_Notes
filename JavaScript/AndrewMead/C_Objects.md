@@ -107,3 +107,31 @@ The same behaviour would hold if we were to assign an object to a different vari
 A method is a object property whose value is a function.
 
 The `this` keyword is available within methods and simply refers to the object. So instead of using `objectName.property`, `this.property` can be used.
+
+An Example of a object method using classical JavaScript:
+
+```JavaScript
+const person = {
+  name: 'Johann',
+  age: 46,
+  height: 1.76,
+  speak: function (want='cookies') {
+    console.log(`I want ${want}`)
+  }
+}
+```
+
+Note the allocation of a default value for the required argument. This can be done with any type of function, not just object methods.
+
+In modern JavaScript:
+
+```JavaScript
+const person = {
+  name: 'Johann',
+  age: 46,
+  height: 1.76,
+  speak (want='cookies') {
+    console.log(`I want ${want}`)
+  }
+}
+```

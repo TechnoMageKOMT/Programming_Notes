@@ -12,11 +12,33 @@ Link a script file to the HTML file by way of the script source tag:
 
 `<script src="script.js"></script>`
 
+## Values, Data and Dynamic Typing
+
+The most fundamental unit of data in JavaScript is a value.
+
+All data are either objects of some sort (arrays, objects, sets, maps) or (everything else) primitive data types.
+
+JavaScript is dynamically typed. I.e., Data types are determined automatically. **Very NB** Type is allocated to the value **not** the variable.
+
+## Just In Time (JIT) Compiler
+
+JavaScript is not strictly speaking an interpreted or compiled language. It makes use of the JIT compiler which basically interprets and compiles each line of code as encountered (This is a vast over-simplification). JIT was first implemented by Chrome in 2008.
+
+## 'use strict'
+
+It is recommended to make use of the `use strict` directive at all times. This is done by adding the string`'use strict'` to the beginning of all code. This directive is to run code in "strict mode" which will:
+
+- Avoid "silent" errors
+- Code runs faster in the JavaScript engine
+- Enable more secure code
+- Generates additional errors in the console to aid in faster and more secure code
+- Forbids certain unsafe actions.
+
 ## Variable Naming
 
 - camelCase
 - Only alphanumeric digits
-- No special characters except $ and \_
+- No special characters except '$' and `_`
 - No JavaSCript reserved words
 - May not start with a number
 
@@ -35,17 +57,17 @@ Link a script file to the HTML file by way of the script source tag:
 ## Commenting
 
 // For inline comments
-/_..._/ Block comments (`ctrl+/ in VS Code while on a line or highlighted selection)
+`/*` ...`*/` Block comments (`ctrl+/ in VS Code while on a line or highlighted selection)
 
 ## Operators
 
-(=) Assingment  
-(\*) Multiplication  
-(/) Division
-(+) Addition
-(-) Subtraction
-(%) Modulus (Division remainder)
-(\*\*) Exponentiation
+(`=`) Assingment  
+(`*`) Multiplication  
+(`/`) Division
+(`+`) Addition
+(`-`) Subtraction
+(`%`) Modulus (Division remainder)
+(`**`) Exponentiation
 
 ## Conditional Operators
 
@@ -56,17 +78,76 @@ Link a script file to the HTML file by way of the script source tag:
 (< ) Less than
 (!==) Not equal to (Strict)
 
-There is also == and !=. These operator converts variables to the same type before doing the comparison. This is called coersion and may cause unforseseen bugs. It should therefore be avoided in favour of === and !==.
+## Truthy and Falsy Values
+
+Falsy values are not exactly false, but will become false when converted into a boolean. There are only 5 falsy values:
+`0`
+`' '` Empty String
+`undefined`
+`null`
+`NaN`
+
+Everything else are truthy values.
+
+**NB** An empty object is counter-intuitively a truthy!
+
+Explicit conversion to Boolean type is almost never done in practive. Mostly done implicitly by coersion in two scenarios
+
+- Logical Operators
+- Logical Contexts (e.g., conditional statements)
+
+Examples:
+
+```JavaScript
+const money = 0
+if (money) {
+  //some code
+} else {
+  //some other code
+}
+```
+
+or to check if a variable is defined before using it
+
+```JavaScript
+let height;
+if (height) {
+  //some code
+} else {
+  //variable not defined handling
+}
+```
+
+**NB** Logical bugs are the most difficult to find because they often don't trigger error messages.
+
+## Conversion (Casting) versus Coersion
+
+There is also == and !=. These operator converts variables behind the scenes to the same type before doing the comparison. This is called coersion and may cause unforseseen bugs. It should therefore be avoided in favour of === and !==.
+
+Conversion on the other hand is when a programmer manually convert data from one type to another (casting).
+
+```JavaScript
+let str = '46'
+str1 = Number(str)
+```
+
+Aside: If this was attempted on a string literal value, the statement will result in a NaN result. NaN stands for "Not a Number". **NB** `typeof NaN` or `typeof(NaN)` results in `number`. This is however an invalid number.
+
+There is only three types of manual conversion:
+
+- Number()
+- String()
+- Boolean() (See note under Truthy and Falsy Values above)
 
 ## Additional Operators
 
-++ Incremental increase
--- Incremental decrease
-+= Assignment operator (x += y --> x = x + y)
--= Assignment operator (x -= y --> x = x - y)
-_= Assignment operator (x _= y --> x = x \* y)
-/= Assignment operator (x /= y --> x = x / y)
-%= Assignment operator (x %= y --> x = x % y)
+`++ Incremental increase`
+`-- Incremental decrease`
+`+= Assignment operator (x += y --> x = x + y)`
+`-= Assignment operator (x -= y --> x = x - y)`
+`*= Assignment operator (x _= y --> x = x * y)`
+`/= Assignment operator (x /= y --> x = x / y)`
+`%= Assignment operator (x %= y --> x = x % y)`
 
 If ++ and -- appears after the operand then the value is incremented and the value before incrementing is returned. If not (i.e., before the operand) then the value is incremented and the value after incrementation is returned.
 
@@ -75,19 +156,25 @@ If ++ and -- appears after the operand then the value is incremented and the val
 && AND
 || OR
 
+The NOT (!) operator has precedence over the && and || operators
+
+## Operator Precedence
+
+Refer: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence] for a table of operator precedence as well as associativity of operations. The higher the number in this table, the higher the priority. I.e., 21 will be performed before 20 etc. Associativity is the direction; i.e., right to left or left to right.
+
 ## Modulus(%) Use Case
 
 Even number have a modulus value of 0 and odd numbers will have non-zero modulus values.
 
 ## Primitive Data Types
 
-- Strings
-- Numbers
-- Booleans
-- null
-- undefined
-- Symbol
-- BigInt
+- String: Sequences of characters
+- Number: Floating point numbers are used for both decimal and integers "behind the scene"
+- Boolean: Logical true or false
+- null: Empty value. Not the same as undefined (see below)
+- undefined: The value of a variable that has been declared without initialisation
+- Symbol: Value that is unique and cannot be change (?Natural constants)
+- BigInt: Numbers larger than the Number type can accomodate
 
 ## undefined versus null
 
@@ -109,6 +196,8 @@ Variables are "data containers" in which data is "stored" for re-use during the 
 
 Variables can be declared and initialised at the same time or in the case of `let` and `var` variables can be declared without initialisation.
 
+More than one variable can be declared in one statement. E.g., `let x, y, z`.
+
 ## Casting of Data Types
 
 This refers to the ability to change a variable from one type to another.
@@ -123,6 +212,8 @@ age = Number(age)
 ## typeof Operator
 
 The `typeof` operator returns the data type of a variable. `typeof(someVariable)` or `typeof someVariable` will return the type of the variable.
+
+**NB** Legacy Bug: The `typeof null` or `typeof(null)` yields an 'object' result. This is a bug.
 
 ## prompt(), confirm() and alert() Methods
 
@@ -181,7 +272,147 @@ const temp = 37
 `The current temperature is ${temp} degrees celcius`
 ```
 
+Template literals also allow multiline strings. So:
+
+```JavaScript
+const str = `String with
+              multiple
+              lines`
+```
+
+Be mindful of concatenation anomallies like: 2 + 3 + 4 + '5'; which will result in 95.
+
+## Conditional Statements (if/else) Control Structure
+
+### General structure
+
+```JavaScript
+if (conditional statement) {
+  //Some code
+} else {
+  //Some code
+}
+```
+
+Or multiple chained statements
+
+```JavaScript
+if (conditional statement) {
+  //Some code
+} else if (conditional statement2) {
+  //Some code
+} else {
+  //Some code
+}
+```
+
+Should global access be required for any variable used inside the code **block** of the statement, declare the variable(s) before starting the if/else statement.
+
+### Ternary Operator
+
+```JavaScript
+condition ? expression1 : expression2
+```
+
+If `condition` is met, then `expression1` will be returned, else `expression2` will be returned.
+
+Because this is an operator, it leads to an expression and can be assigned to variables and/or used in template literals.
+
+It does not replace the if/else statement where larger blocks of code are involved.
+
+It is intended to be used where quick/short control structures/decisions are needed.
+
+## Switch Statements
+
+When the number of conditional statements in a if/else chain gets too long, the switch statement can serve as an handy alternative:
+
+```JavaScript
+switch (expression) {
+  case x:
+    //code block
+    break;
+  case y:
+    //code block
+    break;
+  default:
+    //code block
+}
+```
+
+The expression is evaluated once and its value is then compared against each case until it finds a match.
+
+## Expressions vs Statements
+
+Expression: A Piece of code that produces a value or is a value. E.g., 3 + 4; 1991; true && true && !false.
+
+Statement: A (usually) bigger piece of code that does not produce a value, but performs an action in stead. E.g., if/else and swicth statements.
+
+The distinction between the two is important because JavaScript expects them in different places. For example, a template literal only accepts expressions and not statements.
+
+Aside: Statement and declaration is synonymous in JavaScript
+
 ## Functions
+
+DRY Principle - Don't Repeat Yourself.
+
+Functions are re-usable pieces of code that take care of repetitive tasks (code) within a program. The terms invoking, calling, or running are all equivalent statements for the excecution of a function.
+
+Parameters: Represent input data. Within the function these are used as variables.
+Arguments: Actual values passed to a function's parameters during a particular invocation of the function.
+
+A function may or may not have parameters depending on its purpose.
+
+When a value is returned by the invocation, it is common practice to "capture" the value by storing it in a variable defined outside of the function.
+
+### Function Declaration Structure
+
+```JavaScript
+  function functionName (parameters) {
+    //code block
+  }
+
+  const someVariable = functionName(arguments)
+```
+
+### Function Expression
+
+```JavaScript
+  const functionName = function (parameters) {
+    //code block
+  }
+
+  const someVariable = functionName(arguments)
+```
+
+### Arrow Function
+
+```JavaScript
+  const functionName = (parameters) => {
+    //code block
+  }
+
+  const someVariable = functionName(arguments)
+```
+
+Cannot be used as methods in objects or constructor functions or anywhere where `this` keyword is applicable. I.e., Do not have argument objects or `this`.
+
+### Difference: Declaration vs Expression
+
+Declaration:
+
+- Can be invoked before the declaration (hoisting)
+
+Expression
+
+- Can be used anywhere an expression can be used
+- Must be declared before invocation. (no hoisting)
+- Arrow functions are abbreviated function expressions
+- A value is implicitly returned so there is no need for an explicit return statement.
+
+### Undefined Returned
+
+- Parameters are specified, but no arguments are passed in
+- No return value is specified and the "value" of the function is assigned to a variable when invoked
 
 ## Shadowed variables
 
@@ -247,23 +478,4 @@ lastCharacter = str[str.length - 1];
 
 The '.', or dot, is called the property access operator.
 
-## Arrays
-
-Individual elements are accesed by bracket notation just like strings. The .length property also applies.
-
-To access three dimensional arrays (arrays within arrays), the first set of brackets refers to the entries in the outer-most (first-level) array, and each individual pair of brackets refers to the next level of entries inside.
-
-```JavaScript
-const arr = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [[10, 11, 12], 13, 14]
-];
-
-arr[3] is [[10, 11, 12], 13, 14]
-arr[3][0] is [10, 11, 12]
-arr[3][0][1] is 11
-```
-
-See "Array Methods" file for more detailed information on array methods.
+Refer: Seperate dedicated Strings document.

@@ -1,5 +1,26 @@
 # Arrays
 
+Arrays are ordered lists of data. They can contain any type of data, even other arrays or objects etc. It is furthermore possible to have different types of data in the same array.
+
+Individual elements are accesed by bracket notation just like strings. The .length property also applies.
+
+To access three dimensional arrays (arrays within arrays), the first set of brackets refers to the entries in the outer-most (first-level) array, and each individual pair of brackets refers to the next level of entries inside.
+
+```JavaScript
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14]
+];
+
+arr[3] is [[10, 11, 12], 13, 14]
+arr[3][0] is [10, 11, 12]
+arr[3][0][1] is 11
+```
+
+See "Array Methods" file for more detailed information on array methods.
+
 ## .forEach() Method
 
 The forEach() method loops over an array. It takes a single argument and that is a call back function.
