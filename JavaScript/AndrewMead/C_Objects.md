@@ -1,5 +1,7 @@
 # Objects
 
+Objects are variables that contains unordered data that is structured into key:value pairs
+
 ## Create an object
 
 ```JavaScript
@@ -12,9 +14,12 @@ const objectName = {
 
 ## Reading value of a property
 
+Values can be retrieved or read by either bracket ([]) or dot (.) notation. Dot notation is usually favoured with bracket notation reserved for situations when the value in the brackets needs to be an expression
+
 ```JavaScript
 console.log(objectName.property1)
-Output: value1
+
+concsole.log(objectName['keyName'])
 ```
 
 ## Change value of a property

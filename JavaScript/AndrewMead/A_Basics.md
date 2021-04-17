@@ -8,7 +8,7 @@ Enter code between `<script></script>` tags either in the head section of the HT
 
 ### Linked as an external Script
 
-Link a script file to the HTML file by way of the script source tag:  
+Link a script file to the HTML file by way of the script source tag:
 
 `<script src="script.js"></script>`
 
@@ -16,7 +16,7 @@ Link a script file to the HTML file by way of the script source tag:
 
 - camelCase
 - Only alphanumeric digits
-- No special characters except $ and _
+- No special characters except $ and \_
 - No JavaSCript reserved words
 - May not start with a number
 
@@ -35,27 +35,49 @@ Link a script file to the HTML file by way of the script source tag:
 ## Commenting
 
 // For inline comments
-/*...*/ Block comments (`ctrl+/ in VS Code while on a line or highlighted selection)
+/_..._/ Block comments (`ctrl+/ in VS Code while on a line or highlighted selection)
 
 ## Operators
 
 (=) Assingment  
-(*) Multiplication  
+(\*) Multiplication  
 (/) Division
 (+) Addition
 (-) Subtraction
-(**) Exponentiation
+(%) Modulus (Division remainder)
+(\*\*) Exponentiation
 
 ## Conditional Operators
 
-===  Equal to (Strict)
+=== Equal to (Strict)
 (>= ) Greater than or equal to
 (<= ) Less than or equal to
-(>  ) Greater than
-(<  ) Less than
+(> ) Greater than
+(< ) Less than
 (!==) Not equal to (Strict)
 
 There is also == and !=. These operator converts variables to the same type before doing the comparison. This is called coersion and may cause unforseseen bugs. It should therefore be avoided in favour of === and !==.
+
+## Additional Operators
+
+++ Incremental increase
+-- Incremental decrease
++= Assignment operator (x += y --> x = x + y)
+-= Assignment operator (x -= y --> x = x - y)
+_= Assignment operator (x _= y --> x = x \* y)
+/= Assignment operator (x /= y --> x = x / y)
+%= Assignment operator (x %= y --> x = x % y)
+
+If ++ and -- appears after the operand then the value is incremented and the value before incrementing is returned. If not (i.e., before the operand) then the value is incremented and the value after incrementation is returned.
+
+## Logical Operators
+
+&& AND
+|| OR
+
+## Modulus(%) Use Case
+
+Even number have a modulus value of 0 and odd numbers will have non-zero modulus values.
 
 ## Primitive Data Types
 
@@ -87,9 +109,30 @@ Variables are "data containers" in which data is "stored" for re-use during the 
 
 Variables can be declared and initialised at the same time or in the case of `let` and `var` variables can be declared without initialisation.
 
+## Casting of Data Types
+
+This refers to the ability to change a variable from one type to another.
+
+```JavaScript
+let age = 46
+age = String(age)
+age = age.replace('6', '4')
+age = Number(age)
+```
+
+## typeof Operator
+
+The `typeof` operator returns the data type of a variable. `typeof(someVariable)` or `typeof someVariable` will return the type of the variable.
+
+## prompt(), confirm() and alert() Methods
+
+- prompt() - Prompts the user for some input. Any input will always be in String format
+- confirm() - Returns a boollean value based on a 'OK' vs 'Cancel' response from the user
+- alert() - Simple popup window with a custom string message for the user
+
 ## Scope
 
-JS uses lexical scope. Sometimes also referred to as static scope. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks.  
+JS uses lexical scope. Sometimes also referred to as static scope. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks.
 
 There are two scopes. Global and Local. Global scope is defined outside of all code blocks. Local scopes are defined inside code blocks.
 
@@ -116,7 +159,6 @@ In this case when a variable assignment is encountered. JS will go up the scopin
 
 This can cause some unforseen and difficult to detect bugs and should be avoided at all cost.
 
-
 ## Function scopes
 
 All same rules applies but it is important to remember that the arguments are also part of the function's local scope and does therefore not form part of the global scope.
@@ -125,7 +167,7 @@ There can also be local scopes nested within a function if there are for instanc
 
 ## String Concatenation vs Template Literals
 
-Strings can be concatenated together with the +, concatenation operator, and variables can be inserted in strings using the same. The result of such a concatenation is called a **string literal**.
+Strings can be concatenated together with the +, concatenation operator, and variables can be inserted in strings using the same. The result of such a concatenation is called a **string literal**. Be mindful of type coersion when concatenating strings with the concatenation operator when numbers are present. I.e., Make sure all variables are of the String type and if not then cast any non-String variables to String before the concatenation
 
 ```JavaScript
 const temp = 37
