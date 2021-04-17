@@ -14,7 +14,7 @@ Link a script file to the HTML file by way of the script source tag:
 
 ## Variable Naming
 
-- cameCase
+- camelCase
 - Only alphanumeric digits
 - No special characters except $ and _
 - No JavaSCript reserved words
@@ -24,11 +24,12 @@ Link a script file to the HTML file by way of the script source tag:
 
 - let = Mutable variable
 - const = Immutable or constant variable
-- var = Deprecated. Mutable. Function scope but rest of the time global.
+- var = Deprecated. Mutable. Function scoped but rest of the time global.
 
 ## Escape Character
 
 \n = Line break character in normal strings (i.e., non-template literals)
+\t = Tab
 \ = In general is the escape character in strings. The character immediately after this will be escaped
 
 ## Commenting
@@ -47,7 +48,7 @@ Link a script file to the HTML file by way of the script source tag:
 
 ## Conditional Operators
 
-(===) Equal to (Strict)
+===  Equal to (Strict)
 (>= ) Greater than or equal to
 (<= ) Less than or equal to
 (>  ) Greater than
@@ -69,7 +70,7 @@ There is also == and !=. These operator converts variables to the same type befo
 ## undefined versus null
 
 undefined = A value has never been assigned to a variable.
-null = The value of a vairiable was reset by the developer.
+null = The value of a vairiable was reset by the developer and/or some code.
 
 ## Data Structures
 
@@ -84,13 +85,15 @@ null = The value of a vairiable was reset by the developer.
 
 Variables are "data containers" in which data is "stored" for re-use during the excecution of a program. The data may change if declared as `let` or `var` variables, but not if declared as `const`.
 
-Variables can be declared and initialise at the same time or in the case of `let` and 'var` variables can be declared without initialisation.
+Variables can be declared and initialised at the same time or in the case of `let` and `var` variables can be declared without initialisation.
 
 ## Scope
 
 JS uses lexical scope. Sometimes also referred to as static scope. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks.  
 
 There are two scopes. Global and Local. Global scope is defined outside of all code blocks. Local scopes are defined inside code blocks.
+
+There is also function and blocked scoped. A block being any code between a set of {}. The difference between the two only becomes apparent when using `var` variables, which are function scoped, but not block scoped.
 
 ## Leaked Scope
 
@@ -122,7 +125,7 @@ There can also be local scopes nested within a function if there are for instanc
 
 ## String Concatenation vs Template Literals
 
-Strings can be concatenated together with the +, concatenation operator, and variables can be inserted in strings using the same:
+Strings can be concatenated together with the +, concatenation operator, and variables can be inserted in strings using the same. The result of such a concatenation is called a **string literal**.
 
 ```JavaScript
 const temp = 37
@@ -135,3 +138,90 @@ A better and more modern way of achieving the same task is to use **template lit
 const temp = 37
 `The current temperature is ${temp} degrees celcius`
 ```
+
+## Functions
+
+## Shadowed variables
+
+When a variable is declared globally as well as inside a function. I.e., The same variable name. The variable inside of the function is handled independant of the global one. This behaviour is called shadowing:
+
+```JavaScript
+let userName = 'Max'
+function greetUser (name) {
+  let userName = name
+  alert(userName)
+}
+userName = 'John'
+greetUser('Max')
+```
+
+This code will show an alert that says 'Max' not 'John'
+
+## Return statement
+
+Any statement after the return statement in a function will not excecute. I.e., The return statement ends the function excecution. The `return` keyword can actually be used on its own in a function to exit the function excecution. This would usually be linked to some conditional statement.
+
+## Executing functions "indirectly"
+
+An example of this would be a callback function that is used during DOM manipulation.
+
+```JavaScript
+const defaultResult = 0
+let currentResult = defaultResult
+
+function add() {
+  currentResult = currentResult + userInput.value
+  outputResult(currentResult, '')
+}
+
+addbtn.addEventListeners('click', add);
+```
+
+Note the "callback" function, defined by the function name `add` without the arguments parenthesis.
+
+This is done when a function should only be excecuted at some future point when, in this case, a click event occurs.
+
+## Strings
+
+### Access individual characters
+
+Individual characters can be accessed with bracket notation. So:
+
+```JavaScript
+const str = 'String';
+const firstCharacter = '';
+firstCharacter = str[0];
+```
+
+The value of `firstCharacter` in this code would be 'S'.
+
+### Return last character
+
+```JavaScript
+const str = 'String';
+const lastCharacter = '';
+lastCharacter = str[str.length - 1];
+```
+
+The '.', or dot, is called the property access operator.
+
+## Arrays
+
+Individual elements are accesed by bracket notation just like strings. The .length property also applies.
+
+To access three dimensional arrays (arrays within arrays), the first set of brackets refers to the entries in the outer-most (first-level) array, and each individual pair of brackets refers to the next level of entries inside.
+
+```JavaScript
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14]
+];
+
+arr[3] is [[10, 11, 12], 13, 14]
+arr[3][0] is [10, 11, 12]
+arr[3][0][1] is 11
+```
+
+See "Array Methods" file for more detailed information on array methods.

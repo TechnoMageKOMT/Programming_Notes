@@ -266,6 +266,7 @@ app.get('/', function(req, res){
 
 ### HTML
 
+```HTML
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -282,6 +283,7 @@ app.get('/', function(req, res){
     </form>
   </body>
 </html>
+```
 
 ```JavaScript
 const express = require('express')
@@ -304,7 +306,7 @@ app.post('/', function (req, res) {
   const url =
     'https://api.openweathermap.org/data/2.5/weather?q=' +
     query +
-    '&appid=0c0dd5f81257ada28e219abf9f98bf51&units=metric'
+    '&appid=*****************API ID******************'
 
   https.get(url, function (response) {
     console.log(response.statusCode)
