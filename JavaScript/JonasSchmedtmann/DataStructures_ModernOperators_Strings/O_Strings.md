@@ -1,5 +1,7 @@
 # Working With Strings
 
+Ref: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String] for a complete list of available String methods in JavaScript
+
 ## Similarities to arrays and array methods
 
 Individual characters of a string can be accessed just like arrays are accessed. Their index is also zero based like arrays.
@@ -43,9 +45,19 @@ Output: 6
 
 This method will produce the index number of the last occurence of the argument passed to it. All aspects of indexOf() also apply here.
 
+### substr() method
+
+`substr(numberStart, length)`
+
+Returns the substring starting at index number numberStart "length" characters long.
+
 ### slice() method
 
 The method accepts an index number as argument and all characters including and after that index number is returned. (Remember here that the index system is 0 based)
+
+`.slice(numberStart, [numberEnd])`
+
+Returns the substring that starts at index number numberStart (inclusive) and ends at numberEnd (excluding).
 
 ```JavaScript
 const airline = `Tap Air Portugal`;
@@ -157,7 +169,9 @@ const normalisedEmail = loginEmail.toLowerCase().trim();
 
 ## replace() and replaceAll() method
 
-This method takes in two methods. The first is the substring that needs to be replaced and the second is what it needs to be replaced with.
+`.replace(searchString, replacementString)`
+
+This method takes in two arguments. The first is the substring that needs to be replaced and the second is what it needs to be replaced with. It replaces the **first occurence** of the searchString with the replacementString.
 
 As in the example above chaining is also possible:
 
@@ -169,6 +183,8 @@ const priceUS = priceGB.replace('&', '$').replace(',', '.');
 **NB** None of the string methods changes the original string. New strings are created instead.
 
 The replaceAll() method is the same but, replace all instances of the first term and not just the first one as is the case with replace().
+
+`.replaceAll(searchString, replacementString)`
 
 Another method of removing **all** occurences is the use of regular expressions.
 
@@ -188,6 +204,10 @@ console.log(announcement.replace(/door/g, 'gate'));
 - endsWith()
 
 ### includes() method
+
+`.includes(searchString, [startingPoint])`
+
+Searches a string for a given substring and returns a boolean. The startingPoint parameter is optional.
 
 ```JavaScript
 const plane = `A320neo`;
@@ -212,8 +232,15 @@ checkBaggage(`Socks and camera`);
 checkBaggage(`Got some snacks and a gun for protection.`);
 ```
 
+### search() method
+
+`.search(searchString)`
+
+Returns the index number where the searchString starts.
 
 ### startsWith() method
+
+Returns a boolean based on whether the string starts with the substring entered as argument.
 
 ```JavaScript
 const plane = `A320neo`;
@@ -222,6 +249,8 @@ Output: true
 ```
 
 ### endsWith() method
+
+Returns a boolean based on whether the string ends with the substring entered as argument.
 
 ```JavaScript
 const plane = `A320neo`;
@@ -232,6 +261,10 @@ Output: true
 ## split() method
 
 Allows the splitting of a string into multiple parts based on a dividing string. The result of applying the method is an array with the individual "pieces" as elements.
+
+`.split('delimeter')`
+
+Returns an array of substrings defined by the delimeter. A sentence with delimiter ' ' will for instance be split into the constituent words.
 
 ```JavaScript
 console.log(`a+very+nice+string`.split(`+`));
@@ -250,7 +283,7 @@ Output: Schemdtmann
 
 ## join() method
 
-Join does the opposite of split. So segements are submitted as an array and then joined with a divider.
+Join does the opposite of split. So segements are submitted as an array and then joined with a divider. Joins elements of a string array together. Opposite of .split(). Takes in as an arguments the delimiter that should be used.
 
 ```JavaScript
 const newName = [`Mr`, firstName, lastName.toUpperCase()].join(` `);
@@ -297,14 +330,14 @@ const maskCreditCard = function(number){
 }
 
 console.log(maskCreditCard(6546321565798798));
-Output: ************8798 
+Output: ************8798
 console.log(maskCreditCard(4653287968943413));
 Output: ************3413
 ```
 
 ## repeat() method
 
-Repeat the same string multiple times.
+Repeat the same string multiple times. Repeats the attached string the number of times of the number passed in as argument.
 
 ```JavaScript
 const message2 = `Bad wheather...All Departures Delayed...`
@@ -318,5 +351,5 @@ const planesInLine = function(n){
 }
 
 planesInLine(5);
-Output: There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line. 
+Output: There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.There are 5 planes in line.
 ```
