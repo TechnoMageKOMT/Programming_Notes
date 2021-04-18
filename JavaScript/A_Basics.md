@@ -28,8 +28,9 @@ JavaScript is not strictly speaking an interpreted or compiled language. It make
 
 1. Ask the right question
 2. Divide and conquer. Break into smaller pieces
-3. Do as much research as needed before tackling the solution
-4. Write pseudocode before starting the actual formal coding
+3. Use flow charts for complex flow controls
+4. Do as much research as needed before tackling the solution
+5. Write pseudocode before starting the actual formal coding
 
 Debugging Tools:
 
@@ -73,6 +74,8 @@ It is recommended to make use of the `use strict` directive at all times. This i
 
 // For inline comments
 `/*` ...`*/` Block comments (`ctrl+/ in VS Code while on a line or highlighted selection)
+
+**Good Practice** Use commenting throughout code to assist thinking process, reference when returning to code after some time has passed and also to communicate with other developers when collaborating. Commenting makes code far more readable.
 
 ## Operators
 
@@ -234,17 +237,29 @@ The `typeof` operator returns the data type of a variable. `typeof(someVariable)
 
 ## prompt(), confirm() and alert() Methods
 
-- prompt() - Prompts the user for some input. Any input will always be in String format
+- prompt() - Prompts the user for some input. Any input will always be in String format, so if a number is needed it needs to be re-cast using Number()
 - confirm() - Returns a boollean value based on a 'OK' vs 'Cancel' response from the user
 - alert() - Simple popup window with a custom string message for the user
 
 ## Scope
 
-JS uses lexical scope. Sometimes also referred to as static scope. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks.
+JS uses lexical scope. Sometimes also referred to as static scope. I.e., Scoping is controlled by the placement of functions and code blocks. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks. 
 
-There are two scopes. Global and Local. Global scope is defined outside of all code blocks. Local scopes are defined inside code blocks.
+There are three scopes. Global, function and block. Global scope is defined outside of all code blocks. Function and block scopes are defined inside code blocks and functions.
 
-There is also function and blocked scoped. A block being any code between a set of {}. The difference between the two only becomes apparent when using `var` variables, which are function scoped, but not block scoped.
+The difference between function and block scopes only becomes apparent when using `var` variables, which are function scoped, but not block scoped. `let` and `const` are Function and block scoped. 
+
+A function inside of another has access to the variables of the parent function 
+
+If access to a variable is needed outside the function or code block where it is changed, then declare the function before entering the function or code block. The declaration can be done without assigning a value to the variable.
+
+A scope always have access to all variables from outer scopes within which it is nested (parent scopes). Outer scopes, however, never have access to variables of inner scopes. When a variable is not in a scope, it looks up the scope chain until it is found in one of the parent scopes. This is called **variable lookup**. The scope chain of variables is one way. It does not work from the outside in.
+
+**NB** The scope chain does not have anything to do with the call stack order in the JS Engine. The call stack is constructed in the order that functions are called with the global excecution context at the bottom. This has no relevance to the scope chain.
+
+All scoping rules also apply to arguments passed to a function. **CAUTION** If variable names are duplicated it could cause bizarre bugs because of scoping and the lexical occurence of the variables or functions containing them.
+
+The declaration of an object is **not** a code block and therefore does not have its own scope.
 
 ## Leaked Scope
 
@@ -584,3 +599,206 @@ while (dice !== 6) {
 
 While loops are generally used when the number of iterations are unknowable and for loops when dealing with known or finite iterations (e.g., arrays).
 
+### Constructor Functions and Objects
+
+These function are used to create objects:
+
+```JavaScript
+function SomeName(var1, var2, var3, var4){
+  this.var1 = var1;
+  this.var2 = var2;
+  this.var3 = var3;
+  this.var4 = var4;
+  this.someFunction = function(){
+    //statement / expression
+  }
+}
+```
+
+**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object 
+
+```JavaScript
+const objectName = new SomeName(value1, value2, value3, value4);
+```
+
+Take note of the `new` keyword that must precede the name of the constructor when invoked. Another difference is that the **function name starts with a capital**, unlike normal functions.
+
+To call the method in this object:
+
+```JavaScript
+SomeName.someFunction();
+```
+
+Constructor functions are what is behind JS's methods. Refer to drumkit project:
+
+```JavaScript
+let crash = new Audio("sounds/crash.mp3");
+crash.play();
+```
+
+This is clearly a new object that is being created by the Audio constructor function that has a function called play within it which is invoked in the second line.
+
+### Methods
+
+Functions that belongs to or form part of objects are called methods. To call the method, dot notation is used as with all object properties. `object.method()`. Methods can also be incorporated into constructor functions. See in the constructor function example above.
+
+## JavaScript Behind The Scenes
+
+The JavaScript engine is a program written in C++ that excecutes JavaScript code. Chrome uses V8 and Firefox uses SpiderMonkey. Node.js and Express can build server side applications outside of the browser.
+
+Some important aspects of JavaScript
+
+- Functions are simply treated as variables, so they can be passed into other functions or even returned by functions
+- Dynamic typing: Type only becomes known at runtime
+- Dynamic typing: Data types of variables can be changed automatically/dynamically when assigning a new value to a variable
+- **NOT** an interpreted language: Just-in-time (JIT) compilation is a combination between interpretation adn compilation.
+
+### Excecution Context
+
+- Variable environment
+- Scope chain
+- `this`Keyword
+
+### Hoisting
+
+Hoisting makes some variables and functions available before they have been declared. This is a common cause of difficult to find bugs.
+
+To avoid hoisting problems:
+
+- Do not use `var` variable declarations
+- Use `const` as far as possible
+- Use `let` only when definitely mutable
+- Keep code as immutable as possible
+- Declare variables at the top of each scope
+- Always define functions before invoking them
+
+One of the dangers of using `var` to declare variables is that it creates a property with that value on the `window`object.
+
+### window Object
+
+The `window` object is the global object of JavaScript in the browser. 
+
+### this Keyword
+
+- Special variable created for every excecution context (functions)
+- Takes the value of (points to) the "owner" of the function in which the `this` keyword is used
+- `this` Is **not** static. It depends on how the function is called and its value is only assigned when the functio is actually called
+- Methods: `this` points to the object that is calling the method
+- Simple function calls: `this` is undefined
+- Arrow functions: Don't own `this`. `this` points to the parent function or `window` object if there isn't one
+- Event listeners: `this` Points to the DOM element that the handler is attached to.
+- `this` Outside of any function points to the `window` object
+- Never use arrow functions as methods even if `this` keyword is not used
+
+#### Method borrowing and this
+
+```JavaScript
+const jonas = {
+  year: 1991,
+  calcAge: function (){
+    console.log(this)
+  }
+}
+
+const matilda = {
+  year: 2017,
+}
+
+matilda.calcAge = jonas.calcAge//Method borrowing
+```
+
+Even though `this` keyword was copied with the method, it will point to the `matilda` object if called. This is an example that the `this` keyword is dynamic and depends on how the function is called.
+
+#### A function inside of a method
+
+Still regular function and `this` is therefore undefined.
+
+There are two solutions:
+
+1. Declare a variable called `self` outside of the inner function and set it equal to `this`. Then replace all instances of `this` with self in the inner function.
+2. Use an arrow function as the inner function. It does not have its own `this` keyword and inherits it from the parent scope. `this` Would therefore point to the method that it  is embedded in.
+
+### arguments Keyword
+
+Not really used in modern JavaScript anymore, but may appear in old code.
+
+Only regular functions gets the `arguments` keyword. I.e., Function declarations and function expressions.
+
+The `arguments` keyword produces an array of the arguments passed to the function. It is useful when a function needs to take in more variables/arguments than initially specified.
+
+The arrow function does not have the `arguments` keyword.
+
+### Memory handling of primitive vs reference data types
+
+Reference data types are:
+
+- Object literals
+- Arrays
+- Functions
+- Sets
+- Maps
+- etc
+
+All reference types are stored in the memory 'Heap' of the JS Engine. Primitive types are stored in the 'Call Stack' within the excecution context in which they were declared.
+
+Whenever an object or reference type is copied, there is merely the creation of a new variable that points to the same object in the memory "Heap'. Any changes to the object will therefore be reflected by both the original and "copied" variables.
+
+Example:
+
+```JavaScript
+const me = {
+  name: 'Jonas',
+  age: 30,
+}
+
+const friend = me
+friend.age = 27
+
+console.log(me.age) --> 27
+console.log(friend.age) --> 27
+```
+
+To create a real, but superficial, copy of an object, a function called `Object.assign()` must be used. This essentially merges two objects and returns a new one. Syntax: `const newObject = Object.assign({}, oldObject)`. This works, however, only on the first level. I.e., If there are objects such as arrays or other objects embedded in the original object then the above behaviour would persist for the embedded items. The only solution is to create a 'deep clone' which is very complex and requires the use of external libraries.
+
+## Sorting a number array
+
+```JavaScript
+array.sort(function(a, b){
+  return a - b
+})
+```
+
+## Set timeout
+
+`setTimeout(function(),milliseconds)`
+
+Useful for animation on added class which can be removed after a set time. A square or button etc can then be pressed and returned to its previous state as if it flashes or jumps back (depending on the styling)
+
+## Whitespace
+
+JavaScript ignores whitespace, so it is good practice to make use of whitespace for readability. The removal of all whitespace is called minimizing.
+
+## Not defined versus undefined
+
+Not defined: Does not exist. I.e., Not declared.
+undefined: Exists (i.e., declared) but no value has been assigned to it
+
+## IIFE - Immediately Invoked Function Expressions
+
+These functions are excecuted immediately without being called. The generic format is:
+
+```JavaScript
+(function functionName(){
+  //code block
+})()
+```
+
+## forEach() method
+
+```JavaScript
+array.forEach(function(currentValue, index){
+  //code block
+})
+```
+
+This invokes the function for each element in the iterable.

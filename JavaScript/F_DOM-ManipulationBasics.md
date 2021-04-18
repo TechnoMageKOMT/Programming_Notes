@@ -1,16 +1,37 @@
 # Manipulating the DOM - General Introduction
 
+## DOM - Document Object Model
+
+Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of an HTML document.
+
+Each HTML element and unit of content is a DOM object or a **node** in the DOM tree that JavaScript interact with. At the top of the structure is the `document` object which is the entry point for JavaScript into the DOM. Everything in the DOM is a node object.
+
+**NB** The DOM is not JavaScript. The DOM and DOM methods are parts of web APIs which JavaScript can interact with. These APIs (Application Programming Interfaces) are libraries that are written in JavaScript that is used during the DOM manipulation.
+
+
+
+## Selecting Elements and accessing properties
+
+Selecting the entire HTML document:
+
 ```JavaScript
-document.firstElementChild; => html
+document.firstElementChild;
+
 ```
+
+Then the head section:
 
 ```JavaScript
 document.firstElementChild.firstEelement.Child; => head
 ```
 
+or the body section:
+
 ```JavaScript
 document.firstElemenetChild.lastElemenetChild; => body
 ```
+
+An h1 element if that was the first child of the body section: 
 
 ```JavaScript
 document.firstElementChild.lastElemenetChild.firstElemenetChild; => h1
@@ -24,7 +45,7 @@ Use case example:
   heading.style.color = "red";
 ```
 
-`document.querySelector()` is another way of selecting elements:
+`document.querySelector('*')` is another way of selecting elements. * is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
 
 ```JavaScript
   document.querySelector('input').click();
@@ -32,7 +53,7 @@ Use case example:
 
 This statement will mark the corresponding checkbox as "clicked". I.e.,simulating a user click.
 
-Also note the use of dot notation when manipulating the DOM.
+Also note the use of dot notation when manipulating the DOM. **DOT assosciativity** Left to right, so the element is first "retrieved" and then the property is extracted by the dot operator.
 
 `object.property;` is called a "getter" (Get property).
 `object.property = x;` is called a "setter (Setting a property)
@@ -41,6 +62,7 @@ Also note the use of dot notation when manipulating the DOM.
 Example of properties:
 
 - innerHTML
+- textContent
 - style
 - firstChild
 
@@ -70,7 +92,7 @@ so,
 document.getElementByClassName('btn')[0].innerText;
 ```
 
-`document.getElementById('');` Much more specific
+`document.getElementById('');` Much more specific and faster when working on very large and complex projects.
 
 `document.querySelector('');` # and . to be included for classes and ids. NB if multiple items with same class or id, only the first will be selected. Call also use hierarchical selector just as is done in CSS
 
@@ -79,7 +101,7 @@ document.querySelector('li a'); or
 document.querySelector('li.item') i.e., tag.class
 ```
 
-`document.querySelectorAll('');` produces a node list which is for all itents and purposes an array.
+`document.querySelectorAll('');` produces a node list which is for all intents and purposes an array which can and is iterated through.
 
 **querySelector and querySelectorAll allows for more complex selections.**
 
@@ -130,6 +152,15 @@ This line of code will add the class 'invinsible' to the object wuth the class .
 
 **NB** Because we are dealing with the classList, the dot precursors for classes is not needed. Just the name of the class is entered.
 
+## Manipulating CSS style directly with JavaScript and the DOM
+
+```JavaScript
+const someVariable = document.querySelector('someSelector')
+someVariable.style.someProperty = 'newValue'
+```
+
+Hyphenated CSS property names are substituted with camelCase names. **NB** The newValue must be passed in as a string with the unit included. I.e., between ' '.
+
 ## Text manipulation and the text content Property
 
 innerHTML: Returns the content between the element's tags including children within that tag, but as the 'raw' html code.
@@ -167,11 +198,19 @@ document.querySelector('.item a').setAttribute('href','https://www.bing.com');
 
 Note that this method has two parameters so two arguments are needed. The first is the attribute name and the second is the new value.
 
-## Drumkit Project
+## Changes in the DOM
 
-### Adding event listeners
+**Good practive**: If variables are manipulated and changed in the DOM by a JavaScript application, the variables should be stored in the JavaSCript code. These are called state variables. In practice, "fetch" the required elements and assign them to variables in the JavaScript code. From there onwards the JavaSCript variables are referenced not the selection string.
+
+It is a good idea to "fetch" these elements at the beginning of the JavaScript file.
+
+## Adding event listeners
+
+For code to react to something that happens in the DOM an event listener is needed.
 
 The addEventListener() method has two parameters and takes in a "type" argument (eg., 'click', 'keydown' etc.) and a "listener" which is usually a JavaScript function. This function will determine what dynamic action is taken when the "type" of event is detected. When calling a function here there is no set of () unless an anonymous function is used. The reason for this is that the function is not called until the event type is detected. Until then it "lies dormant". If the () were present and there is an explicit named function, the function will be called everytime the line of code is read by the browser and the action will be carried out irrespective of the presence of the event. Without (), the function will only be called when the event is detected. This does not apply to aunonymous functions.
+
+An anonymous function is simply the RHS of a function expression (i.e., without the assignment and name).
 
 This is a central feature of JS programming. The idea that a function is passed as an input into another function so that it can be called at a later time.  
 
@@ -238,7 +277,7 @@ for (let i = 0; i < numberOfDrumButtons; i++){
 }
 ```
 
-The out put for each iteration here will be the html element. E.g.,:
+The output for each iteration here will be the html element. E.g.,:
 
 `<button class="s drum">`
 
@@ -246,48 +285,7 @@ As each button is clicked `this` will point to that HTML object / element. Any o
 
 
 
-### Constructor Functions and Objects
 
-These function are used to create objects:
-
-```JavaScript
-function SomeName(var1, var2, var3, var4){
-  this.var1 = var1;
-  this.var2 = var2;
-  this.var3 = var3;
-  this.var4 = var4;
-  this.someFunction = function(){
-    //statement / expression
-  }
-}
-```
-
-**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object 
-
-```JavaScript
-const objectName = new SomeName(value1, value2, value3, value4);
-```
-
-Take note of the `new` keyword that must precede the name of the constructor when invoked. Another difference is that the **function name starts with a capital**, unlike normal functions.
-
-To call the method in this object:
-
-```JavaScript
-SomeName.someFunction();
-```
-
-Constructor functions are what is behind JS's methods. Refer to drumkit project:
-
-```JavaScript
-let crash = new Audio("sounds/crash.mp3");
-crash.play();
-```
-
-This is clearly a new object that is being created by the Audio constructor function that has a function called play within it which is invoked in the second line.
-
-### Methods
-
-Functions that belongs to or form part of objects are called methods. To call the method, dot notation is used as with all object properties. `object.method()`. Methods can also be incorporated into constructor functions. See in the constructor function example above.
 
 ### Understanding Callbacks and How To Respond To Events
 
@@ -304,9 +302,7 @@ The callback function is called by the object that experienced the event that wa
 
 When an event occurs an object is created within the addEventListener() method and information about that event is stored in the object.
 
-# JavaScript In The Browser
-
-## DOM Manipulation
+## Removing Elements 
 
 ```JavaScript
 const p = document.querySelector('p');
@@ -335,17 +331,9 @@ document.querySelector('body').appendChild(newParagraph);
 
 This code would insert the new paragraph element at the end of the body section of the DOM (I.e., as last child).
 
-## User interaction
+## Advanced Selectors
 
 Additional option for selecting a specific target when there is more than one that fits the selector. Using querySelectorAll together with bracket notation for the array that is returned.
-
-```JavaScript
-document.querySelector('button')[1].addEventListener('click', function(){
-  //some code 
-})
-```
-
-This method is not recommended because it lacks specificity. 
 
 Ways of targeting elements
 
@@ -358,9 +346,57 @@ Ways of targeting elements
 `button.inventory` - Element that has both  
 `h1#title.application`- Element that has all three  
 
+## Keyboard / Keypress Events
+
+Requires the addEventListener() method just like mouse clicks.
+
+Keyboard events are global events because they're not usually associated with specific elements (exception text input fields).
+
+Three types: 
+
+- keydown **Most commonly used**
+- keypress
+- keyup
+
+Generic syntax:
+
+```JavaScript
+document.addEventListener('keydown', function(e){
+  //code block
+})
+```
+`e` Is used by convention and stands for event. When a key is pressed an object is generated which contains all the information about that event. By passing this object as an argument to the event handler function, it can access specific key:value pairs within the object. One of the properties or keys of this object is `key` where the actual key's identity that was pressed is stored.
+
+```JavaScript
+document.addEventListener('keydown', function(e){
+  console.log(e)
+})
+```
+
+Will output the object to the console. This output can be used to verify that the identity of the actual key that was pressed, is stored under the property `key`.
+
+```JavaScript
+document.addEventListener('keydown', function(e){
+  console.log(e.key)
+})
+```
+
+Will output the identity of the key to the console. 
+
+The `e.key` value can be used anywhere that expressions are accepted. For instance, conditional statements.
+
+
+```JavaScript
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') {
+    //code block
+  }
+})
+```
+
 ## Text Input Fields
 
-## change Event type
+### change Event type
 
 ```JavaScript
 document.querySelector('#search-text').addEventListener('change', function(e){
@@ -370,11 +406,11 @@ document.querySelector('#search-text').addEventListener('change', function(e){
 
 This code will produce the text that the user entered into a text input field, but only when focus on the input field is left. I.e., when clicking outside the field.
 
-## input Event type
+### input Event type
 
 The alternative to `change` is `input`. The syntax is the same, but the input values are received in real time, character by character as the user types in the field. This method is preferred when filetering data on the fly.
 
-## Rendering Filtered Data 
+### Rendering Filtered Data 
 
 **VERY NB For real world applications**
 **This will be used a lot in real life***
@@ -449,7 +485,7 @@ documnet.querySelector('#search-text').addEventListener('input', function(e){
 });
 ```
 
-## Working with forms. 
+### Working with forms. 
 
 The 'submit' type event listener is used for form elements. This will trigger on clicking a button or pressing enter after entering the input.
 
@@ -484,7 +520,7 @@ document.querySelector('#todo-form).addEventListener('submit', function(e){
 })
 ```
 
-## Checkboxes
+### Checkboxes
 
 The event listerner type to use with checkboxes is `'change'`. The event will fire as soon as the checkbox is checked or unchecked.
 
@@ -494,7 +530,7 @@ To access the **boolean** value:
 e.target.checked
 ```
 
-## Select Dropdowns
+### Select Dropdowns
 
 In HTML these are added with the `<select></select>` element and options are added within it via the `<option>` tag. An id is allocated to the `<select>` element which is targeted. **Do not** enter a name attribute, not even a blank one. This will result in a value that is an empty string. Simply enter the options between the `<option></option>` tags. If it is necessary to use more user friendly value when manipulating in JavaScript the `value` attribute can be set with camel case variable type name to be used in JS.
 
