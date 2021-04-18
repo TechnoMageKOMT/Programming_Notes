@@ -479,3 +479,76 @@ lastCharacter = str[str.length - 1];
 The '.', or dot, is called the property access operator.
 
 Refer: Seperate dedicated Strings document.
+
+## For loops
+
+```JavaScript
+for (let i = 0; condition; i + 1) {
+  //code block
+}
+```
+
+- Step 1: Initialisation of "counter" variable
+- Step 2: Boolean conditional statement (be mindful of infinite loops)
+- Step 3: Incremental increase of "counting" variable
+- Step 4: Code block to be excecuted. Has access to current value of i to use in this excecution
+
+Looping through arrays are one of the most frequent uses of for loops. Loop iteration can even be used to create new arrays.
+
+```JavaScript
+const array1 = [var1, var2, var3,..., var4]
+const array2 = []
+
+for (i = 0; i < array1.length; i++) {
+  array2.push(newValue/expression) (1)
+}
+```
+
+An alternative to (1) is `array2[i] = newValue/expression`, but (1) should be used as far as possible in the interest of clean code.
+
+**Local Scope** `i` is locally scoped to its for loop, so the variable name can be used for all for loops in a program except for nested for loops in which case additonal j,k,l would be used.
+
+### Continue or Breaks
+
+```JavaScript
+for (let i = 0; i < array.length; i++) {
+  if (conditional statement) {
+    continue
+  } else {
+    //code block
+  }
+}
+```
+
+`continue`: If condition is `true` then exit/bypass the rest of the current iteration and continue with the next iteration.
+`break`: Stop/break the current iteration and exit the loop completely without any further iterations.  
+
+### Looping backwards
+
+```JavaScript
+for (let i = array.length -1; i >= 0; i--) {
+  //code block
+}
+```
+
+### Nested loops
+
+```JavaScript
+for (...) {
+  for (...){
+
+  }
+}
+```
+
+## While Loops
+
+General case:
+
+```JavaScript
+let i = 1
+while (conditional statement) {
+  //code block
+  i++
+}
+```

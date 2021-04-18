@@ -21,6 +21,27 @@ arr[3][0][1] is 11
 
 See "Array Methods" file for more detailed information on array methods.
 
+## Declaring / Constructing / Assigning an Array
+
+Two ways:
+
+`const arrayName = [element1, element2,...]`
+
+`const arrayName = new Array(element1, element,...)`
+
+The literal syntax is by far the most common way compared to the use of the Array constructor function.
+
+Individual elements/values in `const` declared arrays and objects can be changed, but not the entire array/object. Only primitive data types are truly immutable with `const` declaration.
+
+Arrays can contain any type of and mixture of different data types:
+
+- Primitives
+- Expressions
+- Variables
+- Other arrays
+- Objects 
+- etc
+
 ## .forEach() Method
 
 The forEach() method loops over an array. It takes a single argument and that is a call back function.
@@ -55,6 +76,57 @@ Use case:
 All normal array methods still apply to these even though the elements are objects.
 
 The one exception is indexOf() because of object referencing. The object specified in the indexOf() method will not be referencing the same object, so even if all property value pairs are the same, it is **not** the same object.
+
+## Last item of an array
+
+The last item of an array can be identified even if the length of the array is unknown, using the length property:
+
+```JavaScript
+  const lastArrayItem = arrayName[arrayName.length - 1]
+```
+
+## push() method
+
+`arrayName.push(someElement)`: Adds 'someElement' to the end of the array and returns the length of the array after the addition of the new element.
+
+## unshift() method
+
+`arrayName.unshift(someElement`: Same as push(), but add the new element to the beginning of the array. Also retuns the length of the new array.
+
+## pop() method
+
+`arrayName.pop()`: Removes the last item from the array and returns that item.
+
+## shift() method
+
+`arrayName.shift()`: Removes the first item from the array and returns that item.
+
+## indexOf() method
+
+`arrayName.indexOf(someElement)`: Returns the position of the element given as an argument. If the element is absent, a value of `-1` is returned.
+
+## includes() method
+
+`arrayName.includes(someElement)`: Returns a value of `true` if the element passed as argument is present and `false` if not. This is useful in conditional statements involving arrays. **NB** === Strict comparison applies.
+
+## splice() method
+
+`arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional).
+
+```JavaScript
+let arr = ['foo', 'bar', 10, 'qux'];
+
+// arr.splice(<index>, <steps>, [elements ...]);
+
+arr.splice(1, 1);// Removes 1 item at index 1
+// => ['foo', 10, 'qux']
+
+arr.splice(2, 1, 'tmp');// Replaces 1 item at index 2 with 'tmp'
+// => ['foo', 10, 'tmp']
+
+arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
+// => ['x', 'y', 10, 'tmp']
+```
 
 ## findIndex() method
 
