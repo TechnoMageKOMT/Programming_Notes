@@ -10,7 +10,13 @@ Enter code between `<script></script>` tags either in the head section of the HT
 
 Link a script file to the HTML file by way of the script source tag:
 
-`<script src="script.js"></script>`
+`<script src="script.js" defer="defer"></script>`
+
+Load scripts in the `<head>` section of the HTML file below the CSS link(s), making sure that the `defer` attribute is specified. This will download the scripts while the HTML file is being parsed and will improve performance.
+
+If a script(s) does not rely on the DOM and needs to excecute at the beginning of the HTML page use the attribute `async`. This will however stop the parsing of the HTML document and run the script first. The order of script execution is also not guaranteed with `async`
+
+**NB** Embedded and external script cannot be used together. If both are present, the embedded script will simply be ignored.
 
 ## Values, Data and Dynamic Typing
 
@@ -34,9 +40,11 @@ JavaScript is not strictly speaking an interpreted or compiled language. It make
 
 Debugging Tools:
 
-- console.log(), console.warn(). console.error()
+- Read and utilise error messages
+- Use IDEs debugging capabilities
+- Use console.log(), console.warn(). console.error()
 - console.table() to view objects
-- Debugger in browser console
+- Use debugger tools in the browser browser developer console
 - Insert line `debugger` in code at points of concern and the browser will jump to the debugger at that point when running the code
 
 
@@ -233,7 +241,7 @@ age = Number(age)
 
 ## typeof Operator
 
-The `typeof` operator returns the data type of a variable. `typeof(someVariable)` or `typeof someVariable` will return the type of the variable.
+The `typeof` operator returns the data type of a variable. `typeof(someVariable)` or `typeof someVariable` will return the type of the variable. The output is a string in lowercase
 
 **NB** Legacy Bug: The `typeof null` or `typeof(null)` yields an 'object' result. This is a bug.
 

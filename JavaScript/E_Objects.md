@@ -1,6 +1,6 @@
 # Objects
 
-Objects are variables that contains unordered data that is structured into key:value pairs. The keys are also called the properties of the object.
+Objects are variables that contains unordered data that is structured into key:value pairs. The keys are also called the properties of the object. They are important for organising **grouped** or **related** data.
 
 A major difference between objects and arrays, is that the order does not matter when retrieving data from objects.
 
