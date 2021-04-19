@@ -2,13 +2,13 @@
 
 ## DOM - Document Object Model
 
-Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of an HTML document.
+Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of an HTML document. It can simply be understood as a tree of nodes created by the browser.
 
-Each HTML element and unit of content is a DOM object or a **node** in the DOM tree that JavaScript interact with. At the top of the structure is the `document` object which is the entry point for JavaScript into the DOM. Everything in the DOM is a node object.
+Each HTML element and unit of content is a DOM object or a **node** in the DOM tree that JavaScript interact with. Each of these nodes has its own properties and methods which can be accessed by JavaScript. At the top of the structure is the `document` object which is the entry point for JavaScript into the DOM. Everything in the DOM is a node object.
 
 **NB** The DOM is not JavaScript. The DOM and DOM methods are parts of web APIs which JavaScript can interact with. These APIs (Application Programming Interfaces) are libraries that are written in JavaScript that is used during the DOM manipulation.
 
-
+**Aside** Curiously the "href" aatribute and text content of an `<a></a>` tag are children of the tag! This is an example of the statement above "Everything in the DOM is a node object".
 
 ## Selecting Elements and accessing properties
 
@@ -44,6 +44,15 @@ Use case example:
   heading.innerHTML = "Good Bye:;
   heading.style.color = "red";
 ```
+
+The full list of these relationship-to-node selectors are:
+
+- .parentNode
+- .childrenNodes
+- .firstElementChild
+- .lastElementChild
+- .nextElementSibling
+- .previousElementSibling
 
 `document.querySelector('*')` is another way of selecting elements. * is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
 

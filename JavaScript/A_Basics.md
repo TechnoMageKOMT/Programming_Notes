@@ -77,6 +77,8 @@ It is recommended to make use of the `use strict` directive at all times. This i
 
 **Good Practice** Use commenting throughout code to assist thinking process, reference when returning to code after some time has passed and also to communicate with other developers when collaborating. Commenting makes code far more readable.
 
+The idea is that comments should add some context that is not immediately apparent.
+
 ## Operators
 
 (`=`) Assingment  

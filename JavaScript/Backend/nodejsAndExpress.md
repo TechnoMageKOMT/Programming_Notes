@@ -2,11 +2,11 @@
 
 ## REPL - Read, evaluate, print loops
 
-To access node's REPL enter the command node in the terminal. The functionality is the same as that of the single line interpreter that is found in the console of browsers. To exit REPL, simply type .exit.
+To access Node.js' REPL enter the command node in the terminal. The functionality is the same as that of the single line interpreter that is found in the console of browsers. To exit REPL, simply type .exit.
 
 ## Native Node Modules
 
-There are native modules that are included with nodejs "out of the box". To access these they first have to be "required". An example would be the file system module which is needed to interact directly with the PCs file system. The code to require this module would be:
+There are native modules that are included with Node.js "out of the box". To access these they first have to be "required". An example would be the file system module which is needed to interact directly with the PCs file system. The code to require this module would be:
 
 ```JavaScript
 //jshint esversion:6
@@ -31,15 +31,15 @@ To find packages simply search for them at www.npmjs.com. There is installation 
 
 ## Creating anExpress server
 
-Create folder with a new file `server.js` in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
+Create folder with a new file `*.js` file in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
 
 Express documentation can be found at [https://expressjs.com].
 
 To install Express `$ npm install express --save`. This will also be done for every new project or App.
 
-Click on 'Getting Started' link on their website for instructions on the installation process of expressif needed.
+Click on 'Getting Started' link on their website for instructions on the installation process of express if needed.
 
-Once installed enter the following code in `server.js`
+Once installed enter the following code in `*.js`
 
 ```JavaScript
 //jshint esversion:6
@@ -51,7 +51,7 @@ const app = express();
 app.listen(3000)  //The listen() method tells it to listen on a specific port (3000) for any http requests that gets sent to the server
 ```
 
-Once this code is saved, we have now built the barebones of an express server. To run the server simply run `server.js` from the command line with `node server.js`.
+Once this code is saved, we have now built the barebones of an express server. To run the server simply run `*.js` from the command line with `node *.js`.
 
 To trigger a comment in the console that the server is running simply add a callback function to the listen() method:
 
@@ -73,7 +73,7 @@ app.get('/', function(req, res){
 
 The server can be connected to locally by typing `localhost:3000` in the browser address bar.
 
-The / refers to the home route. To created additional routes, additional get() methods should be applied.
+The `/` refers to the home route. To created additional routes, additional get() methods should be applied.
 
 ```JavaScript
 app.get('/contact', function(req, res){
@@ -87,7 +87,7 @@ Each new route would just be added as required.
 
 The nodemon utility is an npm utility that will monitor for any changes in you source code and automatically restart your server.
 
-Installation ` sudo npm install -g nodemon`
+Installation ` sudo npm install -g nodemon`. This is done only once per PC and is a global installation so nodemon can be run from anywhere in the filing structure.
 
 After the installation use `nodemon server.js` to start server instead of `node server.js`.
 
@@ -167,8 +167,8 @@ app.get('/', function(req, res){
 
   const url = "The API url used in the Postman app"
 
-  https.get(url, function(res){
-    console.log(res.statusCode)
+  https.get(url, function(response){
+    console.log(response.statusCode)
   })
 })
 ```
@@ -227,14 +227,14 @@ app.get('/', function(req, res){
 
     response.on('data', function(data){
       const weatherData = JSON.parse(data);
-      const temp = weatherData.,main.temp;
+      const temp = weatherData.main.temp;
       console.log(temp)
     })
   })
 })
 ```
 
-To see the structure of the abject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (NOte: Firefox version is very limited so rather use Google to find the paths to data if needed)
+To see the structure of the abject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
 
 ## Using Express to Render a Website with Live API Data
 

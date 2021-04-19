@@ -37,3 +37,27 @@ const newNum = num.toFixed(2)
 ```
 
 This will return a newNum value of 5.57. If no number is specified as an argument then the default of 0 will be used.
+
+## parseInt() method
+
+Converts strings to integers. `parseInt(stringVariable)`
+
+## parseFloat() method.
+
+Converts strings to floating (decimal) point numbers. `parseFloat(stringVariable)`
+
+## toString() method
+
+Converts numbers to strings. `numberVariable.toString()`
+
+## Using + to convert strings to numbers
+
+A string variable can also be prefixed with a + sign to convert it to a number. The methods above are better for readability and also offers much finer control. `+stringVariable`
+
+## Mixing strings and numbers
+
+3 + '3 => '33'
+'Hi' - 'i' => NaN
+3 * '3' => 9 (the number; not a string) 
+3 - '3' => 0
+3 / '3' => 1
