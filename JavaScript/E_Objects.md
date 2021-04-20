@@ -44,6 +44,10 @@ objectName.property = valueAlternative
 
 Objects can contain any type of data, including arrays, other objects and even functions (methods). Function expressions are values themselves which is why objects can contain them.
 
+## this Keyword
+
+When an object's method is invoked, then `this` refers to the object which contains the method being invoked.
+
 ## Passing an object into a function
 
 ```JavaScript

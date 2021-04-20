@@ -28,4 +28,24 @@ JS: `//` and `/* */`
 ## Reversing a string
 
 Py: `string[::-1]`
-JS: None. Done by way of a `for loop`
+JS: None. Done by way of a `for loop` or using combination of string.split(), array.reverse() and array.join() methods.
+
+## String concatenation and multiplication
+
+Py: Both + and * operators work on strings
+JS: Only +
+
+## Uppercase and Lowercase String methods
+Py: .upper() and .lower()
+JS: .toUpperCase() and .toLowerCase
+
+## .split() String method
+
+Py: Default delimiter is a whitescpace character. Otherwise works like JS
+JS: Requires explicit naming of the delimeter as an argument.
+
+## Template Literals
+
+Py: .format() method and f-strings (formatted string literals)
+Py: f-strings almost identical to JS (See string notes)
+JS: Template literals
