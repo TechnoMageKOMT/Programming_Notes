@@ -99,12 +99,14 @@ The idea is that comments should add some context that is not immediately appare
 
 ## Conditional Operators
 
-=== Equal to (Strict)
+(===) Equal value and type (Strict)
+(==) Equal values only (type coercion) 
 (>= ) Greater than or equal to
 (<= ) Less than or equal to
 (> ) Greater than
 (< ) Less than
-(!==) Not equal to (Strict)
+(!==) Not equal to (Strict; value and type)
+(!=) Not equal in value only (type coercion)
 
 ## Truthy and Falsy Values
 
@@ -148,6 +150,19 @@ if (height) {
 
 **NB** Logical bugs are the most difficult to find because they often don't trigger error messages.
 
+## Comparing Objects and Arrays
+
+**CAUTION** When comparing Objects and Arrays
+const obj1 = {name: 'Max'}
+const obj2 = {name: 'Max'}
+
+{name: 'Max'} === or == {name: 'Max'} --> False!
+obj1.name === or == obj2.name --> True
+
+The same applies to arrays, since they are in the end specialised Objects.
+
+A way of thinking abput this is that even though they appear identical, they were not created identically, hence JavaSCript considers them as not equal.
+
 ## Conversion (Casting) versus Coersion
 
 There is also == and !=. These operator converts variables behind the scenes to the same type before doing the comparison. This is called coersion and may cause unforseseen bugs. It should therefore be avoided in favour of === and !==.
@@ -183,6 +198,7 @@ If ++ and -- appears after the operand then the value is incremented and the val
 
 && AND
 || OR
+!  NOT
 
 The NOT (!) operator has precedence over the && and || operators
 

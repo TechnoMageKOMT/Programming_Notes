@@ -31,15 +31,15 @@ To find packages simply search for them at www.npmjs.com. There is installation 
 
 ## Creating anExpress server
 
-Create folder with a new file `*.js` file in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
+Create folder with a new file `app.js` file in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
 
 Express documentation can be found at [https://expressjs.com].
 
-To install Express `$ npm install express --save`. This will also be done for every new project or App.
+To install Express `$ npm install express request body-parser`. This will also be done for every new project or App.
 
 Click on 'Getting Started' link on their website for instructions on the installation process of express if needed.
 
-Once installed enter the following code in `*.js`
+Once installed enter the following code in `app.js`
 
 ```JavaScript
 //jshint esversion:6
@@ -51,7 +51,7 @@ const app = express();
 app.listen(3000)  //The listen() method tells it to listen on a specific port (3000) for any http requests that gets sent to the server
 ```
 
-Once this code is saved, we have now built the barebones of an express server. To run the server simply run `*.js` from the command line with `node *.js`.
+Once this code is saved, we have now built the barebones of an express server. To run the server simply run `*.js` from the command line with `node app.js`.
 
 To trigger a comment in the console that the server is running simply add a callback function to the listen() method:
 
@@ -109,11 +109,11 @@ app.get('/', function(req, res){
 
 HTTP return codes cheat sheet (refer Wikipedia for full list):
 
-- 1\*\* Hold on (International responses)
-- 2\*\* Here you go (successful responses)
-- 3\*\* Go away (security issues) (Redirects)
-- 4\*\* You fucked up (Client errors)
-- 5\*\* I fucked up (Server errors)
+- `1**` Hold on (International responses)
+- `2**` Here you go (successful responses)
+- `3**` Go away (security issues) (Redirects)
+- `4**` You fucked up (Client errors)
+- `5**` I fucked up (Server errors)
 
 Reminder: `method` attribute when defining form input fields. If this is `post` then a way should be defined on the server for the handling of these requests.
 
@@ -131,7 +131,7 @@ Once installed it needs to be required:
 const bodyParser = require('body-parser');
 ```
 
-After require, our app needs to be setup to use it. body-parser Has a couple of modes. Eg _.text, _.json, \*.urlencoded. The latter is used when you are trying to grab data from a form.
+After require, our app needs to be setup to use it. body-parser Has a couple of modes. Eg `.text`, \_`.json`, `.urlencoded`. The latter is used when you are trying to grab data from a form.
 
 ```JavaScript
 app.use(bodyParser.urlencoded({extended: true}))
@@ -262,7 +262,8 @@ app.get('/', function(req, res){
   })
 })
 ```
-## Final "Weather App"  solution
+
+## Final "Weather App" solution
 
 ### HTML
 
@@ -331,3 +332,9 @@ app.listen(3000, function () {
   console.log('Server started on port 3000.')
 })
 ```
+
+## Serve static pages on server
+
+A special function of Express is needed, called static. To use this function create a `public` subfolder in the project folder with `images` and `css` subfolder inside of it. Move the style.css and images to their folders. Within the HTML document give file paths from the public level (I.e., not including public.) E.g., `css/styles.css` and `images/image.png`.
+
+Once this is done, add the code `app.use(express.static('public'))` above the app.get() statements.
