@@ -2,8 +2,6 @@
 
 ## Data Types
 
-Python has many types of numbers (numeric literals). The following are two of the types
-
 - int: Integers (1, 2, -5, 1000)
 - float: Floating point numbers (including exponents) (1.5, -0.5, 2e2, 3E2)
 - str: String

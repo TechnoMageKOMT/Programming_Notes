@@ -263,7 +263,7 @@ The `typeof` operator returns the data type of a variable. `typeof(someVariable)
 
 ## prompt(), confirm() and alert() Methods
 
-- prompt() - Prompts the user for some input. Any input will always be in String format, so if a number is needed it needs to be re-cast using Number()
+- prompt(arg1, arg2) - Prompts the user for some input. Any input will always be in String format, so if a number is needed it needs to be re-cast using Number() or parseInt(). `arg1`: User prompt. `arg2`: Default value (optional).
 - confirm() - Returns a boollean value based on a 'OK' vs 'Cancel' response from the user
 - alert() - Simple popup window with a custom string message for the user
 

@@ -41,7 +41,7 @@ JS: .toUpperCase() and .toLowerCase
 
 ## .split() String method
 
-Py: Default delimiter is a whitescpace character. Otherwise works like JS
+Py: Default delimiter is a whitespace character. Otherwise works like JS
 JS: Requires explicit naming of the delimeter as an argument.
 
 ## Template Literals

@@ -16,6 +16,7 @@ Math.round() - Nearest integer
 Math.floor() - Rounds down.
 Math.ceil() - Rounds up.
 Math.random() - Generates a random number between 0 and 1 (not including 1)
+Math.abs() - Returns the absolute value
 
 Math is a JavaScript object that has numerous methods defined in it (see MDN list). 
 
