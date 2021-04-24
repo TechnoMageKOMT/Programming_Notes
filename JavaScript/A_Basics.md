@@ -244,6 +244,10 @@ More than one variable can be declared in one statement. E.g., `let x, y, z`.
 
 DRY Principle: Don't calculate a variable more than once. Store the value and then re-use as needed.
 
+## Global variables
+
+It is good coding practice to make use of either local or global variables (declared at the beginning of programs) as far as possible and not to hardcode actual values in the code itself. This will reduce errors and also smoothline IDE support when these values are used later in the program. [needs revision]
+
 ## Casting of Data Types
 
 This refers to the ability to change a variable from one type to another.
@@ -372,13 +376,19 @@ Should global access be required for any variable used inside the code **block**
 condition ? expression1 : expression2
 ```
 
-If `condition` is met, then `expression1` will be returned, else `expression2` will be returned.
+If `condition` is met, then `expression1` will be returned, else `expression2` will be returned. The condition can have multiple logically (&&, ||,!) connected conditions just like if statements can.
 
 Because this is an operator, it leads to an expression and can be assigned to variables and/or used in template literals.
 
 It does not replace the if/else statement where larger blocks of code are involved.
 
 It is intended to be used where quick/short control structures/decisions are needed.
+
+**NB** Can be chained/nested just like if/else..if. Deeply nested expressions should be avoided in favour of traditional if statements.
+
+```JavaScript
+condition1 ? expression1 : condition2 ? expression2 : expression3
+```
 
 ## Switch Statements
 
@@ -404,6 +414,8 @@ The expression is evaluated once and its value is then compared against each cas
 Expression: A Piece of code that produces a value or is a value. E.g., 3 + 4; 1991; true && true && !false.
 
 Statement: A (usually) bigger piece of code that does not produce a value, but performs an action in stead. E.g., if/else and swicth statements.
+
+Having said that, all expressions are also statements, but not the otherway around.
 
 The distinction between the two is important because JavaScript expects them in different places. For example, a template literal only accepts expressions and not statements.
 

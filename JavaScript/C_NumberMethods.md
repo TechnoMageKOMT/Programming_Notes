@@ -62,3 +62,8 @@ A string variable can also be prefixed with a + sign to convert it to a number. 
 3 * '3' => 9 (the number; not a string) 
 3 - '3' => 0
 3 / '3' => 1
+
+## isNaN() function and Number.isNaN() method
+
+`isNaN()` function: Converts the variable to a number and then tests if it is NaN. Returns true if the value is NaN (Recommended)
+`Number.isNaN()` method: Returns true if the value is of the type Number and equates to NaN. Otherwise it returns false. It does not convert the value to a Number and will not return true for any value that is not of the type Number.
