@@ -202,6 +202,20 @@ If ++ and -- appears after the operand then the value is incremented and the val
 
 The NOT (!) operator has precedence over the && and || operators
 
+### Boolean Tricks with Logical Operators
+
+#### !! Double NOT (Double Bang)
+
+Coercion of truthy and falsy values to real true and false values using the double NOT (double bang) operator, !!. E.g., !!'' is false and !!1 is true.
+
+#### Default Value Assignment via OR operator
+
+E.g., const name = someInput || 'Max'. The value of 'Max' here would be assigned if someInput was a falsy value. (Remember: An OR statement is left-to-right, so the first value that is a truthy will be returned from an expression involving the || operator).
+
+#### Use a Value If The Condition is True with the AND operator
+
+E.g., const name = isLoggedIn && 'Max' will return 'Max' if isLoggedIn is true. If isLoggedIn is a falsy, then the falsy value will be returned.
+
 ## Operator Precedence
 
 Refer: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence] for a table of operator precedence as well as associativity of operations. The higher the number in this table, the higher the priority. I.e., 21 will be performed before 20 etc. Associativity is the direction; i.e., right to left or left to right.

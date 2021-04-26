@@ -49,3 +49,8 @@ JS: Requires explicit naming of the delimeter as an argument.
 Py: .format() method and f-strings (formatted string literals)
 Py: f-strings almost identical to JS (See string notes)
 JS: Template literals
+
+## Array vs List Add Elements
+
+Py: .append() method
+JS: .push() method
