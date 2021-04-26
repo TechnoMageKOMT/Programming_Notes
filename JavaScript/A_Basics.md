@@ -47,7 +47,6 @@ Debugging Tools:
 - Use debugger tools in the browser browser developer console
 - Insert line `debugger` in code at points of concern and the browser will jump to the debugger at that point when running the code
 
-
 ## 'use strict'
 
 It is recommended to make use of the `use strict` directive at all times. This is done by adding the string`'use strict'` to the beginning of all code. This directive is to run code in "strict mode" which will:
@@ -100,7 +99,7 @@ The idea is that comments should add some context that is not immediately appare
 ## Conditional Operators
 
 (===) Equal value and type (Strict)
-(==) Equal values only (type coercion) 
+(==) Equal values only (type coercion)
 (>= ) Greater than or equal to
 (<= ) Less than or equal to
 (> ) Greater than
@@ -198,11 +197,11 @@ If ++ and -- appears after the operand then the value is incremented and the val
 
 && AND
 || OR
-!  NOT
+! NOT
 
 The NOT (!) operator has precedence over the && and || operators
 
-### Boolean Tricks with Logical Operators
+### "Boolean Tricks" with Logical Operators
 
 #### !! Double NOT (Double Bang)
 
@@ -215,6 +214,23 @@ E.g., const name = someInput || 'Max'. The value of 'Max' here would be assigned
 #### Use a Value If The Condition is True with the AND operator
 
 E.g., const name = isLoggedIn && 'Max' will return 'Max' if isLoggedIn is true. If isLoggedIn is a falsy, then the falsy value will be returned.
+
+#### "Boolean Tricks" Examples
+
+```JavaScript
+const userName = 'Johann'
+const altName = ''
+console.log(userName === 'Johann') //Generates boolean true
+console.log(userName) //userName was not changed and still returns 'Johann'
+console.log(userName || null) //userName truthy and therefore returns 'Johann'
+console.log(altName || 'Johann') //altName falsy and therefore returns 'Johann'
+console.log(altName || '') //Both falsy but if first is falsy then second is always returned so '' is returned
+console.log(altName || null || 'Kim') //altName and null falsy so 'Kim' is returned
+
+console.log(userName && 'Johann')//userName is truthy so 'Johann' is returned
+console.log(altName && 'Johann')//altName is falsy so '' is returned (first value)
+console.log(userName && '')//userName is truthy so '' is returned
+```
 
 ## Operator Precedence
 
@@ -287,13 +303,13 @@ The `typeof` operator returns the data type of a variable. `typeof(someVariable)
 
 ## Scope
 
-JS uses lexical scope. Sometimes also referred to as static scope. I.e., Scoping is controlled by the placement of functions and code blocks. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks. 
+JS uses lexical scope. Sometimes also referred to as static scope. I.e., Scoping is controlled by the placement of functions and code blocks. The idea is that variables are only available within the context that they have been assigned. The keyword here is code blocks.
 
 There are three scopes. Global, function and block. Global scope is defined outside of all code blocks. Function and block scopes are defined inside code blocks and functions.
 
-The difference between function and block scopes only becomes apparent when using `var` variables, which are function scoped, but not block scoped. `let` and `const` are Function and block scoped. 
+The difference between function and block scopes only becomes apparent when using `var` variables, which are function scoped, but not block scoped. `let` and `const` are Function and block scoped.
 
-A function inside of another has access to the variables of the parent function 
+A function inside of another has access to the variables of the parent function
 
 If access to a variable is needed outside the function or code block where it is changed, then declare the function before entering the function or code block. The declaration can be done without assigning a value to the variable.
 
@@ -422,6 +438,12 @@ switch (expression) {
 ```
 
 The expression is evaluated once and its value is then compared against each case until it finds a match.
+
+Switch versus if
+
+If the condition is a simple equality (===) check with numerous cases then use switch. If the condition involves more complex combinations of logical operators, rather use if.
+
+**NB** If `break` statement is left out of a switch statement, all the code below it will be executed without checking any of the cases (conditions).
 
 ## Expressions vs Statements
 
@@ -605,7 +627,7 @@ for (let i = 0; i < array.length; i++) {
 ```
 
 `continue`: If condition is `true` then exit/bypass the rest of the current iteration and continue with the next iteration.
-`break`: Stop/break the current iteration and exit the loop completely without any further iterations.  
+`break`: Stop/break the current iteration and exit the loop completely without any further iterations.
 
 ### Looping backwards
 
@@ -625,15 +647,34 @@ for (...) {
 }
 ```
 
+### for-of loop
+
+Excecutes for every element in an array.
+
+```JavaScript
+for (const el of array {
+  console.log(el)
+})
+```
+
+### for-in loop
+
+Excecutes for every key in an object.
+
+```JavaScript
+for (const key in obj) {
+  console.log(key)
+  console.log(obj[key])
+}
+```
+
 ## While Loops
 
 General case:
 
 ```JavaScript
-let i = 1
 while (conditional statement) {
   //code block
-  i++
 }
 ```
 
@@ -667,7 +708,7 @@ function SomeName(var1, var2, var3, var4){
 }
 ```
 
-**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object 
+**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object
 
 ```JavaScript
 const objectName = new SomeName(value1, value2, value3, value4);
@@ -728,7 +769,7 @@ One of the dangers of using `var` to declare variables is that it creates a prop
 
 ### window Object
 
-The `window` object is the global object of JavaScript in the browser. 
+The `window` object is the global object of JavaScript in the browser.
 
 ### this Keyword
 
@@ -768,7 +809,7 @@ Still regular function and `this` is therefore undefined.
 There are two solutions:
 
 1. Declare a variable called `self` outside of the inner function and set it equal to `this`. Then replace all instances of `this` with self in the inner function.
-2. Use an arrow function as the inner function. It does not have its own `this` keyword and inherits it from the parent scope. `this` Would therefore point to the method that it  is embedded in.
+2. Use an arrow function as the inner function. It does not have its own `this` keyword and inherits it from the parent scope. `this` Would therefore point to the method that it is embedded in.
 
 ### arguments Keyword
 
