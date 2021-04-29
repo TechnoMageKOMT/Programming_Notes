@@ -100,10 +100,10 @@ The idea is that comments should add some context that is not immediately appare
 
 (===) Equal value and type (Strict)
 (==) Equal values only (type coercion)
-(>= ) Greater than or equal to
-(<= ) Less than or equal to
-(> ) Greater than
-(< ) Less than
+(>= ) Greater than or equal to (type coercion)
+(<= ) Less than or equal to (type coercion)
+(> ) Greater than (type coercion)
+(< ) Less than (type coercion)
 (!==) Not equal to (Strict; value and type)
 (!=) Not equal in value only (type coercion)
 
@@ -649,7 +649,7 @@ for (...) {
 
 ### for-of loop
 
-Excecutes for every element in an array.
+Excecutes for every element in an array. (**NB Arrays or Strings only**)
 
 ```JavaScript
 for (const el of array {

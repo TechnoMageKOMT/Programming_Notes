@@ -340,6 +340,13 @@ document.querySelector('body').appendChild(newParagraph);
 
 This code would insert the new paragraph element at the end of the body section of the DOM (I.e., as last child).
 
+## focus() and blur() methods
+
+The focus() method gives focus to an element (if it can be focussed). The blur() method removes focus from an alement.
+
+`HTMLElementObject.focus()`
+`HTMLElementObject.blur()`
+
 ## Advanced Selectors
 
 Additional option for selecting a specific target when there is more than one that fits the selector. Using querySelectorAll together with bracket notation for the array that is returned.
