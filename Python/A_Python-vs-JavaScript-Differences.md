@@ -54,3 +54,18 @@ JS: Template literals
 
 Py: .append() method
 JS: .push() method
+
+## Object Keys Syntax
+
+Py: Must be in quotation marks.
+JS: Can be entered with or without quatation marks
+
+## Boolean values
+
+Py: True or False (capitalised)
+JS: true false (lowercase)
+
+## Equality Operator
+
+Py: == Strict comparison only
+JS: == Value and === Type and value comparison

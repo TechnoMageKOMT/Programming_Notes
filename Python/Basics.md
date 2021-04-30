@@ -11,6 +11,16 @@
 - set
 - bool: Boolean
 
+## None keyword and NoneType
+
+The None keyword is used to define a null value (no value at all). It is not the same as 0, False or an empty string, but a data type of its own (NoneType).
+
+```Python
+some_variable = None
+type(some_variable)
+Return: NoneType
+```
+
 ## Mathematical Operators
 
 `+` Addition
@@ -38,4 +48,6 @@ Similar to typeof in JS.
 ## print() function
 
 Similar to console.log in JS.
+
+## Simple Input/Output (I/O)
 

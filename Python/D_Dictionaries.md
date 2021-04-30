@@ -33,3 +33,6 @@ Returns all the values in a dictionary: `dictionary_name.values()`
 
 Returns all the key:value pairs: `dictionary_name.items()`
 
+## Nested Elements
+
+Nested elements are accessed in exactly the same way as arrays.
