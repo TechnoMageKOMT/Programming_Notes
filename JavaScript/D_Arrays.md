@@ -42,6 +42,17 @@ Arrays can contain any type of and mixture of different data types:
 - Objects 
 - etc
 
+## Array.from() method
+
+An array can also be constructed from an existing array by use of the Array.from() method.
+
+```JavaScript
+const newArray = Array.from(existingArray)
+```
+
+This method avoids the referencing problem that is encountered when copying arrays and objects.
+
+
 ## .forEach() Method
 
 The forEach() method loops over an array. It takes a single argument and that is a call back function.

@@ -6,7 +6,7 @@
 - float: Floating point numbers (including exponents) (1.5, -0.5, 2e2, 3E2)
 - str: String
 - list: Lists (arrays in JS)
-- tuple 
+- tuple
 - dict: Dictionary
 - set
 - bool: Boolean
