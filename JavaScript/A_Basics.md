@@ -614,7 +614,7 @@ An alternative to (1) is `array2[i] = newValue/expression`, but (1) should be us
 
 **Local Scope** `i` is locally scoped to its for loop, so the variable name can be used for all for loops in a program except for nested for loops in which case additonal j,k,l would be used.
 
-### Continue or Breaks
+### Continue or Break
 
 ```JavaScript
 for (let i = 0; i < array.length; i++) {
@@ -691,6 +691,16 @@ while (dice !== 6) {
 ```
 
 While loops are generally used when the number of iterations are unknowable and for loops when dealing with known or finite iterations (e.g., arrays).
+
+## do wgile Loops
+
+Excecutes the code block before the conditional statements.
+
+```JavaScript
+do {
+  //code block
+} while (conditional statement)
+
 
 ### Constructor Functions and Objects
 
