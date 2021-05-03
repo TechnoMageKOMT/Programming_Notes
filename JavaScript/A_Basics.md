@@ -629,6 +629,24 @@ for (let i = 0; i < array.length; i++) {
 `continue`: If condition is `true` then exit/bypass the rest of the current iteration and continue with the next iteration.
 `break`: Stop/break the current iteration and exit the loop completely without any further iterations.
 
+#### Labelled Statements
+
+```JavaScript
+let j = 0
+  outerWhile: do {
+    console.log('Outer', j)
+    innerFor: for (let k = 0; k < 5; k++){
+      if (k === 3) {
+        break outerWhile
+      }
+      console.log('Inner', k);
+    }
+    j++
+  } while (j< 3)
+```
+
+This can be used with any statemen. Both the `break` and `continue` can be used.  
+
 ### Looping backwards
 
 ```JavaScript

@@ -41,7 +41,7 @@ This will return a newNum value of 5.57. If no number is specified as an argumen
 
 ## parseInt() method
 
-Converts strings to integers. `parseInt(stringVariable)`
+Converts strings to integers. `parseInt(stringVariable)`. If the string is not a number then NaN is returned.
 
 ## parseFloat() method.
 
