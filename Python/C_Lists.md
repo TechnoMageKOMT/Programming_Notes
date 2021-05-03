@@ -36,6 +36,10 @@ Removes the last element of a list if no arguments are passed. If an index numbe
 
 This will sort the list "in place". I.e., It does not return a value, but sorts the existing array directly, so it changes the original list.
 
+### sorted() function
+
+Returns the sorted list. Usage `sorted(some_list)`.
+
 ### .reverse()
 
 The same as sort() but in the reverse.

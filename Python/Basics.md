@@ -51,3 +51,45 @@ Similar to console.log in JS.
 
 ## Simple Input/Output (I/O)
 
+To create a new text file in a Jupyter notebook (ONLY)  
+
+```Python
+%%writefile myfile.txt
+This is a text file.
+This is the second line.
+This is the third line.
+```
+
+myfile = open('myfile.txt') - To open a file  
+myfile = open('/path/myfile.txt')  
+myfile.read() - Produces a single string of the contents of the file.  
+myfile.readlines() - Produces a list with each line as a seperate element of the list.  
+myfile.close() - Always close files that are opened in a Jupyter Notebook  
+A better way to open files is:  
+
+```Python
+with open('myfile.txt) as my_new_file:
+  contents = my_new_file.read()
+```
+
+Read/write:  
+
+```Python
+with open('myfile.txt, mode='*') as myfile:
+  
+```
+
+The * placeholder:  
+
+- r: Read only
+- w: Write only
+- a: Append only
+- r+: Reading and writing
+- w+: Writing and reading (Overwrites existing files or creates new file!)
+
+To append to a file:
+
+```Python
+with open('myfile.txt', mode='a') as my_new_file:
+  my_new_file.write('Some text')
+```

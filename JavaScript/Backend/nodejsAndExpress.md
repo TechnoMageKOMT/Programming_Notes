@@ -35,7 +35,7 @@ Create folder with a new file `app.js` file in it. Initialise npm while in the n
 
 Express documentation can be found at [https://expressjs.com].
 
-To install Express `$ npm install express request body-parser`. This will also be done for every new project or App.
+To install Express and body-parser `$ npm install express request body-parser`. This will also be done for every new project or App.
 
 Click on 'Getting Started' link on their website for instructions on the installation process of express if needed.
 
@@ -51,7 +51,7 @@ const app = express();
 app.listen(3000)  //The listen() method tells it to listen on a specific port (3000) for any http requests that gets sent to the server
 ```
 
-Once this code is saved, we have now built the barebones of an express server. To run the server simply run `*.js` from the command line with `node app.js`.
+Once this code is saved, we have now built the barebones of an express server. To run the server simply run `app.js` from the command line with `node app.js`.
 
 To trigger a comment in the console that the server is running simply add a callback function to the listen() method:
 
@@ -234,7 +234,7 @@ app.get('/', function(req, res){
 })
 ```
 
-To see the structure of the abject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
+To see the structure of the object in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
 
 ## Using Express to Render a Website with Live API Data
 
