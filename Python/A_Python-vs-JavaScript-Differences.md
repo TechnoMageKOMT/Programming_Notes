@@ -65,7 +65,80 @@ JS: Can be entered with or without quatation marks
 Py: True or False (capitalised)
 JS: true false (lowercase)
 
+## Lobical operators
+
+Py: Keywords and, or, not
+JS: &&, ||, !
+
 ## Equality Operator
 
 Py: == Strict comparison only
 JS: == Value and === Type and value comparison
+
+## else if
+
+Py: elif
+JS else if
+
+## If statement
+
+Py:
+
+```Python
+if some_condition:
+  # code block
+```
+
+JS:
+
+```JavaScript
+if (some_condition) {
+  // code block
+}
+```
+
+## if else statement
+
+Py:
+
+```Python
+if some_condition:
+  # code block
+else:
+  # code block
+```
+
+JS
+
+```JavaScript
+if (some_condition) {
+  // code block
+} else {
+  //code block
+}
+```
+
+## if else if
+
+Py:
+
+```Python
+if some_condition:
+  # code block
+elif some_other_condition:
+  # code block
+else:
+  # code block
+```
+
+JS:
+
+```JavaScript
+if (some_condition) {
+  // code block
+} else if (some_other_condition) {
+  // code block
+} else {
+  //code block
+}
+```

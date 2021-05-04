@@ -67,9 +67,11 @@ It is recommended to make use of the `use strict` directive at all times. This i
 
 ## Variable Declarations
 
-- let = Mutable variable
-- const = Immutable or constant variable
-- var = Deprecated. Mutable. Function scoped but rest of the time global.
+- let = Mutable variable. Uses block scope (including functions).
+- const = Immutable or constant variable. Uses block scope (including functions).
+- var = Deprecated. Mutable. Allows variable creation in the function and global scope.
+
+In modern JS only let and const is used. It forces the writing of cleaner code.
 
 ## Escape Character
 
@@ -773,6 +775,7 @@ Some important aspects of JavaScript
 - Dynamic typing: Type only becomes known at runtime
 - Dynamic typing: Data types of variables can be changed automatically/dynamically when assigning a new value to a variable
 - **NOT** an interpreted language: Just-in-time (JIT) compilation is a combination between interpretation adn compilation.
+- The 'Heap" is 'long-term memory' and the 'Stack' is 'short-term memory'
 
 ### Excecution Context
 
@@ -782,7 +785,7 @@ Some important aspects of JavaScript
 
 ### Hoisting
 
-Hoisting makes some variables and functions available before they have been declared. This is a common cause of difficult to find bugs.
+Hoisting makes some variables and functions available before they have been declared. This is a common cause of difficult to find bugs. Commonly there are undefined returns instead of errors when hoisting takes place which makes the errors difficult to detect.
 
 To avoid hoisting problems:
 
