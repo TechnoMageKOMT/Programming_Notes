@@ -147,3 +147,13 @@ if (some_condition) {
 
 Py: General for loop
 JS: Objects only
+
+## User input
+
+Py: input()
+JS: alert()
+
+## Re-casting string to number
+
+Py: int() or float()
+JS: Number(), parseInt(), parseFloat()
