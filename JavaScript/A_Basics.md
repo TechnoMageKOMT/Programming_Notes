@@ -865,7 +865,7 @@ Reference data types are:
 
 All reference types are stored in the memory 'Heap' of the JS Engine. Primitive types are stored in the 'Call Stack' within the excecution context in which they were declared.
 
-Whenever an object or reference type is copied, there is merely the creation of a new variable that points to the same object in the memory "Heap'. Any changes to the object will therefore be reflected by both the original and "copied" variables.
+Whenever an object or reference type is copied, there is merely the creation of a new variable that points to the same location in the memory "Heap'. Any changes to the object will therefore be reflected by both the original and "copied" variables. (A non-primitive variable does not store a value, but just a pointer to the location in memory)
 
 Example:
 

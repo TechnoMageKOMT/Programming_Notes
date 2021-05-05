@@ -58,7 +58,7 @@ JS: .push() method
 ## Object Keys Syntax
 
 Py: Must be in quotation marks.
-JS: Can be entered with or without quatation marks
+JS: Can be entered with or without quotation marks
 
 ## Boolean values
 
@@ -142,3 +142,8 @@ if (some_condition) {
   //code block
 }
 ```
+
+## For in
+
+Py: General for loop
+JS: Objects only
