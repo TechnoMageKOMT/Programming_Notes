@@ -59,3 +59,6 @@ parameter => {...} //If only one parameter
 (a, b) => a + b //If only one expression in the body
 const loadPerson = pName => ({name: pName}) //Extra parenthesis if object is returned
 ```
+
+## Default Arguments
+

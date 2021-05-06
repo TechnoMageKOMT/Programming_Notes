@@ -31,7 +31,7 @@ All that this mean is that one has a repository on GitHub and one wants to copy 
 
 Copy: SSH address from GitHub repo (clone or download button)
 
-`git clone <ssh address>`
+`git clone <ssh address>` (SSH address = https:// address)
 
 _Make sure you are in the directory where the files should be downloaded to when performing this action._
 
@@ -123,6 +123,11 @@ To undelete a file when it has not been staged yet.
 ~$ git restore <filename>
 ```
 
+## Remove staged files
+
+`git rm --cached -r` For all files. The -r stands for recursive.
+`git rm --cached filename.extension`
+
 ### Git origins and remotes
 
 An origin is where the remote code is being hosted and could be different places depending on the collaborators if any.
@@ -177,7 +182,7 @@ git checkout main
 
 Switches back to the main branch.
 
-The idea is to create "small" and then merging them with the main branch if and when suitable. **NOT** to create extensive very large branches which defeats the purpose of version control.
+The idea is to create "small" and then merging them with the main branch if and when suitable. **NOT** to create extensive very large branches which defeats the purpose of version control. The use case here is when experimental features needs to be added to a project without affecting the main project while experimentation and testing is under way.
 
 ### Committing to a new branch
 
@@ -217,9 +222,15 @@ The last command will show the latest commit message on GitHub that is not prese
 
 This will list the differences applied to a file before staging it. It only works before the file is staged.
 
+## Git checkout
+
+This command will roll back to the last locally saved committed version of the specified file.
+
+`git checkout filename.txt`
+
 ### Ignoring files
 
-Create a file called .gitignore and add files to ignore line by line in this file. Wildcards like \* can be used to ignore any files with a certain extension etc.
+Create a file called .gitignore and add files to ignore line by line in this file. Wildcards like \* can be used to ignore any files with a certain extension etc. # sign to enter lines with comments.
 
 ### Correcting bad commit messages
 
@@ -323,3 +334,4 @@ git push origin --tags              (To push the tag to GitHub)
 git tag -d <tag name>               (To delete a tag)
 git push origin --delete <tag name> (To delete tag from GitHub)
 ```
+
