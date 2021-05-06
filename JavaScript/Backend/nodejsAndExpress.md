@@ -83,6 +83,32 @@ app.get('/contact', function(req, res){
 
 Each new route would just be added as required.
 
+## Express Template (All files will have these components)
+
+```CLI
+npm init
+npm i express body-parser
+```
+
+```JavaScript
+//jshint esversion:6
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const app = express()
+
+app.get('/', function(req, res) {
+  res.send('Hello')
+  or
+  res.sendFile(__dirname + '/index.html')
+  etc
+})
+
+app.listen(3000, function(){
+  console.log('Server started on port 3000)
+})
+```
+
 ## nodemon Utility
 
 The nodemon utility is an npm utility that will monitor for any changes in you source code and automatically restart your server.
@@ -234,7 +260,7 @@ app.get('/', function(req, res){
 })
 ```
 
-To see the structure of the object in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
+To see the structure of the o bject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
 
 ## Using Express to Render a Website with Live API Data
 
@@ -338,3 +364,27 @@ app.listen(3000, function () {
 A special function of Express is needed, called static. To use this function create a `public` subfolder in the project folder with `images` and `css` subfolder inside of it. Move the style.css and images to their folders. Within the HTML document give file paths from the public level (I.e., not including public.) E.g., `css/styles.css` and `images/image.png`.
 
 Once this is done, add the code `app.use(express.static('public'))` above the app.get() statements.
+
+## Example of logic used in app.get
+
+```JavaScript
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const app = express()
+
+app.get('/', function(req, res){
+  const today = new Date()
+  if (today.getDay() == 6 || today.getDay() == 0) {
+    res.send('Yay! It is the weekend.')
+  }else {
+    res.send('Boo! I have to work.')
+  }
+})
+
+app.listen(3000, function(){
+  console.log('Server started on port 3000')
+})
+```
+
+**NB Note** Multiple res.send are not accepted. The browser sees a res.send as the final send.
