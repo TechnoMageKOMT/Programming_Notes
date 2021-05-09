@@ -62,3 +62,26 @@ const loadPerson = pName => ({name: pName}) //Extra parenthesis if object is ret
 
 ## Default Arguments
 
+Default arguments are simply set by setting the parameters in the function definition equal to the required default values:
+
+```JavaScript
+const someFunction = function (par1=a, par2=b, par3) {
+  //code block
+}
+```
+
+NB: It does not matter in what order the parameters with defaults are listed. They can be before, after or between paramters that do not have default values.
+
+## Rest parameter
+
+The rest parameter takes in the applicable arguments and places them into an array.
+
+```JavaScript
+const someFunction = function (...numbers) {
+  //code block
+}
+
+someFunction(a,b,c,d,e,f)
+```
+
+`numbers` Will be an array within the function with the elements passed as arguments. If the rest parameter appear together with "normal" arguments then it should ALWAYS be at the end of the list since it will 'consume' all remaining arguments in the list. For the same reasons there can only be one rest parameter per function.
