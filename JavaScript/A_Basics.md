@@ -44,7 +44,7 @@ Debugging Tools:
 - Use IDEs debugging capabilities
 - Use console.log(), console.warn(). console.error()
 - console.table() to view objects
-- Use debugger tools in the browser browser developer console
+- Use debugger tools in the browser's developer console
 - Insert line `debugger` in code at points of concern and the browser will jump to the debugger at that point when running the code
 
 ## 'use strict'
@@ -122,7 +122,7 @@ Everything else are truthy values.
 
 **NB** An empty object is counter-intuitively a truthy!
 
-Explicit conversion to Boolean type is almost never done in practive. Mostly done implicitly by coersion in two scenarios
+Explicit conversion to Boolean type is almost never done in practice. Mostly done implicitly by coersion in two scenarios
 
 - Logical Operators
 - Logical Contexts (e.g., conditional statements)
@@ -157,12 +157,12 @@ if (height) {
 const obj1 = {name: 'Max'}
 const obj2 = {name: 'Max'}
 
-{name: 'Max'} === or == {name: 'Max'} --> False!
-obj1.name === or == obj2.name --> True
+`obj1 === or == obj2 --> False!`
+`obj1.name === or == obj2.name --> True`
 
 The same applies to arrays, since they are in the end specialised Objects.
 
-A way of thinking abput this is that even though they appear identical, they were not created identically, hence JavaSCript considers them as not equal.
+A way of thinking abput this is that even though they appear identical, they were not created identically (different addresses in the memory heap), hence JavaSCript considers them as not equal.
 
 ## Conversion (Casting) versus Coersion
 
@@ -207,7 +207,7 @@ The NOT (!) operator has precedence over the && and || operators
 
 #### !! Double NOT (Double Bang)
 
-Coercion of truthy and falsy values to real true and false values using the double NOT (double bang) operator, !!. E.g., !!'' is false and !!1 is true.
+Coercion of truthy and falsy values to real true and false values using the double NOT (double bang) operator, !!. E.g., `!!''` is false and `!!1` is true.
 
 #### Default Value Assignment via OR operator
 
@@ -240,12 +240,12 @@ Refer: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operat
 
 ## Modulus(%) Use Case
 
-Even number have a modulus value of 0 and odd numbers will have non-zero modulus values.
+Even number have a modulus value of 0 and odd numbers will have non-zero modulus values. The same applies to situations where one wants to check if a number is divisable by another smaller number.
 
 ## Primitive Data Types
 
 - String: Sequences of characters
-- Number: Floating point numbers are used for both decimal and integers "behind the scene"
+- Number: Floating point numbers are used for both decimal and integers "behind the scenes"
 - Boolean: Logical true or false
 - null: Empty value. Not the same as undefined (see below)
 - undefined: The value of a variable that has been declared without initialisation
@@ -278,7 +278,7 @@ DRY Principle: Don't calculate a variable more than once. Store the value and th
 
 ## Global variables
 
-It is good coding practice to make use of either local or global variables (declared at the beginning of programs) as far as possible and not to hardcode actual values in the code itself. This will reduce errors and also smoothline IDE support when these values are used later in the program. [needs revision]
+It is good coding practice to make use of either local or global variables (declared at the beginning of programs) as far as possible and not to hardcode actual values in the code itself. This will reduce errors and also smoothline IDE support when these values are used later in the program.
 
 ## Casting of Data Types
 
@@ -313,7 +313,7 @@ The difference between function and block scopes only becomes apparent when usin
 
 A function inside of another has access to the variables of the parent function
 
-If access to a variable is needed outside the function or code block where it is changed, then declare the function before entering the function or code block. The declaration can be done without assigning a value to the variable.
+If access to a variable is needed outside the function or code block where it is changed, then declare the variable before entering the function or code block. The declaration can be done without assigning a value to the variable.
 
 A scope always have access to all variables from outer scopes within which it is nested (parent scopes). Outer scopes, however, never have access to variables of inner scopes. When a variable is not in a scope, it looks up the scope chain until it is found in one of the parent scopes. This is called **variable lookup**. The scope chain of variables is one way. It does not work from the outside in.
 
