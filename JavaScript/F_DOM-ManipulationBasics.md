@@ -6,6 +6,8 @@ Document Object Model (DOM) is a platform and language-neutral interface that al
 
 Each HTML element and unit of content is a DOM object or a **node** in the DOM tree that JavaScript interact with. Each of these nodes has its own properties and methods which can be accessed by JavaScript. At the top of the structure is the `document` object which is the entry point for JavaScript into the DOM. Everything in the DOM is a node object.
 
+There are two types of nodes. Element nodes and text nodes. They each have different properties and different methods.
+
 **NB** The DOM is not JavaScript. The DOM and DOM methods are parts of web APIs which JavaScript can interact with. These APIs (Application Programming Interfaces) are libraries that are written in JavaScript that is used during the DOM manipulation.
 
 **Aside** Curiously the "href" aatribute and text content of an `<a></a>` tag are children of the tag! This is an example of the statement above "Everything in the DOM is a node object".
