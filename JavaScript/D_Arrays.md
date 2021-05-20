@@ -120,6 +120,14 @@ The last item of an array can be identified even if the length of the array is u
 
 `arrayName.includes(someElement)`: Returns a value of `true` if the element passed as argument is present and `false` if not. This is useful in conditional statements involving arrays. **NB** === Strict comparison applies.
 
+## slice() method
+
+The slice() method returns the selected elements in an array, as a new array object.
+
+The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+
+Note: The original array will not be changed.
+
 ## splice() method
 
 `arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional).
@@ -247,3 +255,29 @@ Output: Sorted list
 
 **NB** Capital letters comes before lowercase letters so it is very important to convert all toLowerCase() or toUpperCase() when doing comparisons.
 
+## map() method
+
+The map() method creates a new array with the results of calling a function for every array element.
+
+The map() method calls the provided function once for each element in an array, in order.
+
+Note: map() does not execute the function for array elements without values.
+
+Note: this method does not change the original array.
+
+```JavaScript
+const myArray = ['Sam', 'Alice', 'Nick', 'Matt'];
+
+// Appends text to each element of the array
+const newArray = myArray.map(name => {
+	return 'My name is ' + name; 
+});
+console.log(newArray); // ['My name is Sam', 'My Name is Alice', ...]
+
+// Appends the index of each element with it's value
+const anotherArray = myArray.map((value, index) => index + ": " + value);
+console.log(anotherArray); // ['0: Sam', '1: Alice', '2: Nick', ...]
+
+// Starting array is unchanged
+console.log(myArray); // ['Sam', 'Alice', 'Nick', 'Matt']
+```

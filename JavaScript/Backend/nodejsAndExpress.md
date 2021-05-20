@@ -97,6 +97,8 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
+app.use(bodyParser.urlencoded({extended: true}))
+
 app.get('/', function(req, res) {
   res.send('Hello')
   or
@@ -115,7 +117,7 @@ The nodemon utility is an npm utility that will monitor for any changes in you s
 
 Installation ` sudo npm install -g nodemon`. This is done only once per PC and is a global installation so nodemon can be run from anywhere in the filing structure.
 
-After the installation use `nodemon server.js` to start server instead of `node server.js`.
+After the installation use `nodemon app.js` to start server instead of `node app.js`.
 
 ## res.sendFile() method
 
@@ -260,7 +262,7 @@ app.get('/', function(req, res){
 })
 ```
 
-To see the structure of the o bject in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
+To see the structure of the object in order to find the required data, copy the `url` in a Google browser and view it with the JSON Viewer Pro extension. (Note: Firefox version is very limited so rather use Google to find the paths to data if needed)
 
 ## Using Express to Render a Website with Live API Data
 
