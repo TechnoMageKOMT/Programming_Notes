@@ -1,0 +1,113 @@
+# Animations and Transitions
+
+## hide()
+
+`$('target').hide()` - Just hides the element.
+`$('target').hide(1000)` - Hide over 1 second. The keywords `slow` and `fast` can also be used as an argument.
+`$('target').hide(1000, function(){})` - The second optional argument is a call back function
+
+
+Hide takes place from bottom to top and right to left by default.
+
+## show()
+
+The opposite of `hide()`, but everything else is the same.
+
+## toggle()
+
+Toggles between `show()` and `hide()`.
+
+## fadeIn()
+
+Similar to `show()` but eased. 
+
+## fadeOut()
+
+Similar to `hide()` but eased.
+
+## fadeTo()
+
+Takes an additional argument of opacity that the element should fade out to or in to. `$('target').fadeTo(1000, 0.3, function(){})`
+
+## toggleFade
+
+Example:
+
+```HTML
+    <div
+      class="element"
+      style="width: 100px; height: 100px; background: red"
+    ></div>
+ 
+    <br />
+
+    <div class="fadeIn">Fade In</div>
+    <br />
+    <div class="fadeOut">Fade Out</div>
+```
+
+```JavaScript
+$('.fadeIn, .fadeOut').click(function(){
+    $('.element').fadeToggle(2000, function() {
+      console.log("Transition Complete");
+    })
+})
+```
+
+## slideUp()
+
+Same rules applies as above
+
+## slideDown()
+
+Same rules applies as above
+
+## slideToggle()
+
+Same syntax and rules as toggleFade().
+
+## Custom animations
+
+These animations takes four arguments.
+
+1. The properties to change
+2. The duration of the animation
+3. Easing function (dealt with in jQuery UI)(default = swing)
+4. Callback function
+
+Example:
+
+```JavaScript
+$(document).click(function() {
+
+    $('.element').animate({
+      left: "200px",
+      top: "50px",
+      width: "50px",
+      height: "50px",
+      fontSize: "7px",
+      opacity: "0.2"
+    }, 2000, 'swing', function() {
+      console.log('Animate done');
+    })
+})
+```
+
+## Stop it all
+
+The `stop()` prevents animations from repeating more than once in response to repeated events.
+
+Example:
+
+```JavaScript
+$('.element').hover(function() {
+    $(this).stop().animate({left: "50px"}, "slow")
+  }, function(){
+    $(this).stop().animate({left: "0px"}, "slow")
+})
+```
+
+If the mouse is moved repeatedly over the element, the animation will keep on repeating for the same amount of times and this is usually not what is intended. The stop() method prevents this, so the animation will only take place once when the mouse enters over the element and once when it leaves.
+
+For a better explanation run the above code. The `element` is a block div with a background color.
+
