@@ -9,7 +9,7 @@ jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and 
 - jQuery UI
 - MooTools
 - Underscore.js
-- Dojo Toolkit
+- Dojo Toolkit (more suitable for advanced developers)
 
 There are many more and each library usually focusses on specialised aspects of web development.
 
@@ -232,5 +232,4 @@ To add data:
   console.log(data);
 ```
 
-NB! This data won't appear on the HTML element when doing a inspector lookup, but will be there. Console.log will confirm that it is there.
 NB! This data won't appear on the HTML element when doing a inspector lookup, but will be there. Console.log will confirm that it is there.

@@ -3,11 +3,15 @@
 ## hide()
 
 `$('target').hide()` - Just hides the element.
-`$('target').hide(1000)` - Hide over 1 second. The keywords `slow` and `fast` can also be used as an argument.
+`$('target').hide(1000)` - Hide over 1 second. The keywords `slow` and `fast` can also be used as an argument. Their durations are 600ms and 400ms respectively.
 `$('target').hide(1000, function(){})` - The second optional argument is a call back function
 
 
 Hide takes place from bottom to top and right to left by default.
+
+NB! The hiding of elements places the display property of hide onto elements. This also applies to the similar methods below.
+
+A work around to this is to use the fadeTo() method and to set the opacity to 0. This will make sure the display property is not changed.
 
 ## show()
 
@@ -19,7 +23,7 @@ Toggles between `show()` and `hide()`.
 
 ## fadeIn()
 
-Similar to `show()` but eased. 
+Similar to `show()` but eased.
 
 ## fadeOut()
 
@@ -111,3 +115,55 @@ If the mouse is moved repeatedly over the element, the animation will keep on re
 
 For a better explanation run the above code. The `element` is a block div with a background color.
 
+## Timing Animations
+
+Two methods:
+
+- Callback method
+- Delay method
+
+### Callback method
+
+This method is basically using embedded code to sequentially animate.
+
+```HTML
+    <div class="square one"></div>
+    <div class="square two"></div>
+    <div class="square three"></div>
+
+    <style>
+      .square {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        margin-bottom: 20px;
+      }
+    </style>
+```
+
+```JavaScript
+$('.square.one').animate({marginLeft: "+=100"}, 1000, function() {
+    $('.square.two').animate({marginLeft: "+=100"}, 1000, function(){
+      $('.square.three').animate({marginLeft: "+=100"}, 1000)
+    })
+})
+```
+
+### Delay Method
+
+```JavaScript
+$('.square.one').animate({marginLeft: "+=100"}, 1000)
+$('.square.two').delay(200).animate({marginLeft: "+=100"}, 1000)
+$('.square.three').delay(1000).animate({marginLeft: "+=100"}, 1000)
+```
+
+This is a better method than the callback method because one has very fine control over the animation timing.
+
+The two methods could also be combined if need be:
+
+```JavaScript
+$('.square.one').animate({marginLeft: "+=100"}, 1000, function() {
+    $('.square.two').delay(200).animate({marginLeft: "+=100"}, 1000)
+    $('.square.three').delay(1000).animate({marginLeft: "+=100"}, 1000)
+})
+```
