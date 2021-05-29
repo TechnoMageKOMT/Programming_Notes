@@ -40,6 +40,10 @@ objectName.property = valueAlternative
 `objectName.newKey = 'newValue'`
 `objectName['newKey'] = 'newValue'`
 
+## Deleting data from objects
+
+`delete objectName.property`
+
 ## Contents of objects
 
 Objects can contain any type of data, including arrays, other objects and even functions (methods). Function expressions are values themselves which is why objects can contain them.
@@ -192,4 +196,37 @@ const person = {
     console.log(`${this.name} wants ${want}`)
   }
 }
+```
+
+## Using objects instead of switch statements
+
+```JavaScript
+
+function phoneticLookup (val) {
+  let result = ''
+  const lookup = {
+    'alpha': 'Adams',
+    'bravo': 'Boston',
+    'charlie': 'Chicago',
+    'delta': 'Denver',
+  }
+  result = lookup(val)
+  return result
+}
+
+phoneticLookup('charlie')
+```
+
+## .hasOwnProperty() method
+
+Checks if a property of a given object exists or not.
+
+```JavaScript
+const myObj = {
+  'top': 'hat',
+  'bottom': 'pants'
+}
+
+myObj,hasOwnProperty('top') //true
+myObj.hasOwnProperty('middle') //false
 ```
