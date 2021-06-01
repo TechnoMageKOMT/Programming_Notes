@@ -26,7 +26,9 @@ Same syntax as above, but with these two keywords.
 
 ### hover
 
-Takes two functions as arguments. The first is for mouseenter and the second for mouseleave.
+The same syntax is used as above, but additional functionality is possible. Two events fire when the mouse is hovered over an element. The first is when the mouse enters the element and the second when the mouse leaves it.
+
+Two functions can therefore be passed as arguments. The first is for mouseenter and the second for mouseleave.
 
 ```JavaScript
 $('target').hover(function(){
@@ -99,6 +101,14 @@ This is on the window object:
 $(window).resize(function(){
     console.log('Resize');
   })
+```
+
+## Adding the same handler for multiple events
+
+```JavaScript
+$(`html`).on(`click keydown`, function () {
+    console.log(`Mouse was click or key was pressed`);
+})
 ```
 
 ## on method
@@ -194,3 +204,47 @@ $('input[type=checkbox]').change(function() {
 ```
 
 Note: The :checked CSS pseudo-class selector represents any radio `<input type="radio">`, checkbox `<input type="checkbox">`, or option `<option>` in a `<select>` element that is checked or toggled to an on state.
+
+## Triggering events automatically
+
+If an event should be triggered within the application just call the event afterwards without passing any arguments. Eg.,
+
+```JavaScript
+$(`.red-box`).click(function() {
+    $(this).fadeTo(1000, 0.5)
+  })
+
+$(`.red-box`).click()
+//This code will automatically trigger the click event when the page is loaded.
+```
+
+## Delegated Events
+
+The solution to event hanlders on dynamically created content. The code below places the event handler or the parent of the dynamically created code and then "delegate" it to elements of the same type as the dynamically created content.
+
+```JavaScript
+$(`#content`).append(`<p>This is a dynamically added paragraph</p>`)  
+
+$(`#content`).on(`click`, `p`, function() {
+    $(this).slideUp()
+})
+```
+
+## Passing additional data to events
+
+Refer: [https://api.jquery.com/event.data/]
+
+```JavaScript
+const greetUser = function (userdata) {
+    const username = userdata.user || `Anonymous`
+    const domain = userdata.domain || `Example.com`
+    alert(`Welcome back ${username} from ${domain}!`)
+  }
+
+  $(`#btn-click`).click({
+    user: `Peter`,
+    domain: `petersommerhof.com`,
+  }, function(e) {
+    greetUser(e.data)
+})
+```

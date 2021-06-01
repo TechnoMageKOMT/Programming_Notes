@@ -6,7 +6,6 @@
 `$('target').hide(1000)` - Hide over 1 second. The keywords `slow` and `fast` can also be used as an argument. Their durations are 600ms and 400ms respectively.
 `$('target').hide(1000, function(){})` - The second optional argument is a call back function
 
-
 Hide takes place from bottom to top and right to left by default.
 
 NB! The hiding of elements places the display property of hide onto elements. This also applies to the similar methods below.
@@ -74,7 +73,7 @@ Same syntax and rules as toggleFade().
 
 These animations takes four arguments.
 
-1. The properties to change
+1. The properties to change (only numeric properties apply with units included. Color for instance is not supported)
 2. The duration of the animation
 3. Easing function (dealt with in jQuery UI)(default = swing)
 4. Callback function
@@ -99,7 +98,7 @@ $(document).click(function() {
 
 ## Stop it all
 
-The `stop()` prevents animations from repeating more than once in response to repeated events.
+The `stop()` prevents animations from repeating more than once in response to repeated events. It stops any animations that are currently running on element so that the next one can start.
 
 Example:
 
@@ -167,3 +166,7 @@ $('.square.one').animate({marginLeft: "+=100"}, 1000, function() {
     $('.square.three').delay(1000).animate({marginLeft: "+=100"}, 1000)
 })
 ```
+## Chaining 
+
+The delay method is an example of chaining in jQuery where functions are chained one after the other to achieve the desired effect.
+
