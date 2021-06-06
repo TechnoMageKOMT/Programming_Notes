@@ -57,7 +57,7 @@ $('.element').mousemove(function(e){
 
 ## Keyboard events
 
-- keydown
+- keydown (Preferred method)
 - keyup
 
 ```JavaScript
@@ -204,6 +204,31 @@ $('input[type=checkbox]').change(function() {
 ```
 
 Note: The :checked CSS pseudo-class selector represents any radio `<input type="radio">`, checkbox `<input type="checkbox">`, or option `<option>` in a `<select>` element that is checked or toggled to an on state.
+
+The way to find which option was selected in a `<selection>` list:
+
+```JavaScript
+  $(`#selection`).change(function(){
+    const selectedOption = $(this).find(`:selected`).text()
+    alert(selectedOption)
+  })
+```
+
+## Form: .submit()
+
+This is to do some client side validation and to prevent the submission of the form if the validation fails. An example:
+
+```JavaScript
+  $(`#form`).submit(function(e) {
+    const textarea = $(`#message`)
+    if (textarea.val().trim() == ``) {
+      textarea.css(`box-shadow`, `0 0 4px #811`)
+      e.preventDefault()
+    } else {
+      //Form will be submitted
+    }
+  })
+```
 
 ## Triggering events automatically
 

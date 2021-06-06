@@ -138,6 +138,16 @@ All of the methods below can take callback functions as arguments and the html c
 
 Instead of new content, existing elements can also be passed as arguments , but it is important to keep in mind that the elements will be moved and NOT cloned. If tgis is done on a target that returns a list of elements then the element will also be moved, but then cloned to subsequent members of the list.
 
+## Creating a new element
+
+In jQuery, a new element can be created by passing a HTML string to the constructor, as shown below:
+
+```JavaScript
+const img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+img.attr('src', imgurl);
+img.appendTo('#imagediv');
+```
+
 ### Appending an element or content
 
 `$('parent').append('content or html code')` Appends the specified content as the last child of the targetted parent. Id multiple elements are targetted then the new content will be added to each member of the list of elements. 
@@ -173,6 +183,23 @@ See also:
 See also:
 
 `$(content or html).insertAfter('target')`
+
+### .add()
+
+The add() method adds elements to an existing group of elements. This applies within the context of selecting elements. The code below, for example, applies the css styling to BOTH the checkbox which is targettted and the label element associated with it.
+
+This method adds elements on the whole document, or just inside context elements if the context parameter is specified.
+
+```JavaScript
+$(`#checkbox`).change(function() {
+    const checked = $(this).is(`:checked`)
+    if (isChecked) {
+      $(this).add(`label[for="cb"]`).css("box-shadow", `0 0 4px #181`)
+    } else {
+      $(this).add(`label[for="cb"]`).css("box-shadow", `0 0 4px #811`)
+    }
+})
+```
 
 ### Replacing elements
 

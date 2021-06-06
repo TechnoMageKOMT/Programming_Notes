@@ -2,6 +2,14 @@
 
 Asynchronous JavaScript and XML  
 
+jQuery offers several function to handle Ajax requests:
+
+- $.load() (to get data from your own server)
+- $.get()
+- $.post()
+- $.ajax()
+- $.getJSON()
+
 ## Get data with Ajax
 
 [https://jsonplaceholder.typicode.com/] - Free fake API for testing and prototyping.  
@@ -52,5 +60,7 @@ The first change to the above is the method which will now be POST. The URL will
     }
   })
 ```
+
+## getJSON() method
 
 
