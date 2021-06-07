@@ -10,11 +10,20 @@ Enter code between `<script></script>` tags either in the head section of the HT
 
 Link a script file to the HTML file by way of the script source tag:
 
-`<script src="script.js" defer="defer"></script>`
+`<script src="script.js" defer></script>`
+`<script src="script.js" async></script>`
 
-Load scripts in the `<head>` section of the HTML file below the CSS link(s), making sure that the `defer` attribute is specified. This will download the scripts while the HTML file is being parsed and will improve performance.
+The defer attribute is a boolean attribute.
 
-If a script(s) does not rely on the DOM and needs to excecute at the beginning of the HTML page use the attribute `async`. This will however stop the parsing of the HTML document and run the script first. The order of script execution is also not guaranteed with `async`
+When present, it specifies that the script is executed when the page has finished parsing.
+
+Note: The defer attribute is only for external scripts (should only be used if the src attribute is present).
+
+Note: There are several ways an external script can be executed:
+
+    If async is present: The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
+    If async is not present and defer is present: The script is executed when the page has finished parsing
+    If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page  
 
 **NB** Embedded and external script cannot be used together. If both are present, the embedded script will simply be ignored.
 
@@ -130,12 +139,12 @@ Explicit conversion to Boolean type is almost never done in practice. Mostly don
 Examples:
 
 ```JavaScript
-const money = 0
-if (money) {
-  //some code
-} else {
-  //some other code
-}
+  const money = 0
+  if (money) {
+    //some code
+  } else {
+    //some other code
+  }
 ```
 
 or to check if a variable is defined before using it
@@ -162,7 +171,7 @@ const obj2 = {name: 'Max'}
 
 The same applies to arrays, since they are in the end specialised Objects.
 
-A way of thinking abput this is that even though they appear identical, they were not created identically (different addresses in the memory heap), hence JavaSCript considers them as not equal.
+A way of thinking about this is that even though they appear identical, they were not created identically (different addresses in the memory heap), hence JavaScript considers them as not equal.
 
 ## Conversion (Casting) versus Coersion
 
@@ -249,8 +258,14 @@ Even number have a modulus value of 0 and odd numbers will have non-zero modulus
 - Boolean: Logical true or false
 - null: Empty value. Not the same as undefined (see below)
 - undefined: The value of a variable that has been declared without initialisation
-- Symbol: Value that is unique and cannot be change (?Natural constants)
+- Symbol: Value that is unique and cannot be change (over simplification. see later)
 - BigInt: Numbers larger than the Number type can accomodate
+
+Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.
+
+JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard.
+
+This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:
 
 ## undefined versus null
 
@@ -323,7 +338,7 @@ All scoping rules also apply to arguments passed to a function. **CAUTION** If v
 
 The declaration of an object is **not** a code block and therefore does not have its own scope.
 
-## Leaked Scope
+## Leaked Global Variable
 
 Variables should **always** be declared and/or initialised before they are used.
 
@@ -400,6 +415,8 @@ if (conditional statement) {
 }
 ```
 
+If the conditional statement is true, the code will always run. If it is false the code will never run. If statements are a crucial part of flow control in programming. The `else` and `else if` clauses are optional.
+
 Should global access be required for any variable used inside the code **block** of the statement, declare the variable(s) before starting the if/else statement.
 
 ### Ternary Operator
@@ -451,7 +468,7 @@ If the condition is a simple equality (===) check with numerous cases then use s
 
 Expression: A Piece of code that produces a value or is a value. E.g., 3 + 4; 1991; true && true && !false.
 
-Statement: A (usually) bigger piece of code that does not produce a value, but performs an action in stead. E.g., if/else and swicth statements.
+Statement: A (usually) bigger piece of code that does not necessarily produce a value, but performs an action in stead. E.g., if/else and swicth statements.
 
 Having said that, all expressions are also statements, but not the otherway around.
 
@@ -524,7 +541,7 @@ Expression
 
 ## Shadowed variables
 
-When a variable is declared globally as well as inside a function. I.e., The same variable name. The variable inside of the function is handled independant of the global one. This behaviour is called shadowing:
+When a variable is declared globally as well as inside a function. I.e., The same variable name. The variable inside of the function is handled independant of the global one. This behaviour is called shadowing. I.e., When a variable in a local scope uses its value instead of a variable in a parent scope.
 
 ```JavaScript
 let userName = 'Max'
@@ -647,7 +664,7 @@ let j = 0
   } while (j< 3)
 ```
 
-This can be used with any statemen. Both the `break` and `continue` can be used.  
+The `break outerWhile` statement can be seen using the `outerWhile` label. This can be used with any statement. Both the `break` and `continue` can be used.
 
 ### Looping backwards
 
@@ -712,7 +729,7 @@ while (dice !== 6) {
 
 While loops are generally used when the number of iterations are unknowable and for loops when dealing with known or finite iterations (e.g., arrays).
 
-## do wgile Loops
+## do while Loops
 
 Excecutes the code block before the conditional statements.
 
@@ -720,7 +737,7 @@ Excecutes the code block before the conditional statements.
 do {
   //code block
 } while (conditional statement)
-
+```
 
 ### Constructor Functions and Objects
 
@@ -738,7 +755,7 @@ function SomeName(var1, var2, var3, var4){
 }
 ```
 
-**Sidenote** By assigning a value to a object property, one is simply creating a variable associated with that object
+**Sidenote** By assigning a value to an object property, one is simply creating a variable associated with that object
 
 ```JavaScript
 const objectName = new SomeName(value1, value2, value3, value4);
@@ -806,7 +823,7 @@ The `window` object is the global object of JavaScript in the browser.
 
 - Special variable created for every excecution context (functions)
 - Takes the value of (points to) the "owner" of the function in which the `this` keyword is used
-- `this` Is **not** static. It depends on how the function is called and its value is only assigned when the functio is actually called
+- `this` Is **not** static. It depends on how the function is called and its value is only assigned when the function is actually called
 - Methods: `this` points to the object that is calling the method
 - Simple function calls: `this` is undefined
 - Arrow functions: Don't own `this`. `this` points to the parent function or `window` object if there isn't one

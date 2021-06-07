@@ -65,12 +65,18 @@ const loadPerson = pName => ({name: pName}) //Extra parenthesis if object is ret
 Default arguments are simply set by setting the parameters in the function definition equal to the required default values:
 
 ```JavaScript
-const someFunction = function (par1=a, par2=b, par3) {
+const someFunction = function (par1 = a, par2 = b, par = 3) {
   //code block
 }
 ```
 
-NB: It does not matter in what order the parameters with defaults are listed. They can be before, after or between parameters that do not have default values.
+NB: It does not matter in what order the parameters with defaults are listed. They can be before, after or between parameters that do not have default values. 
+
+NB: When passing arguments to a function with default parameters. If the "missing" variable is before or in between actual arguments, then the keyword `undefined` must be passed.
+
+```JavaScript
+someFunction(undefined, someValue, anotherValue)
+```
 
 ## Rest parameter
 

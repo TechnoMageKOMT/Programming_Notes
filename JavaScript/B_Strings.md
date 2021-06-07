@@ -101,7 +101,7 @@ console.log(airline.slice(-2));
 Output: al
 
 console.log(airline.slice(1, -1));
-Output: ap Air Portuga
+Output: Tap Air Portuga
 ```
 
 ### Boxing: Why do strings have methods if they are primitive data structures

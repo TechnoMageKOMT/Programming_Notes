@@ -116,6 +116,8 @@ The last item of an array can be identified even if the length of the array is u
 
 `arrayName.indexOf(someElement)`: Returns the position of the element given as an argument. If the element is absent, a value of `-1` is returned.
 
+Cannot be used on arrays composed of objects. See findIndex() method below.
+
 ## includes() method
 
 `arrayName.includes(someElement)`: Returns a value of `true` if the element passed as argument is present and `false` if not. This is useful in conditional statements involving arrays. **NB** === Strict comparison applies.
@@ -141,7 +143,7 @@ arr.splice(1, 1);// Removes 1 item at index 1
 // => ['foo', 10, 'qux']
 
 arr.splice(2, 1, 'tmp');// Replaces 1 item at index 2 with 'tmp'
-// => ['foo', 10, 'tmp']
+// => ['foo', 'bar', 'tmp', 'qux']
 
 arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
 // => ['x', 'y', 10, 'tmp']

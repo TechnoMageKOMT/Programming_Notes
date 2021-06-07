@@ -6,7 +6,7 @@ Specifies the number of decimal places.
 
 ## Math methods
 
-Google search MDN Math. All Math methods are listed on the MDN page.
+Google search MDN Math. All Math methods are listed on the MDN page. In VS Code Math. ctrl spacebar will list all math methods as well.
 
 Usage:
 
