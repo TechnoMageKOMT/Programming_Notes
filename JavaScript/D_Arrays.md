@@ -6,6 +6,8 @@ Individual elements are accesed by bracket notation just like strings. The .leng
 
 To access three dimensional arrays (arrays within arrays), the first set of brackets refers to the entries in the outer-most (first-level) array, and each individual pair of brackets refers to the next level of entries inside.
 
+To access the last item in a list `array[array.length - 1]`.
+
 ```JavaScript
 const arr = [
   [1, 2, 3],
@@ -55,7 +57,7 @@ This method avoids the referencing problem that is encountered when copying arra
 
 ## .forEach() Method
 
-The forEach() method loops over an array. It takes a single argument and that is a call back function.
+The forEach() method loops over an array. It takes a single argument and that is a call back function. The callback function is not called directly. It gets passed to the forEach API and it is from there that it gets called.
 
 The callback function takes two optional arguments of its own. The first is the item itself and the second is the index of the item.
 
@@ -79,14 +81,18 @@ Covered extensively in Jonas's course.
 
 Use case:
 
-- forEach() if an array exists and it needs to be looped through in order of the index
-- for loop when looping in reverse order or in any other specfified way than the index number.
+- forEach() if an array exists and it needs to be looped through in order of the index from the beginning to the end
+- for loop when looping in reverse order or in any other specfified way than the index number is required.
 
 ## Array composed of objects
 
 All normal array methods still apply to these even though the elements are objects.
 
 The one exception is indexOf() because of object referencing. The object specified in the indexOf() method will not be referencing the same object, so even if all property value pairs are the same, it is **not** the same object.
+
+## Passing arrays to functions as arguments
+
+Arrays are also passed by reference, so any change that is made to the array within the function, will also affect the original array.
 
 ## Last item of an array
 
@@ -132,7 +138,7 @@ Note: The original array will not be changed.
 
 ## splice() method
 
-`arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional).
+`arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional). If 0 is passed as the second argument then nothing will be removed. The third argument will simply be inserted at that point in the array before the index number specified as argument 1.
 
 ```JavaScript
 let arr = ['foo', 'bar', 10, 'qux'];
@@ -151,7 +157,7 @@ arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
 
 ## findIndex() method
 
-This method is an alternative if the array is composed of objects and works a bit like the forEach() method; it loops through an array until it finds the first occurence of the search element based on a **truthy** value.
+This method is an alternative to indexOf() if the array is composed of objects; and works a bit like the forEach() method; it loops through an array until it finds the **first occurence** of the search element based on a returned **truthy** value. The moment it finds a match, the index number is returned and the loop is exited. 
 
 ```JavaScript
 const index = notes.findIndex(function(note, index){
@@ -164,11 +170,11 @@ This piece of code will output the index number of the object with the property 
 
 ## find() Method
 
-Identical to findIndex() except that it returns the item or object directly instead of the index number
+Identical to findIndex() except that it returns the item or object directly instead of the index number. If no match is found a value of undefined will be returned.
 
 ```JavaScript
 const findNote = function(notes, noteTitle) {
-  return note = notes.find(function(note, index){
+  return notes.find(function(note, index){
     return note.title.toLowerCase() === noteTitle.toLowerCase();
   })
 }
@@ -186,7 +192,7 @@ So any changes made in functions like the above will also be made to the origina
 
 ### filter()
 
-The filter() method works in an analogous way to findIndex() and find() in that it loops over the array looking for the search term. It however returns a new array composed of objects in the original array that contains the search criteria.
+The filter() method works in an analogous way to findIndex() and find() in that it loops over the array looking for the search term. It however returns a new array composed of objects in the original array that contains the search criteria. More specifically where a boolean of true was returned for the test condition(s).
 
 ```JavaScript
 const findNotes = function(notes, query){
@@ -207,7 +213,7 @@ This code will return an array of note objects from a notes array that contain t
 ```JavaScript
 const getThingsToDo = function (todos) {
   const filteredToDoList = todos.filter(function (todo) {
-    return !todo.completed;
+    return !todo.completed; // alternative return todo.completed === false
   });
   return filteredToDoList;
 };
@@ -218,13 +224,13 @@ This code takes in a to do list array that is composed of todo objects. Each tod
 
 ## sort() method 
 
-For arrays composed of simple methods the method will simply sort the array in alphabetical order.
+For arrays composed of simple data types the method will simply sort the array in alphabetical order.
 
 ```JavaScript
 array.sort();
 ```
 
-When sorting objects a callback function needs to be included in the method:
+When sorting objects, a callback function needs to be included in the method. If a should come before b then the callback function should return -1, if b should come first 1 and if the order is unchanged 0.
 
 ```JavaScript
 const sortArray = function (array) {

@@ -21,7 +21,7 @@ const objectName = {
 
 ## Reading value of a property
 
-Values can be retrieved or read by either bracket ([]) or dot (.) notation. Dot notation is usually favoured with bracket notation reserved for situations when the value in the brackets needs to be an expression
+Values can be retrieved or read by either bracket ([]) or dot (.) notation. Dot notation is usually favoured with bracket notation reserved for situations when the value in the brackets needs to be an expression, is a property stored as the value of a variable or when the property name contains a space. **NB Bracket notation when working with variables**
 
 ```JavaScript
 console.log(objectName.property1)
@@ -43,6 +43,7 @@ objectName.property = valueAlternative
 ## Deleting data from objects
 
 `delete objectName.property`
+`delete objectName[property]`
 
 ## Contents of objects
 
@@ -78,6 +79,8 @@ Output:   1984 by George Orwell
 ```
 
 ## Returning objects from a function
+
+This allows functions to return more than one value. All values are then accessed using normal dot notation.
 
 Using the two book objects above again:
 
@@ -122,7 +125,7 @@ When an object is passed into a function as an argument it is not just a clone o
 
 If an object is passed into a function as an argument and a property value is changed within the function, the value is changed in the "original" object as well because it is the **exact identical object**.
 
-If however a new value is assigned to the object as a whole (i.e., assigning an empty object to it or chaning all properties and values) then this binding is broken and from that point onwards we are dealing with two different objects. Because of this it is best practice not to re-assign complete value to a previously defined object.
+If however a new value is assigned to the object as a whole (i.e., assigning an empty object to it or chaning all properties and values) then this binding is broken and from that point onwards we are dealing with two different objects. Because of this, it is best practice not to completely re-assign all values to a previously defined object.
 
 The same behaviour would hold if we were to assign an object to a different variable name. This would **not** be the same as copying the object. The new variable would still refer to the original object.
 
@@ -229,4 +232,69 @@ const myObj = {
 
 myObj,hasOwnProperty('top') //true
 myObj.hasOwnProperty('middle') //false
+```
+
+## Manipulating complex objects
+
+Sometimes you may want to store data in a flexible Data Structure. A JavaScript object is one way to handle flexible data. They allow for arbitrary combinations of strings, numbers, booleans, arrays, functions, and objects.
+
+Here's an example of a complex data structure:
+
+```JavaScript
+var ourMusic = [
+  {
+    "artist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": [ 
+      "CD", 
+      "Cassette", 
+      "LP"
+    ],
+    "gold": true
+  }
+];
+```
+
+This is an array which contains one object inside. The object has various pieces of metadata about an album. It also has a nested formats array. If you want to add more album records, you can do this by adding records to the top level array. Objects hold data in a property, which has a key-value format. In the example above, "artist": "Daft Punk" is a property that has a key of artist and a value of Daft Punk. JavaScript Object Notation or JSON is a related data interchange format used to store data.
+
+```JSON
+{
+  "artist": "Daft Punk",
+  "title": "Homework",
+  "release_year": 1997,
+  "formats": [ 
+    "CD",
+    "Cassette",
+    "LP"
+  ],
+  "gold": true
+}
+```
+
+Note: You will need to place a comma after every object in the array, unless it is the last object in the array.
+
+## Accessing nested objects
+
+The sub-properties of objects can be accessed by chaining together the dot or bracket notation.
+
+Here is a nested object:
+
+```JavaScript
+var ourStorage = {
+  "desk": {
+    "drawer": "stapler"
+  },
+  "cabinet": {
+    "top drawer": { 
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+ourStorage.cabinet["top drawer"].folder2;
+ourStorage.desk.drawer;
+
+ourStorage.cabinet["top drawer"]. //folder2 would be the string secrets, and ourStorage.desk.drawer would be the string stapler.
 ```

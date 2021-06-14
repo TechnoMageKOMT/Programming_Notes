@@ -12,7 +12,7 @@ Usage:
 
 Math.method(number)
 
-Math.round() - Nearest integer
+Math.round() - Rounded to the nearest integer
 Math.floor() - Rounds down.
 Math.ceil() - Rounds up.
 Math.random() - Generates a random number between 0 and 1 (not including 1)

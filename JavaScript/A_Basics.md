@@ -78,7 +78,7 @@ It is recommended to make use of the `use strict` directive at all times. This i
 
 - let = Mutable variable. Uses block scope (including functions).
 - const = Immutable or constant variable. Uses block scope (including functions).
-- var = Deprecated. Mutable. Allows variable creation in the function and global scope.
+- var = Deprecated. Mutable. Allows variable creation in the function and global scope. Also allows re-declaration of variables without any error messages. Function scoped, but not block scoped. Declaration gets hoisted to top of program. DO NOT USE.
 
 In modern JS only let and const is used. It forces the writing of cleaner code.
 
@@ -686,7 +686,7 @@ for (...) {
 
 ### for-of loop
 
-Excecutes for every element in an array. (**NB Arrays or Strings only**)
+Excecutes for every element in an array. (**NB Arrays or Strings only**). This is the most robust way to iterate through arrays. The one downside is that there is no automatic access to the index of the elements like there is with the forEach() loop.
 
 ```JavaScript
 for (const el of array {
@@ -935,6 +935,8 @@ These functions are excecuted immediately without being called. The generic form
 ```
 
 ## forEach() method
+
+This loop should be used sparingly and only in cases where simple iteration through a loop with minimal logic is involve. A return statement for instance within the body of the loop will only break out of that iteration. This can easily lead to undefined returns when complex logic within a function is involved. Rather use the for..of loop wherever possible or if the index is needed a classical for loop.
 
 ```JavaScript
 array.forEach(function(currentValue, index){

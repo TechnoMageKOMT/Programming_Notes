@@ -31,6 +31,8 @@ or the body section:
 
 ```JavaScript
 document.firstElemenetChild.lastElemenetChild; => body
+//equivalent
+document.body
 ```
 
 An h1 element if that was the first child of the body section: 
@@ -55,6 +57,7 @@ The full list of these relationship-to-node selectors are:
 - .lastElementChild
 - .nextElementSibling
 - .previousElementSibling
+- See traversing the DOM document for more
 
 `document.querySelector('*')` is another way of selecting elements. * is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
 
@@ -89,7 +92,7 @@ Examples of methods
   example[2].style.color = "blue";
 ```
 
-`document.getElementsByTagName('');` Would return an array if there are multiple items with the same tag.
+`document.getElementsByTagName('');` Would return an array if there are multiple items with the same tag. The individual elements of the array can be accessed via bracket notation amongst other methods.
 
 ```JavaScript
 document.getElementsByTagName('li')[2].style.color = "purple";
@@ -505,9 +508,9 @@ documnet.querySelector('#search-text').addEventListener('input', function(e){
 
 ### Working with forms. 
 
-The 'submit' type event listener is used for form elements. This will trigger on clicking a button or pressing enter after entering the input.
+The 'submit' type event listener is always used for form elements. This will trigger on clicking a button or pressing enter after entering the input.
 
-Within the callback function of the event listener the method `e.preventDefault` will be invoked to prevent the browser's default handling of forms. (This is analogous to telling the browser that the request will be handled by ourselves).
+Within the callback function of the event listener the method `e.preventDefault()` will be invoked to prevent the browser's default handling of forms. (This is analogous to telling the browser that the request will be handled by ourselves).
 
 To access the values within the event handler function:
 
