@@ -545,7 +545,7 @@ document.querySelector('#todo-form).addEventListener('submit', function(e){
 
 The event listerner type to use with checkboxes is `'change'`. The event will fire as soon as the checkbox is checked or unchecked.
 
-To access the **boolean** value:
+To access the **boolean** value. `true` if the box is checked and `false` if unchecked.
 
 ```JavaScript
 e.target.checked
