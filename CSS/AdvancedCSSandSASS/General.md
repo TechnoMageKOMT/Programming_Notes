@@ -46,3 +46,7 @@ Modifier - Different version of a block or element
 `block`
 `block__element`
 `block__element--modifier`
+
+## Direct child selector
+
+`primarySelector > *` - This would select all direct children of the primary selector regardless of which types of elements they are.
