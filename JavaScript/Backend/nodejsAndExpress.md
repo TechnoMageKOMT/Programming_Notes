@@ -63,7 +63,7 @@ app.listen(3000, function(){
 
 ## The GET request: Handling requests and responses
 
-The get() method is a method that comes with Express to handle incoming requests and responses and it is added just above the listen() method (see above).
+The get() method is a method that comes with Express to handle incoming requests and responses and it is added just above the listen() method (see above). I.e., What must happen when a browser tries to get in touch with our server.
 
 ```JavaScript
 app.get('/', function(req, res){
@@ -102,7 +102,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.get('/', function(req, res) {
   res.send('Hello')
   or
-  res.sendFile(__dirname + '/index.html')
+  res.sendFile(__dirname + '/index.html') //See res.sendFile() section below
   etc
 })
 
