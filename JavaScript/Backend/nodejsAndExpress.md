@@ -31,7 +31,7 @@ To find packages simply search for them at www.npmjs.com. There is installation 
 
 ## Creating anExpress server
 
-Create folder with a new file `app.js` file in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above.
+Create folder with a new file `app.js` file in it. Initialise npm while in the new folder with the command `npm init`. This will create a new `package.json` file as discussed above. (It is conventional to name the main "server" js file app.js in applications that use nodejs and Express)
 
 Express documentation can be found at [https://expressjs.com].
 

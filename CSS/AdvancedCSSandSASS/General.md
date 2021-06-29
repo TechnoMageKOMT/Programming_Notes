@@ -50,3 +50,13 @@ Modifier - Different version of a block or element
 ## Direct child selector
 
 `primarySelector > *` - This would select all direct children of the primary selector regardless of which types of elements they are.
+
+## Perspective property
+
+The perspective property is used to give a 3D-positioned element some perspective. The perspective property defines how far the object is away from the user. So, a lower value will result in a more intensive 3D effect than a higher value.
+
+When defining the perspective property for an element, it is the CHILD elements that get the perspective view, NOT the element itself.
+
+Tip: Also look at the perspective-origin property, which defines at which position the user is looking at the 3D object.
+
+When using this property include -moz-perspective to make sure Firefox browsers also supports the property.
