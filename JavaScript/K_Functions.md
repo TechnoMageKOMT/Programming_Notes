@@ -2,15 +2,15 @@
 
 ## Definitions
 
-Functions are code on demand.  
+Functions are code on demand.
 
-Variables and constants created in functions "belong" to that function.  
+Variables and constants created in functions "belong" to that function.
 
-Functions MAY take parameters (arguments) and MAY return a value.  
+Functions MAY take parameters (arguments) and MAY return a value.
 
-Functions can be called multiple times (with different arguments).  
+Functions can be called multiple times (with different arguments).
 
-Functions can be called "directly" or "indirectly". Directly when using () and indirectly, for example, when binding a function to an event listener.  
+Functions can be called "directly" or "indirectly". Directly when using () and indirectly, for example, when binding a function to an event listener.
 
 ## Objects
 
@@ -33,10 +33,10 @@ someButton.addEventListener('click', function functionName () {
 
 ## Arrow functions
 
-If an arrow function has only one expression in it, the 'return' {} can be left out and the expression can be stored directly in a variable:
+If an arrow function has only one expression in it, the 'return' and {} can be left out and the expression can be stored directly in a variable:
 
 ```JavaScript
-const getWinner = (cChoice, pChoice) => {
+const getWinner = (cChoice, pChoice) =>
   cChoice === pChoice
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -70,7 +70,7 @@ const someFunction = function (par1 = a, par2 = b, par = 3) {
 }
 ```
 
-NB: It does not matter in what order the parameters with defaults are listed. They can be before, after or between parameters that do not have default values. 
+NB: It does not matter in what order the parameters with defaults are listed. They can be before, after or between parameters that do not have default values.
 
 NB: When passing arguments to a function with default parameters. If the "missing" variable is before or in between actual arguments, then the keyword `undefined` must be passed.
 
@@ -110,7 +110,7 @@ const subtract = function () {
 }
 ```
 
-`arguments` Is an array-like object that also contains all the arguments passed to the function. It is ONLY available to functions declared with the `function` keyword.
+`arguments` Is an array-like object that also contains all the arguments passed to the function. It is ONLY available to functions declared with the `function` keyword. I.e., Arrow function do not have their own `arguments` keyword.
 
 From ES6 onwards this is replaced by the rest operator and `arguments` should no longer be used. It is only included here because it may appear in older code.
 
@@ -140,7 +140,7 @@ This is effectively passing a pointer to a function to another function. Many of
 
 The following is an example of a manually written callback function (I.e., not a built in function):
 
-Add a new function: "checkInput" which takes an unlimited amount of arguments (unlimited amount of strings) and executes a callback function if NO argument/ string is an empty string. 
+Add a new function: "checkInput" which takes an unlimited amount of arguments (unlimited amount of strings) and executes a callback function if NO argument/ string is an empty string.
 
 ```JavaScript
 function checkInput(cb,...strings) {
@@ -165,4 +165,3 @@ checkInput(noEmptyStringHandler, 'Hello', 'World', 'Tester', 'Strings')
 ```
 
 ## Working with bind()
-

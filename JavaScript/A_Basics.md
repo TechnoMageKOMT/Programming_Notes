@@ -23,7 +23,7 @@ Note: There are several ways an external script can be executed:
 
     If async is present: The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
     If async is not present and defer is present: The script is executed when the page has finished parsing
-    If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page  
+    If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page
 
 **NB** Embedded and external script cannot be used together. If both are present, the embedded script will simply be ignored.
 
@@ -120,7 +120,9 @@ The idea is that comments should add some context that is not immediately appare
 
 ## Truthy and Falsy Values
 
-Falsy values are not exactly false, but will become false when converted into a boolean. There are only 5 falsy values:
+Falsy values are not exactly false, but will become false when converted into a boolean. There are only 6 falsy values:
+
+`false`
 `0`
 `' '` Empty String
 `undefined`
@@ -129,7 +131,7 @@ Falsy values are not exactly false, but will become false when converted into a 
 
 Everything else are truthy values.
 
-**NB** An empty object is counter-intuitively a truthy!
+**NB** An empty array or object is counter-intuitively a truthy!
 
 Explicit conversion to Boolean type is almost never done in practice. Mostly done implicitly by coersion in two scenarios
 
@@ -185,6 +187,8 @@ str1 = Number(str)
 ```
 
 Aside: If this was attempted on a string literal value, the statement will result in a NaN result. NaN stands for "Not a Number". **NB** `typeof NaN` or `typeof(NaN)` results in `number`. This is however an invalid number.
+
+NaN arises when performining a math operation that is not valid. E.g., 1/0 or a number method on a string as discussed in the preceding paragraph.
 
 There is only three types of manual conversion:
 
@@ -419,13 +423,25 @@ If the conditional statement is true, the code will always run. If it is false t
 
 Should global access be required for any variable used inside the code **block** of the statement, declare the variable(s) before starting the if/else statement.
 
-### Ternary Operator
+### Ternary Operator (conditional operator)
 
 ```JavaScript
 condition ? expression1 : expression2
 ```
 
 If `condition` is met, then `expression1` will be returned, else `expression2` will be returned. The condition can have multiple logically (&&, ||,!) connected conditions just like if statements can.
+
+The operator can also be used to determine which of a pair of functions should be called instead of returning actual values:
+
+```JavaScript
+  condition ? functionOne() : functionTwo()
+```
+
+If the functions return values then store the value in a variable:
+
+```JavaScript
+  const variable = condition ? functionOne() : functionTwo()
+```
 
 Because this is an operator, it leads to an expression and can be assigned to variables and/or used in template literals.
 

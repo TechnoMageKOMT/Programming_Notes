@@ -60,3 +60,5 @@ When defining the perspective property for an element, it is the CHILD elements 
 Tip: Also look at the perspective-origin property, which defines at which position the user is looking at the 3D object.
 
 When using this property include -moz-perspective to make sure Firefox browsers also supports the property.
+
+The lower the value the more dramatic the effect, so generally higher values (~ 1500px) gives the effect of a rotation towards the user (rotation around Y axis). It is really a matter of experimenting with different values until the desired effect is obtained.
