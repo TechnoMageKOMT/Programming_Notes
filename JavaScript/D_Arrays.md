@@ -41,7 +41,7 @@ Arrays can contain any type of and mixture of different data types:
 - Expressions
 - Variables
 - Other arrays
-- Objects 
+- Objects
 - etc
 
 ## Array.from() method
@@ -53,7 +53,6 @@ const newArray = Array.from(existingArray)
 ```
 
 This method avoids the referencing problem that is encountered when copying arrays and objects.
-
 
 ## .forEach() Method
 
@@ -157,7 +156,7 @@ arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
 
 ## findIndex() method
 
-This method is an alternative to indexOf() if the array is composed of objects; and works a bit like the forEach() method; it loops through an array until it finds the **first occurence** of the search element based on a returned **truthy** value. The moment it finds a match, the index number is returned and the loop is exited. 
+This method is an alternative to indexOf() if the array is composed of objects; and works a bit like the forEach() method; it loops through an array until it finds the **first occurence** of the search element based on a returned **truthy** value. The moment it finds a match, the index number is returned and the loop is exited.
 
 ```JavaScript
 const index = notes.findIndex(function(note, index){
@@ -183,6 +182,16 @@ console.log(note)
 ```
 
 This function would return the search item by taking as input a `notes` array as well as a `noteTitle`.
+
+## every() Method
+
+The method tests whether all elements in an array pass the test implemented within the callback function. It returns a boolean value.
+
+```JavaScript
+const array1 = [1, 30, 39, 29, 10, 13]
+console.log(array1.every((currentValue) => currentValue < 40))
+//expected output: true
+```
 
 ## Arrays are also passed by reference
 
@@ -222,7 +231,7 @@ console.log(getThingsToDo(todos));
 
 This code takes in a to do list array that is composed of todo objects. Each todo object has a boolean property `completed`. The code returns a new array composed of all task that have `completed` values of false.
 
-## sort() method 
+## sort() method
 
 For arrays composed of simple data types the method will simply sort the array in alphabetical order.
 
@@ -278,7 +287,7 @@ const myArray = ['Sam', 'Alice', 'Nick', 'Matt'];
 
 // Appends text to each element of the array
 const newArray = myArray.map(name => {
-	return 'My name is ' + name; 
+	return 'My name is ' + name;
 });
 console.log(newArray); // ['My name is Sam', 'My Name is Alice', ...]
 

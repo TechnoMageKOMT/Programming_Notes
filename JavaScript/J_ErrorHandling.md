@@ -4,40 +4,75 @@
 
 The `try` statement lets you test a block of code for errors. The `catch` statement lets you handle the error. The `throw` statements lets you create custom errors. The `finally` statement lets you execute code, after try and catch, regardless of the result.
 
-```JavaScript
-function getMaxLifeValue () {
-  const enteredValue = prompt('Maximum life for you and the monster', '100')
+An example of using the throw statement on its own:
 
-  const parsedValue = parseInt(enteredValue)
-  if (isNaN(parsedValue) || parsedValue <= 0) {
-    throw {message: 'Invalid user input, not a number!'} // Error handling
+```JavaScript
+const getTip = (amount) => {
+  if (typeof amount === 'number') {
+    return amount * 0.25
+  } else {
+    throw Error('Argument must be a number')
   }
-  return parsedValue
+}
+
+const result = getTip('test')
+console.log(result)
+```
+
+This code will, however, crash the program which is not always desirable. To implement a more elegant way of handling errors, the `try..catch` methods should be added:
+
+```JavaScript
+const getTip = (amount) => {
+  if (typeof amount === 'number') {
+    return amount * 0.25
+  } else {
+    throw Error('Argument must be a number')
+  }
+}
+
+try {
+  const result = getTip('test')
+  console.log(result)
+} catch (e) {
+  console.log('catch block is running')
 }
 ```
 
-The idea with try/catch is to wrap it around the code that might fail.
+The `try..catch` method will attempt to run the code if it is possible. If it is, the code will run and the `catch` code block will be ignored. If there is an error, the `catch` code block will be excecuted.
+
+The error message can be accessed within the `try..catch` statement by tapping into e.message as follows:
 
 ```JavaScript
-function getMaxLifeValue () {
-  const enteredValue = prompt('Maximum life for you and the monster', '100')
-
-  const parsedValue = parseInt(enteredValue)
-  if (isNaN(parsedValue) || parsedValue <= 0) {
-    throw {message: 'Invalid user input, not a number!'}
+const getTip = (amount) => {
+  if (typeof amount === 'number') {
+    return amount * 0.25
+  } else {
+    throw Error('Argument must be a number')
   }
-  return parsedValue
 }
 
-let chosenMaxLife
+try {
+  const result = getTip('test')
+  console.log(result)
+} catch (e) {
+  console.log(e.message)
+}
+```
+
+This whole process can also be done by checking for false conditions instead of true. This will make it easier to add `throw..try..catch` statements to existing code. Example:
+
+```JavaScript
+const getTip = (amount) => {
+  if (typeof amount !== 'number') {
+    throw Error('Argument must be a number')
+  }
+  return amount * 0.25
+}
 
 try {
-  chosenMaxLife = getMaxLifeValue()
-
-} catch (error) {
-  console.log(error)
-  chosenMaxLife = 100
-} finally {
-  //code block regarless of the above
+  const result = getTip('test')
+  console.log(result)
+} catch (e) {
+  console.log(e.message)
 }
 ```

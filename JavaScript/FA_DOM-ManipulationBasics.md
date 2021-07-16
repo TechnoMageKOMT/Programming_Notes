@@ -35,7 +35,7 @@ document.firstElemenetChild.lastElemenetChild; => body
 document.body
 ```
 
-An h1 element if that was the first child of the body section: 
+An h1 element if that was the first child of the body section:
 
 ```JavaScript
 document.firstElementChild.lastElemenetChild.firstElemenetChild; => h1
@@ -59,7 +59,7 @@ The full list of these relationship-to-node selectors are:
 - .previousElementSibling
 - See traversing the DOM document for more
 
-`document.querySelector('*')` is another way of selecting elements. * is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
+`document.querySelector('*')` is another way of selecting elements. \* is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
 
 ```JavaScript
   document.querySelector('input').click();
@@ -144,7 +144,7 @@ This basically means that a seperation is maintained between the three to keep c
 
 - HTML: Content
 - CSS: Style
-- JavaScript: Behaviour  
+- JavaScript: Behaviour
 
 The **classlist** is a property of every DOM object which keeps track of the list of classes that an object has. This can be manimpulated by methods such as
 add(): To add a class
@@ -190,7 +190,7 @@ document.querySelector('h1').innerHTML = "<em>Some new text</em>";
 
 ## Mnaipulating HTML attributes
 
-Any elements attributes can be accessed as follow:  
+Any elements attributes can be accessed as follow:
 
 ```JavaScript
 document.querySelector('.item a').attributes;
@@ -226,7 +226,7 @@ The addEventListener() method has two parameters and takes in a "type" argument 
 
 An anonymous function is simply the RHS of a function expression (i.e., without the assignment and name).
 
-This is a central feature of JS programming. The idea that a function is passed as an input into another function so that it can be called at a later time.  
+This is a central feature of JS programming. The idea that a function is passed as an input into another function so that it can be called at a later time.
 
 Functions within the addEventListener method does not have () because they are only called by the method if the event takes place.
 
@@ -275,7 +275,7 @@ function respondToClick(){
 }
 ```
 
-The addEventListener() method(function) is in this second case a higher order function and representative of all higher order function. The only variation to this is the level of complication. 
+The addEventListener() method(function) is in this second case a higher order function and representative of all higher order function. The only variation to this is the level of complication.
 
 ### `this`
 
@@ -297,10 +297,6 @@ The output for each iteration here will be the html element. E.g.,:
 
 As each button is clicked `this` will point to that HTML object / element. Any of the properties of `this` object can be utilised and referenced in this way. E.g., `this.innerHTML` or `this.style.color = "white"`.
 
-
-
-
-
 ### Understanding Callbacks and How To Respond To Events
 
 ```JavaScript
@@ -316,7 +312,7 @@ The callback function is called by the object that experienced the event that wa
 
 When an event occurs an object is created within the addEventListener() method and information about that event is stored in the object.
 
-## Removing Elements 
+## Removing Elements
 
 ```JavaScript
 const p = document.querySelector('p');
@@ -365,7 +361,7 @@ Ways of targeting elements
 --Multiple--  
 `p#id` - Element that has both  
 `button.inventory` - Element that has both  
-`h1#title.application`- Element that has all three  
+`h1#title.application`- Element that has all three
 
 ## Keyboard / Keypress Events
 
@@ -373,7 +369,7 @@ Requires the addEventListener() method just like mouse clicks.
 
 Keyboard events are global events because they're not usually associated with specific elements (exception text input fields).
 
-Three types: 
+Three types:
 
 - keydown **Most commonly used**
 - keypress
@@ -386,6 +382,7 @@ document.addEventListener('keydown', function(e){
   //code block
 })
 ```
+
 `e` Is used by convention and stands for event. When a key is pressed an object is generated which contains all the information about that event. By passing this object as an argument to the event handler function, it can access specific key:value pairs within the object. One of the properties or keys of this object is `key` where the actual key's identity that was pressed is stored.
 
 ```JavaScript
@@ -402,16 +399,23 @@ document.addEventListener('keydown', function(e){
 })
 ```
 
-Will output the identity of the key to the console. 
+Will output the identity of the key to the console.
 
 The `e.key` value can be used anywhere that expressions are accepted. For instance, conditional statements.
-
 
 ```JavaScript
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') {
     //code block
   }
+})
+```
+
+The identity of the key pressed can also be determined as follow:
+
+```JavaScript
+window.addEventListener('keypress', (e) => {
+  const keyPressed = String.fromCharCode(e.charCode)
 })
 ```
 
@@ -431,16 +435,16 @@ This code will produce the text that the user entered into a text input field, b
 
 The alternative to `change` is `input`. The syntax is the same, but the input values are received in real time, character by character as the user types in the field. This method is preferred when filetering data on the fly.
 
-### Rendering Filtered Data 
+### Rendering Filtered Data
 
 **VERY NB For real world applications**
-**This will be used a lot in real life***
+**This will be used a lot in real life\***
 
 This is to filter arrays of data. The data would normally be individual objects in the array.
 
-Let `notes` be the array with properties `title` and `body`. We want to filter the data based on text values entered into a input field with the id of `search-text` 
+Let `notes` be the array with properties `title` and `body`. We want to filter the data based on text values entered into a input field with the id of `search-text`
 
-Step 1  
+Step 1
 
 Set up a filters object to store the latest filters. The initial object only has one property with an empty value.
 
@@ -449,7 +453,8 @@ const filters = {
   searchText: '',
 }
 ```
-Step 2.1  
+
+Step 2.1
 
 Setup first half of a rendering function. This part is to filter the list by `title` and the `searchText` value in the `filters` object.
 
@@ -461,7 +466,7 @@ const renderNotes = function (notes, filters) {
 };
 ```
 
-Step 2.2  
+Step 2.2
 
 Remove all previously rendered notes by targeting a div with id `notes` that was created for all rendered notes.
 
@@ -475,7 +480,7 @@ const renderNotes = function (notes, filters) {
 };
 ```
 
-Step 2.3  
+Step 2.3
 
 The third part of the function is to render the filtered notes
 
@@ -495,9 +500,9 @@ const renderNotes = function (notes, filters) {
 };
 ```
 
-Step 2.4  
+Step 2.4
 
-Respond to input from the user and calling the renderNotes function  
+Respond to input from the user and calling the renderNotes function
 
 ```JavaScript
 documnet.querySelector('#search-text').addEventListener('input', function(e){
@@ -506,7 +511,7 @@ documnet.querySelector('#search-text').addEventListener('input', function(e){
 });
 ```
 
-### Working with forms. 
+### Working with forms.
 
 The 'submit' type event listener is always used for form elements. This will trigger on clicking a button or pressing enter after entering the input.
 
@@ -557,7 +562,7 @@ In HTML these are added with the `<select></select>` element and options are add
 
 The `'change'` type event listener is used just as in checkboxes.
 
-The value is accessed by 
+The value is accessed by
 
 ```JavaScript
 e.target.value
