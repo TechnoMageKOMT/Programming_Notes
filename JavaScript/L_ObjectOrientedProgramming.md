@@ -188,3 +188,91 @@ class Employee extends Person {
 ```
 
 Subclasses are not used very often in day to day JavaScript, but they are useful to know about.
+
+## Getter and Setters
+
+There are 2 different object properties.
+
+- Data properties (normal)
+- Accessor properties (getter and setter)
+
+Accessor properties are essentially functions that execute on getting and setting a value, but look like regular properties to an external code.
+
+In an object literal they are denoted by `get` and `set`:
+
+```JavaScript
+let obj = {
+  get propName() {
+    // getter, the code executed on getting obj.propName
+  },
+
+  set propName(value) {
+    // setter, the code executed on setting obj.propName = value
+  }
+}
+```
+
+The getter works when `obj.propName` is read, the setter, when it is assigned.
+
+For instance, we have a user object with name and surname:
+
+```JavaScript
+let user = {
+  name: "John",
+  surname: "Smith"
+};
+```
+
+Now we want to add a fullName property, that should be "John Smith". Of course, we don’t want to copy-paste existing information, so we can implement it as an accessor:
+
+```JavaScript
+let user = {
+  name: "John",
+  surname: "Smith",
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+
+alert(user.fullName); // John Smith
+```
+
+From the outside, an accessor property looks like a regular one. That’s the idea of accessor properties. We don’t call `user.fullName` as a function, we read it normally: the getter runs behind the scenes.`
+
+As of now, fullName has only a getter. If we attempt to assign `user.fullName=`, there will be an error:
+
+```JavaScript
+let user = {
+  get fullName() {
+    return `...`;
+  }
+};
+
+user.fullName = "Test"; // Error (property has only a getter)
+```
+
+Let’s fix it by adding a setter for user.fullName:
+
+```JavaScript
+let user = {
+  name: "John",
+  surname: "Smith",
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+};
+
+// set fullName is executed with the given value.
+user.fullName = "Alice Cooper";
+
+alert(user.name); // Alice
+alert(user.surname); // Cooper
+```
+
+As the result, we have a “virtual” property fullName. It is readable and writable.

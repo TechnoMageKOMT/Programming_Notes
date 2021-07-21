@@ -62,3 +62,94 @@ Tip: Also look at the perspective-origin property, which defines at which positi
 When using this property include -moz-perspective to make sure Firefox browsers also supports the property.
 
 The lower the value the more dramatic the effect, so generally higher values (~ 1500px) gives the effect of a rotation towards the user (rotation around Y axis). It is really a matter of experimenting with different values until the desired effect is obtained.
+
+## Tooltip
+
+```HTML
+<body>
+  <button data-tooltip="TooltipText">Hover Me</button>
+<body>
+```
+
+```CSS
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: .25rem;
+  top: -0.5rem;
+  left: 50%
+  transform: translate(-50%, -100%);
+}
+```
+
+## :is Selector
+
+```CSS
+:is(ul, ol) {
+  ...
+}
+```
+
+This selector would select anything that is an `ul` or `ol`.
+
+## Counter
+
+```HTML
+<body>
+  <h2>Intro</h2>
+  <h2>Body</h2>
+  <h2>Conclusion</h2>
+  <ol>
+    <li></li>
+    ...
+  </ol>
+</body>
+```
+
+```CSS
+body {
+  counter-reset: heading;
+}
+
+h2::before {
+  content: 'Part ' counter(heading, upper-roman) ': ';
+  counter-increment: heading;
+}
+
+ol {
+  counter-reset: outline;
+}
+
+li {
+  list-style: none;
+}
+
+li::before {
+  content: counters(outline, '.)
+  counter-increment: outline;
+}
+```
+
+## Conical gradients
+
+```HTML
+<body>
+  <div></div>
+</body>
+```
+
+```CSS
+div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conix-gradient (red .25turn, blue .25turn .5turn, green .5turn)
+}
+```

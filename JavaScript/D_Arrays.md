@@ -154,6 +154,10 @@ arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
 // => ['x', 'y', 10, 'tmp']
 ```
 
+## forEach() Method
+
+This method simply loops through the array.
+
 ## findIndex() method
 
 This method is an alternative to indexOf() if the array is composed of objects; and works a bit like the forEach() method; it loops through an array until it finds the **first occurence** of the search element based on a returned **truthy** value. The moment it finds a match, the index number is returned and the loop is exited.
@@ -192,6 +196,42 @@ const array1 = [1, 30, 39, 29, 10, 13]
 console.log(array1.every((currentValue) => currentValue < 40))
 //expected output: true
 ```
+
+## map() Method
+
+The method return a new array with the specified property:
+
+In an array with name:item and price:value pairs, the following statement will return an array with the names of all the entries under the `name` property:
+
+```JavaScript
+const itemNames = item.map((item) => {
+  return item.name
+})
+```
+
+## some() Method
+
+This method will check if some of the items in the array fullfills the testing condition:
+
+```JavaScript
+const hasInexpensiveItems = items.some((item) => {
+  return item.price <= 100
+})
+```
+
+The method will return a boolean value.
+
+## reduce Method
+
+This method carries out an cumulative operation on the items of an array.
+
+```JavaScript
+const total = items.reduce((currentTotal, item) => {
+  return item.price + currentTotal
+},0)
+```
+
+The `currentTotal` here is the current total after each iteration of the loop and `0` is the starting point. So, `currentTotal` will start at `0` at the very beginning of the iteration sequence.
 
 ## Arrays are also passed by reference
 
