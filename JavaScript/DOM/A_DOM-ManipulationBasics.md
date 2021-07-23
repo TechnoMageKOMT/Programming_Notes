@@ -59,7 +59,7 @@ The full list of these relationship-to-node selectors are:
 - .previousElementSibling
 - See traversing the DOM document for more
 
-`document.querySelector('*')` is another way of selecting elements. \* is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
+`document.querySelector('*')` is another way of selecting elements. `*` is the selector as it is used in CSS. I.e., if it is a class or id, then a . or # precedes it.
 
 ```JavaScript
   document.querySelector('input').click();
@@ -277,26 +277,6 @@ function respondToClick(){
 
 The addEventListener() method(function) is in this second case a higher order function and representative of all higher order function. The only variation to this is the level of complication.
 
-### `this`
-
-`this` in an object context belongs and points to the object that called it. In this case during the iteration through the buttons in the initial for loop, this points to each html button element as the loop iterates. `this` Can therefore be used interchangeably with that element in the code.
-
-```JavaScript
-for (let i = 0; i < numberOfDrumButtons; i++){
-  document.querySelectorAll('.drum')[i].addEventListener('click', function(){
-
-    console.log(this);
-
-  })
-}
-```
-
-The output for each iteration here will be the html element. E.g.,:
-
-`<button class="s drum">`
-
-As each button is clicked `this` will point to that HTML object / element. Any of the properties of `this` object can be utilised and referenced in this way. E.g., `this.innerHTML` or `this.style.color = "white"`.
-
 ### Understanding Callbacks and How To Respond To Events
 
 ```JavaScript
@@ -320,8 +300,6 @@ p.remove()
 ```
 
 The remove() method with no specified arguments removes the entire targeted 'p' element from the DOM.
-
-The rest of the material was revision of already covered material in other courses.
 
 ## Adding Elements Via The Dom
 
@@ -460,7 +438,7 @@ Setup first half of a rendering function. This part is to filter the list by `ti
 
 ```JavaScript
 const renderNotes = function (notes, filters) {
-  const filteredNotes = notes.filter(function(){
+  const filteredNotes = notes.filter(() => {
     return note.title.toLowerCase().includes(filters.searcText,toLowerCase());
   });
 };

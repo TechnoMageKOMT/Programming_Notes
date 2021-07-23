@@ -1,10 +1,10 @@
 # Babel
 
+Read this entire file before using babel or webpack because it is an integrated implementation by the end of all this documentation.
+
 ## Installation
 
 Install locally in root folder of project:
-
-Specific to **every** folder that it is used in:
 
 ````CLI
 npm init
@@ -49,11 +49,19 @@ Remove the standard key:value pair from "scripts" in package.json and replace it
 Note the standard usage of naming the input file `index.js` and the output file `bundle.js`.
 
 Once this is done the command is run by the folowing command in the CLI
-`npm run build`.
+`npm run build` and/or `npm run server`
 
 ## Babel to check for changes automatically
 
-Just add --watch to the script in package.json (see immediately above).
+Just add --watch to the end of the script in package.json (see immediately above).
+
+```JavaScript
+{
+  "scripts":
+    "server": "live-server public",
+    "build": "babel src/index.js -o public/scripts/bundle.js --presets @babel/env --watch"
+}
+```
 
 With this in place, babel will "watch" index.js for any changes and run the script when changes are detected. I.e., Autoamtically process the code with babel.
 
@@ -78,7 +86,7 @@ Add script to package.json as above:
 
 Once this is done a configuration file needs to be created. The configuration file is created in the root folder of the project. The name of the config file should be `webpack.config.js`.
 
-The content of the configuration file:
+The initial content of the configuration file:
 
 ```JavaScript
 const path = require('path')
@@ -132,58 +140,6 @@ module.exports = {
 
 `npm install webpack-dev-server@3.1.3`
 
-## JavaScript Modules
-
-Import/export system.
-
-If there are two js files, index.js and utilities.js.
-
-In index.js which is the entry point or main file:
-
-```JavaScript
-//utilities.js
-export const add = (a, b) => a + b
-//index.js
-import { add } from './utilities'
-```
-
-Multiple export/imports
-
-```JavaScript
-//utilities.js
-export const add = (a, b) => a + b
-
-export const name = 'Johann'
-//index.js
-import { add, name } from './utilities'
-
-```
-
-In addition to multiple 'named' exports there can also be a 'default' export per file. The code below will export `square` in addition to the named exports.
-
-```JavaScript
-//utilitie.js
-const square = (x) => x * x
-export default square
-//index.js
-import square, { add, name } from './utilities'
-```
-
-If there is only the default import the above code would look like:
-
-```JavaSCript
-import square from './utilities'
-```
-
-**Note** The function can be given any name with the import statement if it is the default import. I.e. It does not have to be the same name as in the original file.
-
-All exports can also be grouped together as one line of code as the last line of code in a file.
-
-```JavaScript
-//utilities.js
-export { add, name, square as default }
-```
-
 ## Environments and Source Maps
 
 There are two modes available for Webpack. Development and production mode. The type of mode is determined by the CLI command so it is setup in the scrips section of package.json as follow:
@@ -231,14 +187,84 @@ module.exports = {
 
 ## Babel Polyfil
 
-`npm install core-js regenerator-runtime`
-14:08
-entry: ['core-js/stable', 'regenerator-runtime/runtime', './src/index.js']
+`npm install core-js`  
+`npm install regenerator-runtime`
 
-17:08
-"core-js": "^3.6.5",
-"regenerator-runtime": "^0.13.5",
+Amend the webpack.config.js 'entry' property:
 
-17:39
-When updating webpack.config.js line 4
-use 14:08
+`entry: ['core-js/stable', 'regenerator-runtime/runtime', './src/index.js']`
+
+Double check dependencies in the package.json file to make sure both have been added.
+
+## Dev server vs production build
+
+Once all of the above is in place there are two modes of running webpack. `npm run dev-server` will be a development live-server environment. `npm run build` will convert the code to production ready code and create the babel translated file(s). This last option is much slower because of the babel compilation.
+
+## Multiple js files
+
+If there are multiple js files for a project. E.g., The notes app where there are two html and two corresponding js files:
+
+`webpack.config.js` setting changes:
+
+```JavaScript
+entry: {
+    index: ['core-js/stable', 'regenerator-runtime/runtime', './src/index.js'],
+    edit: ['core-js/stable', 'regenerator-runtime/runtime', './src/edit.js']
+  },
+output: {
+    path: path.resolve(__dirname, 'public/scripts'),
+    filename: '[name]-bundle.js',
+  },
+```
+
+## JavaScript Modules
+
+Import/export system.
+
+If there are two js files, index.js and utilities.js, function from one file can be exported from one file and imported by the other.
+
+In index.js which is the entry point or main file:
+
+```JavaScript
+//utilities.js
+export const add = (a, b) => a + b
+//index.js
+import { add } from './utilities'
+```
+
+Multiple export/imports
+
+```JavaScript
+//utilities.js
+export const add = (a, b) => a + b
+
+export const name = 'Johann'
+//index.js
+import { add, name } from './utilities'
+
+```
+
+In addition to multiple 'named' exports there can also be a 'default' export per file. The code below will export `square` in addition to the named exports.
+
+```JavaScript
+//utilitie.js
+const square = (x) => x * x
+export default square
+//index.js
+import square, { add, name } from './utilities'
+```
+
+If there is only the default import the above code would look like:
+
+```JavaSCript
+import square from './utilities'
+```
+
+**Note** The function can be given any name with the import statement if it is the default import. I.e. It does not have to be the same name as in the original file.
+
+All exports can also be grouped together as one line of code as the last line of code in a file.
+
+```JavaScript
+//utilities.js
+export { add, name, square as default }
+```
