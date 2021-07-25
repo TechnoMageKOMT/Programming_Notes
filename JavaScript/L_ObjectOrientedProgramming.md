@@ -13,7 +13,7 @@ const me = person()
 console.log(me)
 ```
 
-The addition of the `new` operator (see below). The new operator generates a new object and gives us access to the new object in the constructor function via the `this` value. `this` Can then be used to set up the properties of the constructor function. The `new` operator also returns the object implicitly without there being a return statement in the function.
+Now with a constructor function. The addition of the `new` operator (see below). The new operator generates a new object and gives us access to the new object in the constructor function via the `this` value. `this` Can then be used to set up the properties of the constructor function. The `new` operator also returns the object implicitly without there being a return statement in the function.
 
 ```JavaScript
 const Person = function (firstName) {
@@ -188,6 +188,28 @@ class Employee extends Person {
 ```
 
 Subclasses are not used very often in day to day JavaScript, but they are useful to know about.
+
+## static Keyword
+
+The static keyword defines a static method or property for a class. Neither static methods nor static properties can be called on instances of the class. Instead, they're called on the class itself.
+
+Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances. (Ref MDN documentation)
+
+```JavaSCript
+class ClassWithStaticMethod {
+
+  static staticProperty = 'someValue';
+  static staticMethod() {
+    return 'static method has been called.';
+  }
+
+}
+
+console.log(ClassWithStaticMethod.staticProperty);
+// output: "someValue"
+console.log(ClassWithStaticMethod.staticMethod());
+// output: "static method has been called."
+```
 
 ## Getter and Setters
 

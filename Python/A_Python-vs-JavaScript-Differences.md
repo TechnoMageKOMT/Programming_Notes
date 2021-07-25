@@ -32,10 +32,11 @@ JS: None. Done by way of a `for loop` or using combination of string.split(), ar
 
 ## String concatenation and multiplication
 
-Py: Both + and * operators work on strings
+Py: Both + and \* operators work on strings
 JS: Only +
 
 ## Uppercase and Lowercase String methods
+
 Py: .upper() and .lower()
 JS: .toUpperCase() and .toLowerCase
 
@@ -65,7 +66,7 @@ JS: Can be entered with or without quotation marks
 Py: True or False (capitalised)
 JS: true false (lowercase)
 
-## Lobical operators
+## Logical operators
 
 Py: Keywords and, or, not
 JS: &&, ||, !

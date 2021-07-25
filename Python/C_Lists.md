@@ -14,9 +14,9 @@ Done in exactly the same way as in Strings.
 
 Lists can be concatenated to form a new list(s) containing the elements of the contributor lists. E.g., `new_list = old_list1 + old_list2`
 
-## Duplication Using *
+## Duplication Using \*
 
-A list can also be duplicated with the * operator as many times as needed: `my_list * 4`
+A list can also be duplicated with the _ operator as many times as needed: `my_list _ 4`
 
 ## Arrays in Other Languages
 
@@ -38,7 +38,7 @@ This will sort the list "in place". I.e., It does not return a value, but sorts 
 
 ### sorted() function
 
-Returns the sorted list. Usage `sorted(some_list)`.
+Returns the sorted list. Usage `some_variable = sorted(some_list)`.
 
 ### .reverse()
 

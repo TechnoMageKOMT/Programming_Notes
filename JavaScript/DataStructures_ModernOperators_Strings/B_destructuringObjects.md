@@ -66,15 +66,17 @@ Variables can also be mutated, but not in the same way as arrays:
   console.log(a, b);    => 23 7
 ```
 
+This code will mutate the variables a and b to the new values from the destructuring of the object.
+
 ## Nested objects
 
 Using the restaurant example again. `openingHours` have already been extracted as an object, so
 
 ```JavaScript
   const {fri} = openingHours;
-  yields the object fri that lies withing the object openingHours which is a property of the object restaurant.
+  //yields the object fri that lies withing the object openingHours which is a property of the object restaurant.
 
-  const {fri: {open, close}} = openingHours;
+  const {fri: {open, close}} = openingHours; //Note the special syntax
   console.log(open, close);
   yields the inner values of the object friday
 ```

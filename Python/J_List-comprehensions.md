@@ -34,7 +34,7 @@ Mathematical operations can also be included:
 mylist = [num**2 for num in range(0, 11)]
 mylist: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
-#or 
+#or
 
 mylist = [num for num in range(0, 11) if num%2 == 0]
 mylist:[0, 2, 4, 6, 8, 10]
@@ -62,3 +62,4 @@ for x in [2,4,6]:
 
 #vs nested list comprehension
 mylist = [x*y for x in [2,4,6] for y in [1,10,1000]]
+```

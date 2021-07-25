@@ -156,6 +156,8 @@ div {
 
 ## Background video
 
+See 'Natours` project (Jonas' Advanced CSS course).
+
 Nice website with free videos: [https://coverr.co/]
 
 ```HTML
