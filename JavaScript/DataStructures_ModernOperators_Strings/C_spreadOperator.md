@@ -108,4 +108,4 @@ Shallow copies of objects can also be made by using the ... operator.
 const restaurantCopy = {...restaurant};
 ```
 
-The nice thing with these shallow copies is that a value changed on one of the objects will not affect the other. I.e., They are seperate objects unlike the situation where a object is copied by merely assigning it to another variable name.
+The nice thing with these shallow copies is that a value changed on one of the objects will not affect the other. I.e., They are seperate objects unlike the situation where a object is copied by merely assigning it to another variable name. **NB** This does not apply to nested objects.

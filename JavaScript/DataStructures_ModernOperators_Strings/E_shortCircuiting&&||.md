@@ -8,7 +8,7 @@ There are three other properties of these operators:
 
 - They can use any data type
 - They can return any data type
-- They also do short circuit evaluation (short circuiting) - If the first value is a truthy value the expression will immediately  return that value. I.e., if the first operand is a truthy value, the second value will not be evaluated at all.
+- They also do short circuit evaluation (short circuiting) - If the first value is a truthy value the expression will immediately return that value. I.e., if the first operand is a truthy value, the second value will not be evaluated at all.
 
 ```JavaScript
 console.log(3 || `Jonas`);
@@ -62,6 +62,8 @@ console.log(`Hello` && 23 && null && `Jonas`);
 Output: null
 ```
 
+When both values are 'truthy' the expression is evaluated in full and the last value is returned. I.e., There will be no short circuiting.
+
 With this knowledge the following code can be simplified:
 
 ```JavaScript
@@ -70,7 +72,7 @@ if (restaurant.orderPizza) {
 }
 ```
 
-to 
+to
 
 ```JavaScript
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach')
@@ -83,6 +85,6 @@ So, if the first operand does not exist nothing will happen, if it does then the
 ## Summary
 
 The || operator will return the first truthy value of all operands or the last value if all operands are falsy.
-The && operator will return the first falsy value or the last value if all of the operands are truthy. 
+The && operator will return the first falsy value or the last value if all of the operands are truthy.
 
 **Practical Applications** The || operator can be used to set default values and the && can be used to excecute code in the second operand if the first one is true.

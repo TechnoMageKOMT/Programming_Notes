@@ -1,5 +1,15 @@
 # Arrays
 
+## What is an iterable?
+
+Any object that can be looped over with a for loop. I.e., Any object that can be iterated over. Not all iterables are arrays. Refer: NodeList, String, Map, Set.
+
+## Array-like objects
+
+Objects that have a length property and use indexes to access items. Again, not all array-like objects are arrays. See NodeList and Strings.
+
+## What is an array?
+
 Arrays are ordered lists of data. They can contain any type of data, even other arrays or objects etc. It is furthermore possible to have different types of data in the same array.
 
 Individual elements are accesed by bracket notation just like strings. The .length property also applies.
@@ -25,11 +35,17 @@ See "Array Methods" file for more detailed information on array methods.
 
 ## Declaring / Constructing / Assigning an Array
 
-Two ways:
+Three ways:
 
-`const arrayName = [element1, element2,...]`
+`const arrayName = [element1, element2,...]` (Most common and recommended way)
+
+`const arrayName = Array.of(element1, element2)`
+
+`const arrayName = Array(element1, element2,...)`
 
 `const arrayName = new Array(element1, element,...)`
+
+If only one argument is passed to the last 2 methods then the number will determine the length of the array and not an element.
 
 The literal syntax is by far the most common way compared to the use of the Array constructor function.
 
@@ -52,7 +68,9 @@ An array can also be constructed from an existing array by use of the Array.from
 const newArray = Array.from(existingArray)
 ```
 
-This method avoids the referencing problem that is encountered when copying arrays and objects.
+This method takes in an iterable as argument and also avoids the referencing problem that is encountered when copying arrays and objects.
+
+This is also a nifty way of splitting a string into an array of individual letters. It is also a way of transforming a NodeList into an array where all array methods can be used.
 
 ## .forEach() Method
 
@@ -107,7 +125,7 @@ The last item of an array can be identified even if the length of the array is u
 
 ## unshift() method
 
-`arrayName.unshift(someElement`: Same as push(), but add the new element to the beginning of the array. Also retuns the length of the new array.
+`arrayName.unshift(someElement`: Same as push(), but add the new element to the beginning of the array. Also retuns the length of the new array. Slower than push() because all elements of the array are affected.
 
 ## pop() method
 
@@ -115,29 +133,39 @@ The last item of an array can be identified even if the length of the array is u
 
 ## shift() method
 
-`arrayName.shift()`: Removes the first item from the array and returns that item.
+`arrayName.shift()`: Removes the first item from the array and returns that item. Slower than pop() because all elements in the array are affected.
 
 ## indexOf() method
 
-`arrayName.indexOf(someElement)`: Returns the position of the element given as an argument. If the element is absent, a value of `-1` is returned.
+`arrayName.indexOf(someElement)`: Returns the position of the first occurence of the element given as an argument. If the element is absent, a value of `-1` is returned. It can also take a second argument. This second argument would be the index to start searching.
 
-Cannot be used on arrays composed of objects. See findIndex() method below.
+Cannot be used on arrays composed of objects or any other reference values. See findIndex() method below for an alternative method. The reason for this is that the object passed as an argument is not identical to the object referenced in the array (i.e., its position in memory.)
+
+## lastIndexOf() method
+
+The same as indexOf() but will look for the last occurence of the element passed as argument.
 
 ## includes() method
 
-`arrayName.includes(someElement)`: Returns a value of `true` if the element passed as argument is present and `false` if not. This is useful in conditional statements involving arrays. **NB** === Strict comparison applies.
+`arrayName.includes(someElement)`: Returns a value of `true` if the element passed as argument is present and `-1` if not. This is useful in conditional statements involving arrays. **NB** === Strict comparison applies. I.e., Will not work with reference values such as objects.
 
 ## slice() method
 
 The slice() method returns the selected elements in an array, as a new array object.
 
-The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument. Negative indexes can also be used here.
+
+If no arguments are given, a copy of the array will be returned without being subject to reference object problems. I.e., The copied array is a brand new array.
 
 Note: The original array will not be changed.
 
 ## splice() method
 
-`arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional). If 0 is passed as the second argument then nothing will be removed. The third argument will simply be inserted at that point in the array before the index number specified as argument 1.
+This method is only available on real arrays and not all iterables. The same is true for all the specialised array methods.
+
+`arrayName.splice(arg1, arg2, arg3)`: Removes or replaces items based on the 3 arguments. arg1: Index number to start; arg2: Number of items to remove or replace; arg3: Item to replace with (optional). If 0 is passed as the second argument then nothing will be removed. The third argument will simply be inserted at that point in the array before the index number specified as argument 1. It can also use a -ve number as the first argument in which case it will start at the end of the array and go backwards.
+
+**Note** The method returns the removed element.
 
 ```JavaScript
 let arr = ['foo', 'bar', 10, 'qux'];
@@ -154,9 +182,17 @@ arr.splice(0, 1, 'x', 'y');// Inserts 'x' and 'y' replacing 1 item at index 0
 // => ['x', 'y', 10, 'tmp']
 ```
 
+## concat() Method
+
+This method adds a array or multiple arrays to an existing array. It combines the values of the arrays. I.e., It does not add the new arrays as nested arrays. The end result is a brand new array with all elements.
+
 ## forEach() Method
 
-This method simply loops through the array.
+This method simply loops through the array. The anonymous function here can take 3 arguments. Apart from the first argument, the other two are optional.
+
+1. Individual element of the array (note above)
+2. The index number of that individual element
+3. The full array
 
 ## findIndex() method
 
@@ -170,6 +206,12 @@ console.log(index)
 ```
 
 This piece of code will output the index number of the object with the property value pair, title:'Some Note'.
+
+The anonymous function here can take 3 arguments. Apart from the first argument, the other two are optional.
+
+1. Individual element of the array (note above)
+2. The index number of that individual element
+3. The full array
 
 ## find() Method
 
@@ -187,6 +229,12 @@ console.log(note)
 
 This function would return the search item by taking as input a `notes` array as well as a `noteTitle`.
 
+The anonymous function here can take 3 arguments. Apart from the first argument, the other two are optional.
+
+1. Individual element of the array (note above)
+2. The index number of that individual element
+3. The full array
+
 ## every() Method
 
 The method tests whether all elements in an array pass the test implemented within the callback function. It returns a boolean value.
@@ -199,15 +247,23 @@ console.log(array1.every((currentValue) => currentValue < 40))
 
 ## map() Method
 
-The method return a new array with the specified property:
-
-In an array with name:item and price:value pairs, the following statement will return an array with the names of all the entries under the `name` property:
+map() calls a provided callbackFn function once for each element in an array, in order, and constructs a new array from the results. callbackFn is invoked only for indexes of the array which have assigned values (including undefined). (MDN reference)
 
 ```JavaScript
-const itemNames = item.map((item) => {
-  return item.name
-})
+const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+// expected output: Array [2, 8, 18, 32]
 ```
+
+The anonymous function here can take 3 arguments. Apart from the first argument, the other two are optional.
+
+1. Individual element of the array (note above)
+2. The index number of that individual element
+3. The full array
 
 ## some() Method
 
