@@ -121,7 +121,7 @@ const openingHours = {
 
 ## Method 4
 
-Within a function variables can be passed into an new object without having to specifiy both property name and value. Only the variable name is used and the value is associated with it automatically:
+Within a function, variables can be passed into an new object without having to specifiy both property name and value. Only the variable name is used and the value is associated with it automatically:
 
 Example:
 

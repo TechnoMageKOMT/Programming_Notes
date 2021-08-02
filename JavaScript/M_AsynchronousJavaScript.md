@@ -25,7 +25,7 @@ request.open('GET', 'someURL')
 request.send()
 ```
 
-Next a event listener is set up on request to listen for 'readystatechange' events. refer:[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState] for information on the four different states. The only state that we will ever be responding to is 4 (DONE - The operation is complete).
+Next an event listener is set up on request to listen for 'readystatechange' events. refer:[https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState] for information on the four different states. The only state that we will ever be responding to is 4 (DONE - The operation is complete).
 
 ```JavaScript
 const request = new XMLHttpRequest()
