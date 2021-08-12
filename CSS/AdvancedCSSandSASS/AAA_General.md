@@ -108,3 +108,102 @@ With :valid and :invalid pseudoclasses. The example will for example underline t
   border-bottom: 3px solid $color-secondary-dark;
 }
 ```
+
+## Responsive padding and margins
+
+The following code will set a padding top and bottom to the second smaller value if the viewport shrinks below the first.
+
+```SCSS
+selector {
+  padding-block: min(10vh, 10rem)
+}
+```
+
+## :target pseudoclass
+
+As soon as the element becomes the target when the matching anchor is clicked, the pseudoclass `:target` becomes available.
+
+## Media query breakpoints
+
+EM's and REM's in media queries do not reference the root font-size but rather that of the user's browser. REM's additionally cause problems with some browsers, so EM's are the unit of choice with media queries.
+
+- 0 - 600px (37.5em) Phones
+- 600 - 900px (56.25em) Tablets portrait
+- 900 - 1200px (75em) Tablets landscape
+- 1200 - 1800px Desktop - normal code. No media queries
+- 1800 - (112.5em) Big desktops
+
+## Media Query Manager with SASS mixins
+
+```SCSS
+//The following type of code is used in the mixin file. See further down below how this will be used.
+
+//Media Query Manager
+/*
+0   - 600px     Phone
+600 - 900px     Tablet portrait
+900 - 1200px    Tablet landscape
+1200 - 1800px   Normal desktop styles
+1800 -          Big desktop
+
+Breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      //600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      //1800px
+      @content;
+    }
+  }
+}
+```
+
+```SCSS
+//Usage of mixin media query manager
+
+html {
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //1rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(phone) {
+    font-size: 30%; //1rem = 4.8px 4.8/16 = 30%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16 = 75%
+  }
+}
+```
+
+## Outline offset
+
+This property can be used to frame an image or div. A negative value will actually create an inset that looks great with images.
