@@ -207,3 +207,19 @@ html {
 ## Outline offset
 
 This property can be used to frame an image or div. A negative value will actually create an inset that looks great with images.
+
+## General order of tackling responsiveness changes once a site has been coded
+
+1. Base and typography
+2. General layout
+3. Grid
+4. Page layout
+5. Components
+
+## Smooth scrolling
+
+```CSS
+html {
+  scroll-behaviour: smooth;
+}
+```
